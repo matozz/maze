@@ -1,0 +1,41 @@
+.maze-radio-group {
+  display: flex;
+  width: min-content;
+  gap: 10px;
+}
+
+.maze-radio-group--vertical {
+  flex-direction: column;
+  width: min-content;
+}
+
+.maze-radio-group-lable {
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: "Nunito Sans", -apple-system, ".SFNSText-Regular",
+    "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.maze-radio-group--small .maze-radio {
+  margin: -6px;
+}
+
+.maze-radio-group--medium .maze-radio {
+  margin: -2px 2px;
+}
+
+.maze-radio-group--large .maze-radio {
+  margin: 4px 10px;
+}
+
+.maze-radio-group--medium {
+  margin-left: -8px;
+}
+.maze-radio-group--large {
+  margin-left: -16px;
+}

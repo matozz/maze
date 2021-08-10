@@ -1,0 +1,273 @@
+.maze-button {
+  --maze-main-theme: var(
+    --maze-theme-rgb,
+    var(--maze-primary-rgb, 25, 118, 210)
+  );
+  font-family: var(
+    --maze-font-family,
+    "Roboto",
+    "Segoe UI",
+    BlinkMacSystemFont,
+    system-ui,
+    -apple-system
+  );
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  font-weight: 500;
+  /* letter-spacing: 0.4px; */
+  border: 1px solid transparent;
+  border-radius: 0.4em;
+  display: inline-block;
+  line-height: 1;
+  box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.maze-button--small {
+  font-size: 12px;
+  padding: 8px 14px;
+}
+.maze-button--medium {
+  font-size: 14px;
+  padding: 10px 18px;
+}
+.maze-button--large {
+  font-size: 16px;
+  padding: 12px 22px;
+}
+
+/* ------------- Text ---------------- */
+
+.maze-button--text {
+  border-color: transparent;
+  min-width: 64px;
+  vertical-align: middle;
+  text-align: center;
+  text-overflow: ellipsis;
+  color: rgb(var(--maze-main-theme));
+  background-color: transparent;
+}
+
+.maze-button--text::-moz-focus-inner {
+  border: none;
+}
+
+/* Highlight, Ripple */
+.maze-button--text::before,
+.maze-button--text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  opacity: 0;
+}
+
+.maze-button--text::before {
+  background-color: rgb(var(--maze-main-theme));
+  transition: opacity 0.2s;
+}
+
+.maze-button--text::after {
+  background: radial-gradient(circle at center, currentColor 1%, transparent 1%)
+    center/10000% 10000% no-repeat;
+  transition: opacity 1s, background-size 0.5s;
+}
+
+/* Hover, Focus */
+.maze-button--text:hover::before {
+  opacity: 0.05;
+}
+
+.maze-button--text:active::before {
+  opacity: 0.12;
+}
+
+.maze-button--text:active:hover::before {
+  opacity: 0.2;
+}
+
+/* Active */
+.maze-button--text:active::after {
+  opacity: 0.3;
+  background-size: 100% 100%;
+  transition: background-size 0s;
+}
+
+/* Disabled */
+.maze-button--text:disabled {
+  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.38);
+  background-color: transparent;
+  cursor: initial;
+  pointer-events: none;
+}
+
+.maze-button--text:disabled::before,
+.maze-button--text:disabled::after {
+  opacity: 0;
+}
+
+/* ------------- Contained ---------------- */
+
+.maze-button--contained {
+  /* box-sizing: border-box; */
+  border-color: rgb(var(--maze-main-theme));
+  min-width: 64px;
+  vertical-align: middle;
+  text-align: center;
+  text-overflow: ellipsis;
+  color: white;
+  background-color: rgb(var(--maze-main-theme));
+}
+
+.maze-button--contained::-moz-focus-inner {
+  border: none;
+}
+
+/* Highlight, Ripple */
+.maze-button--contained::before,
+.maze-button--contained::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: inherit;
+  opacity: 0;
+}
+
+.maze-button--contained::before {
+  background-color: white;
+  transition: opacity 0.2s;
+}
+
+.maze-button--contained::after {
+  background: radial-gradient(circle at center, currentColor 1%, transparent 1%)
+    center/10000% 10000% no-repeat;
+  transition: opacity 1s, background-size 0.5s;
+}
+
+/* Hover, Focus */
+.maze-button--contained:hover::before {
+  opacity: 0.2;
+}
+
+.maze-button--contained:active::before {
+  opacity: 0.24;
+}
+
+.maze-button--contained:active:hover::before {
+  opacity: 0.1;
+}
+
+/* Active */
+.maze-button--contained:active {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.1), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.maze-button--contained:active::after {
+  opacity: 0.32;
+  background-size: 100% 100%;
+  transition: background-size 0s;
+}
+
+/* Disabled */
+.maze-button--contained:disabled {
+  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.38);
+  background-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.12);
+  box-shadow: none;
+  cursor: initial;
+  border-color: transparent;
+}
+
+.maze-button--contained:disabled::before,
+.maze-button--contained:disabled::after {
+  opacity: 0;
+}
+
+/* ------------- Outlined ---------------- */
+
+.maze-button--outlined {
+  box-sizing: border-box;
+  border: solid 1px; /* Safari */
+  border-color: rgba(var(--maze-main-theme, 0, 0, 0), 0.5);
+  min-width: 64px;
+  vertical-align: middle;
+  text-align: center;
+  text-overflow: ellipsis;
+  color: rgb(var(--maze-main-theme));
+  background-color: transparent;
+}
+
+.maze-button--outlined::-moz-focus-inner {
+  border: none;
+}
+
+/* Highlight, Ripple */
+.maze-button--outlined::before,
+.maze-button--outlined::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 3px;
+  opacity: 0;
+}
+
+.maze-button--outlined::before {
+  background-color: rgb(var(--maze-main-theme));
+  transition: opacity 0.2s;
+}
+
+.maze-button--outlined::after {
+  background: radial-gradient(circle at center, currentColor 1%, transparent 1%)
+    center/10000% 10000% no-repeat;
+  transition: opacity 1s, background-size 0.5s;
+}
+
+/* Hover, Focus */
+.maze-button--outlined:hover::before {
+  opacity: 0.08;
+}
+
+.maze-button--outlined:hover {
+  border-color: rgba(var(--maze-main-theme, 0, 0, 0), 0.8);
+}
+
+.maze-button--outlined:active::before {
+  opacity: 0.12;
+}
+
+.maze-button--outlined:active:hover::before {
+  opacity: 0.2;
+}
+
+/* Active */
+.maze-button--outlined:active::after {
+  opacity: 0.2;
+  background-size: 100% 100%;
+  transition: background-size 0s;
+}
+
+/* Disabled */
+.maze-button--outlined:disabled {
+  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.38);
+  background-color: transparent;
+  cursor: initial;
+  pointer-events: none;
+  border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.2);
+}
+
+.maze-button--outlined:disabled::before,
+.maze-button--outlined:disabled::after {
+  opacity: 0;
+}

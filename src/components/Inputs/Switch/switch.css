@@ -1,0 +1,166 @@
+.maze-switch {
+  z-index: 0;
+  position: relative;
+  display: inline-block;
+  --maze-main-theme: var(
+    --maze-theme-rgb,
+    var(--maze-primary-rgb, 25, 118, 210)
+  );
+  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.87);
+  font-family: var(
+    --maze-font-family,
+    "Roboto",
+    "Segoe UI",
+    BlinkMacSystemFont,
+    system-ui,
+    -apple-system
+  );
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Input */
+.maze-switch > input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  z-index: -1;
+  position: absolute;
+  left: -8px;
+  top: -6px;
+  display: block;
+  margin: 0;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.38);
+  outline: none;
+  opacity: 0;
+  transform: scale(1);
+  pointer-events: none;
+  transition: opacity 0.3s 0.1s, transform 0.2s 0.1s;
+}
+
+/* Span */
+.maze-switch > span {
+  display: inline-flex;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  align-items: center;
+}
+
+/* Track */
+.maze-switch > span::before {
+  content: "";
+  display: inline-block;
+  margin: 5px 10px 5px 0;
+  border-radius: 7px;
+  width: 36px;
+  height: 14px;
+  background-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.38);
+  vertical-align: top;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+/* Thumb */
+.maze-switch > span::after {
+  content: "";
+  position: absolute;
+  /* top: 2px; */
+  left: 0;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(var(--maze-onprimary-rgb, 255, 255, 255));
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+/* Checked */
+.maze-switch > input:checked {
+  left: 8px;
+  background-color: rgb(var(--maze-main-theme));
+}
+
+.maze-switch > input:checked + span::before {
+  background-color: rgba(var(--maze-main-theme), 0.6);
+}
+
+.maze-switch > input:checked + span::after {
+  background-color: rgb(var(--maze-main-theme));
+  transform: translateX(16px);
+}
+
+/* Hover, Focus */
+.maze-switch:hover > input {
+  opacity: 0.06;
+}
+
+.maze-switch > input:active {
+  opacity: 0.12;
+}
+
+.maze-switch:hover > input:active {
+  opacity: 0.3;
+}
+
+/* Active */
+.maze-switch:active > input {
+  opacity: 0.23;
+}
+
+.maze-switch > input:active {
+  opacity: 1;
+  transform: scale(0);
+  transition: transform 0s, opacity 0s;
+}
+
+/* .maze-switch > input:active + span::before {
+  background-color: rgba(var(--maze-main-theme), 1);
+}
+
+.maze-switch > input:checked:active + span::before {
+  background-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.38);
+} */
+
+/* Disabled */
+.maze-switch > input:disabled {
+  opacity: 0;
+}
+
+.maze-switch > input:disabled + span {
+  color: rgb(var(--maze-onsurface-rgb, 0, 0, 0));
+  opacity: 0.38;
+  cursor: default;
+}
+
+.maze-switch > input:disabled + span::before {
+  background-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.4);
+}
+
+.maze-switch > input:disabled + span::after {
+  background-color: rgb(var(--maze-onprimary-rgb, 230, 230, 230));
+}
+
+.maze-switch > input:checked:disabled + span::before {
+  background-color: rgba(var(--maze-main-theme), 0.6);
+}
+
+/* Size */
+
+.maze-switch--medium {
+  transform: scale(1);
+  transform-origin: 0;
+}
+
+.maze-switch--small {
+  transform: scale(0.8);
+  transform-origin: 0;
+}
+
+.maze-switch--large {
+  transform: scale(1.2);
+  transform-origin: 0;
+}

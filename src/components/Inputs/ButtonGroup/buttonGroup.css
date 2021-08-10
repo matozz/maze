@@ -1,0 +1,47 @@
+.maze-button-group {
+  display: flex;
+  width: min-content;
+}
+
+.maze-button-group .maze-button {
+  margin: 0;
+}
+
+.maze-button-group .maze-button:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+.maze-button-group--horizontal .maze-button:first-child {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.maze-button-group--horizontal .maze-button:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.maze-button-group--vertical {
+  flex-direction: column;
+  width: min-content;
+}
+
+.maze-button-group--vertical .maze-button:first-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.maze-button-group--vertical .maze-button:last-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.maze-button-group--horizontal .maze-button {
+  /* border-right-color: transparent; */
+  margin: 0 0 0 -1px !important;
+}
+
+.maze-button-group--vertical .maze-button {
+  /* border-right-color: transparent; */
+  margin: -1px 0 0 0 !important;
+}
