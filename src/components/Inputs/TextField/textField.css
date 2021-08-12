@@ -451,3 +451,8 @@
   font-size: 0.75rem;
   color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.55);
 }
+
+/* Error */
+.maze-textfield--error > input + span {
+  color: #d32f2f;
+}

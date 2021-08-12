@@ -23,13 +23,17 @@ export const TextField = forwardRef(
       multiline,
       helperText,
       focused,
+      error,
       ...props
     },
     ref
   ) => {
     const [cssProperties, setCssProperties] = useState({});
+    const errorColor = "#d32f2f";
     useEffect(() => {
-      setCssProperties({ "--maze-main-theme": hexToRGB(color) });
+      setCssProperties({
+        "--maze-main-theme": hexToRGB(error ? errorColor : color),
+      });
       return () => {};
     }, [color]);
 
@@ -39,6 +43,7 @@ export const TextField = forwardRef(
         : "maze-textfield--outlined";
 
     const focus = focused ? "maze-textfield--focused" : "";
+    const err = error ? "maze-textfield--error" : "";
 
     return (
       <>
@@ -47,6 +52,7 @@ export const TextField = forwardRef(
             "maze-textfield",
             mode,
             focus,
+            err,
             `maze-textfield--${size}`,
           ].join(" ")}
           style={{
@@ -90,7 +96,12 @@ export const TextField = forwardRef(
             <span style={{ marginLeft: 1.5 }}>{required && "*"}</span>
           </span>
           {helperText && (
-            <div className="maze-textfield-helpertext">{helperText}</div>
+            <div
+              className="maze-textfield-helpertext"
+              style={{ color: error && errorColor }}
+            >
+              {helperText}
+            </div>
           )}
         </label>
       </>
@@ -124,6 +135,7 @@ TextField.propTypes = {
   variant: PropTypes.oneOf(["filled", "outlined"]),
   size: PropTypes.oneOf(["small", "medium", "large"]),
   disabled: PropTypes.bool,
+  error: PropTypes.bool,
   onChange: PropTypes.func,
   ref: PropTypes.oneOfType([
     PropTypes.func,
@@ -142,4 +154,5 @@ TextField.defaultProps = {
   required: false,
   rows: 4,
   resize: false,
+  error: false,
 };

@@ -142,7 +142,7 @@ export const Colors = () => (
   </Grid>
 );
 
-export const ControlledVsUncontrolled = () => {
+export const Controlls = () => {
   const [value, setValue] = useState("Hello World");
   return (
     <Grid spacing={2}>
@@ -157,15 +157,38 @@ export const ControlledVsUncontrolled = () => {
   );
 };
 
-export const HelperText = () => {
+export const HelperText = (args) => {
   return (
-    <Grid spacing={2} alignItems={"center"}>
+    <Grid spacing={2}>
       <TextField
         variant="outlined"
         label="Name"
-        helperText={"Please enter your name"}
+        helperText="Please enter your name"
       />
-      <TextField variant="outlined" label="Name" />
+      <TextField variant="outlined" label="Name" helperText=" " />
+    </Grid>
+  );
+};
+
+export const Error = () => {
+  return (
+    <Grid spacing={2}>
+      <TextField
+        error
+        variant="filled"
+        label="Error"
+        defaultValue="Hello World"
+        helperText="Incorrect entry."
+        focused
+      />
+      <TextField
+        error
+        variant="outlined"
+        label="Error"
+        defaultValue="Hello World"
+        helperText="Incorrect entry."
+        focused
+      />
     </Grid>
   );
 };
