@@ -1,0 +1,12 @@
+.maze-grid {
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 100%; */
+}
+
+.maze-grid-divider {
+  width: 100%;
+  height: 0;
+  visibility: hidden;
+  margin: 0;
+}

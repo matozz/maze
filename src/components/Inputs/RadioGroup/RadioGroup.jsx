@@ -29,7 +29,7 @@ export const RadioGroup = ({
         {...props}
         onChange={onChange}
       >
-        {children.map((radio, index) => {
+        {React.Children.map(children, (radio, index) => {
           return React.cloneElement(radio, {
             name: name,
             size: size,

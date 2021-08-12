@@ -55,7 +55,7 @@ CheckBox.propTypes = {
   // checked: PropTypes.bool,
   name: PropTypes.string,
   value: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   size: PropTypes.oneOf(["small", "medium", "large"]),
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
@@ -65,6 +65,5 @@ CheckBox.defaultProps = {
   // checked: false,
   size: "medium",
   disabled: false,
-  label: "",
   color: "#1976d2",
 };

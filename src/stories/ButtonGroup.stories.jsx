@@ -2,6 +2,7 @@ import React from "react";
 
 import { ButtonGroup } from "../components/Inputs/ButtonGroup";
 import { Button } from "../components/Inputs/Button";
+import { Grid } from "../components/Layouts/Grid";
 
 export default {
   title: "Inputs/Button Group",
@@ -38,14 +39,7 @@ Default.args = {
 };
 
 export const Variants = (args) => (
-  <div
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-start",
-      gap: 16,
-    }}
-  >
+  <Grid spacing={3} direction="column">
     <ButtonGroup variant="text">
       <Button label="One" />
       <Button label="Two" />
@@ -64,18 +58,11 @@ export const Variants = (args) => (
       <Button label="Three" />
       <Button label="Four" />
     </ButtonGroup>
-  </div>
+  </Grid>
 );
 
 export const Sizes = (args) => (
-  <div
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-start",
-      gap: 16,
-    }}
-  >
+  <Grid spacing={3} direction="column">
     <ButtonGroup size="small">
       <Button label="One" />
       <Button label="Two" />
@@ -94,16 +81,11 @@ export const Sizes = (args) => (
       <Button label="Three" />
       <Button label="Four" />
     </ButtonGroup>
-  </div>
+  </Grid>
 );
 
 export const Orientation = (args) => (
-  <div
-    style={{
-      display: "flex",
-      gap: 16,
-    }}
-  >
+  <Grid spacing={2}>
     <ButtonGroup variant="text" orientation="vertical">
       <Button label="One" />
       <Button label="Two" />
@@ -122,18 +104,11 @@ export const Orientation = (args) => (
       <Button label="Three" />
       <Button label="Four" />
     </ButtonGroup>
-  </div>
+  </Grid>
 );
 
 export const Colors = (args) => (
-  <div
-    style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-start",
-      gap: 16,
-    }}
-  >
+  <Grid spacing={3} direction="column">
     <ButtonGroup size="small">
       <Button label="Accept" color="#2e7d32" />
       <Button label="Two" />
@@ -146,7 +121,7 @@ export const Colors = (args) => (
       <Button label="Three" />
       <Button label="Four" color="#ed6c02" />
     </ButtonGroup>
-  </div>
+  </Grid>
 );
 
 export const Disabled = () => {
@@ -154,14 +129,7 @@ export const Disabled = () => {
     disabled2 = [1],
     disabled3 = [3, 4];
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        gap: 16,
-      }}
-    >
+    <Grid spacing={3} direction="column">
       <ButtonGroup variant="text" disabled={disabled1}>
         <Button label="One" />
         <Button label="Two" />
@@ -180,6 +148,6 @@ export const Disabled = () => {
         <Button label="Three" />
         <Button label="Four" />
       </ButtonGroup>
-    </div>
+    </Grid>
   );
 };

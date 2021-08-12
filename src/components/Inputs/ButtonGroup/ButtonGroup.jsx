@@ -23,7 +23,7 @@ export const ButtonGroup = ({
       style={style}
       {...props}
     >
-      {children.map((button, index) => {
+      {React.Children.map(children, (button, index) => {
         return React.cloneElement(button, {
           name: name,
           size: size,

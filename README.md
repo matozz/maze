@@ -32,10 +32,9 @@ yarn add maze-ui
   * [x] Switch
   * [ ] Select
   * [ ] Slider
-  * [ ] Text Field
-* [ ] Layout
-  * [ ] Grid
-  * [ ] Flex
+  * [x] Text Field
+* [x] Layout
+  * [x] Grid
 * [ ] Navigation
   * [ ] Drawer
   * [ ] Menu

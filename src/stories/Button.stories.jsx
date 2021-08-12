@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Button } from "../components/Inputs/Button";
+import { Grid } from "../components/Layouts/Grid";
 
 export default {
   title: "Inputs/Button",
@@ -31,32 +32,32 @@ Default.args = {
 };
 
 export const Basic = (args) => (
-  <div style={{ display: "flex", gap: 20 }}>
+  <Grid spacing={2}>
     <Button variant="text" label="TEXT" />
     <Button variant="contained" label="CONTAINED" />
     <Button variant="outlined" label="OUTLINED" />
-  </div>
+  </Grid>
 );
 
 export const Text = (args) => (
-  <div style={{ display: "flex", gap: 20 }}>
+  <Grid spacing={2}>
     <Button variant="text" label="TEXT" />
     <Button variant="text" label="DISABLED" disabled />
-  </div>
+  </Grid>
 );
 
 export const Contained = (args) => (
-  <div style={{ display: "flex", gap: 20 }}>
+  <Grid spacing={2}>
     <Button variant="contained" label="CONTAINED" />
     <Button variant="contained" label="DISABLED" disabled />
-  </div>
+  </Grid>
 );
 
 export const Outlined = (args) => (
-  <div style={{ display: "flex", gap: 20 }}>
+  <Grid spacing={2}>
     <Button variant="outlined" label="OUTLINED" />
     <Button variant="outlined" label="DISABLED" disabled />
-  </div>
+  </Grid>
 );
 
 export const Events = (args) => (
@@ -71,29 +72,29 @@ export const Events = (args) => (
 );
 
 export const Sizes = () => (
-  <div style={{ display: "grid", gridGap: 20 }}>
-    <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+  <Grid spacing={3} direction="column">
+    <Grid spacing={2}>
       <Button variant="text" size="small" label="SMALL" />
       <Button variant="text" size="medium" label="MEDIUM" />
       <Button variant="text" size="large" label="LARGE" />
-    </div>
-    <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+    </Grid>
+    <Grid spacing={2}>
       <Button variant="contained" size="small" label="SMALL" />
       <Button variant="contained" size="medium" label="MEDIUM" />
       <Button variant="contained" size="large" label="LARGE" />
-    </div>
-    <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+    </Grid>
+    <Grid spacing={2}>
       <Button variant="outlined" size="small" label="SMALL" />
       <Button variant="outlined" size="medium" label="MEDIUM" />
       <Button variant="outlined" size="large" label="LARGE" />
-    </div>
-  </div>
+    </Grid>
+  </Grid>
 );
 
 export const Colors = (args) => (
-  <div style={{ display: "flex", gap: 20 }}>
+  <Grid spacing={2}>
     <Button variant="contained" label="Success" color="#2e7d32" />
     <Button variant="contained" label="Warning" color="#ed6c02" />
     <Button variant="contained" label="Alert" color="#d32f2f" />
-  </div>
+  </Grid>
 );
