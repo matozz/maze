@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
-import { Radio } from "../components/Inputs/Radio";
+import { CheckBox } from "../../components/Inputs/CheckBox";
 
 export default {
-  title: "Inputs/Radio",
-  component: Radio,
+  title: "Inputs/CheckBox",
+  component: CheckBox,
   argTypes: {
     color: { control: "color" },
     size: {
@@ -17,7 +17,7 @@ export default {
 };
 
 const Template = (args) => {
-  return <Radio {...args} />;
+  return <CheckBox {...args} />;
 };
 
 export const Default = Template.bind({});
@@ -25,19 +25,27 @@ Default.args = {
   size: "medium",
   // checked: false,
   disabled: false,
-  label: "Radio",
+  label: "CheckBox",
   color: "#1976d2",
 };
 
 export const Small = Template.bind({});
 Small.args = {
   size: "small",
-  label: "Radio",
+  label: "CheckBox",
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   // checked: true,
   disabled: true,
-  label: "Radio",
+  label: "CheckBox",
+};
+
+export const Indeterminate = () => {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current.indeterminate = true;
+  }, []);
+  return <CheckBox label="Indeterminate" ref={ref} />;
 };

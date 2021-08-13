@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Switch } from "../components/Inputs/Switch";
+import { Radio } from "../../components/Inputs/Radio";
 
 export default {
-  title: "Inputs/Switch",
-  component: Switch,
+  title: "Inputs/Radio",
+  component: Radio,
   argTypes: {
     color: { control: "color" },
     size: {
@@ -17,7 +17,7 @@ export default {
 };
 
 const Template = (args) => {
-  return <Switch {...args} />;
+  return <Radio {...args} />;
 };
 
 export const Default = Template.bind({});
@@ -25,19 +25,19 @@ Default.args = {
   size: "medium",
   // checked: false,
   disabled: false,
-  label: "Switch",
+  label: "Radio",
   color: "#1976d2",
 };
 
 export const Small = Template.bind({});
 Small.args = {
   size: "small",
-  label: "Switch",
+  label: "Radio",
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   // checked: true,
   disabled: true,
-  label: "Switch",
+  label: "Radio",
 };

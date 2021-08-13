@@ -1,8 +1,8 @@
 import React from "react";
 
-import { ButtonGroup } from "../components/Inputs/ButtonGroup";
-import { Button } from "../components/Inputs/Button";
-import { Grid } from "../components/Layouts/Grid";
+import { ButtonGroup } from "../../components/Inputs/ButtonGroup";
+import { Button } from "../../components/Inputs/Button";
+import { Grid } from "../../components/Layouts/Grid";
 
 export default {
   title: "Inputs/Button Group",

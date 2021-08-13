@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { RadioGroup } from "../components/Inputs/RadioGroup";
-import { Radio } from "../components/Inputs/Radio";
+import { RadioGroup } from "../../components/Inputs/RadioGroup";
+import { Radio } from "../../components/Inputs/Radio";
 
 export default {
   title: "Inputs/Radio Group",

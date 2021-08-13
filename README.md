@@ -7,8 +7,6 @@
 
 ## 🎬 Get Started
 
-⚠️ In Development !
-
 **NPM** 
 ```shell
 npm i maze-ui
@@ -46,6 +44,6 @@ yarn add maze-ui
 * [ ] Data
   * [ ] List
   * [ ] Table
-  * [ ] Avatar
+  * [x] Avatar
   * [ ] Tooltip
   * [ ] Badge

@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Button } from "../components/Inputs/Button";
-import { Grid } from "../components/Layouts/Grid";
+import { Button } from "../../components/Inputs/Button";
+import { Grid } from "../../components/Layouts/Grid";
 
 export default {
   title: "Inputs/Button",

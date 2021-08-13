@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Grid } from "../components/Layouts/Grid";
-import "../styles.css";
+import { Grid } from "../../components/Layouts/Grid";
+import "../../styles.css";
 
 export default {
   title: "Layouts/Grid",

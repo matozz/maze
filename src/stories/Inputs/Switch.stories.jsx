@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
-import { CheckBox } from "../components/Inputs/CheckBox";
+import { Switch } from "../../components/Inputs/Switch";
 
 export default {
-  title: "Inputs/CheckBox",
-  component: CheckBox,
+  title: "Inputs/Switch",
+  component: Switch,
   argTypes: {
     color: { control: "color" },
     size: {
@@ -17,7 +17,7 @@ export default {
 };
 
 const Template = (args) => {
-  return <CheckBox {...args} />;
+  return <Switch {...args} />;
 };
 
 export const Default = Template.bind({});
@@ -25,27 +25,19 @@ Default.args = {
   size: "medium",
   // checked: false,
   disabled: false,
-  label: "CheckBox",
+  label: "Switch",
   color: "#1976d2",
 };
 
 export const Small = Template.bind({});
 Small.args = {
   size: "small",
-  label: "CheckBox",
+  label: "Switch",
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   // checked: true,
   disabled: true,
-  label: "CheckBox",
-};
-
-export const Indeterminate = () => {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current.indeterminate = true;
-  }, []);
-  return <CheckBox label="Indeterminate" ref={ref} />;
+  label: "Switch",
 };

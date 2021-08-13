@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { TextField } from "../components/Inputs/TextField";
-import { Grid } from "../components/Layouts/Grid";
+import { TextField } from "../../components/Inputs/TextField";
+import { Grid } from "../../components/Layouts/Grid";
 
 export default {
   title: "Inputs/Text Field",
