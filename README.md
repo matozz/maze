@@ -40,7 +40,7 @@ yarn add maze-ui
 * [ ] Feedback
   * [ ] Alert
   * [ ] Dialogs
-  * [ ] Progress
+  * [x] Progress
 * [ ] Data
   * [ ] List
   * [ ] Table
