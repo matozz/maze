@@ -66,7 +66,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   color: "#1976d2",
-  primary: false,
   variant: "contained",
   size: "medium",
   onClick: undefined,

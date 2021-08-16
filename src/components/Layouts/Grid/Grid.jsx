@@ -40,7 +40,6 @@ export const Grid = ({
         {React.Children.map(children, (child, index) => {
           if (child.type === Grid) {
             count += child.props.lg;
-            console.log(count);
             if (count > columns) {
               count = child.props.lg;
               return [
