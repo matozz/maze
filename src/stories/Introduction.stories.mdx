@@ -11,6 +11,31 @@ import StackAlt from "./assets/stackalt.svg";
 <Meta title="Introduction" />
 
 <style>{`
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px
+  }
+
+  .repoLink {
+    width:30px;
+    height:30px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: initial;
+    transition-property: initial;
+    color: white;
+    border-radius:50px;
+    padding: 4px;
+    line-height: 0;
+  }
+
+  .repoLink:hover {
+    background-color: rgba(240,240,240,0.5);
+    transform: scale(1.2);  
+  }
+
   .subheading {
     --mediumdark: '#999999';
     font-weight: 900;
@@ -114,7 +139,18 @@ import StackAlt from "./assets/stackalt.svg";
   
 `}</style>
 
-# Welcome to Maze-UI
+<div className="header">
+  <h1>Welcome to Maze-UI</h1>
+  <a href="https://github.com/Matozz/maze" target="_blank" className="repoLink">
+    <svg
+      stroke-width="0"
+      viewBox="0 0 1024 1024"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path>
+    </svg>
+  </a>
+</div>
 
 Maze-UI is a simple and customizable component library to build faster, beautiful, and more accessible React applications. Maze-UI components work in isolation. They are self-supporting, and will only inject the styles they need to display. They don't rely on any global style-sheets such as normalize.css.
 
@@ -131,40 +167,28 @@ You can use any of the components as demonstrated in the documentation. Please r
       throughout your UI.
     </span>
   </a>
-  <a
-    className="link-item"
-    href="../?path=/docs/inputs-radio--default"
-  >
+  <a className="link-item" href="../?path=/docs/inputs-radio--default">
     <img src={StackAlt} alt="Build" />
     <span>
       <strong>Radio</strong>
       Radio buttons allow the user to select one option from a set.
     </span>
   </a>
-  <a
-    className="link-item"
-    href="../?path=/docs/inputs-checkbox--default"
-  >
+  <a className="link-item" href="../?path=/docs/inputs-checkbox--default">
     <img src={Colors} alt="colors" />
     <span>
       <strong>Checkbox</strong>
       Checkboxes allow the user to select one or more items from a set.
     </span>
   </a>
-  <a
-    className="link-item"
-    href="../?path=/docs/inputs-switch--default"
-  >
+  <a className="link-item" href="../?path=/docs/inputs-switch--default">
     <img src={Flow} alt="flow" />
     <span>
       <strong>Switch</strong>
       Switches toggle the state of a single setting on or off.
     </span>
   </a>
-  <a
-    className="link-item"
-    href="../?path=/docs/inputs-text-field--default"
-  >
+  <a className="link-item" href="../?path=/docs/inputs-text-field--default">
     <img src={Comments} alt="flow" />
     <span>
       <strong>TextField</strong>
@@ -180,14 +204,15 @@ You can use any of the components as demonstrated in the documentation. Please r
     <img src={Repo} alt="repo" />
     <span>
       <strong>Grid</strong>
-      The responsive layout grid adapts to screen size and orientation, ensuring consistency across layouts.
+      The responsive layout grid adapts to screen size and orientation, ensuring
+      consistency across layouts.
     </span>
   </a>
   <a className="link-item" href="../?path=/docs/layouts-image-list--default">
     <img src={Code} alt="code" />
     <span>
       <strong>Image List</strong>
-     Image lists display a collection of images in an organized grid.
+      Image lists display a collection of images in an organized grid.
     </span>
   </a>
 </div>
@@ -195,10 +220,7 @@ You can use any of the components as demonstrated in the documentation. Please r
 <div className="subheading">Data Display</div>
 
 <div className="link-list">
-   <a
-    className="link-item"
-    href="../?path=/docs/data-display-avatar--default"
-  >
+  <a className="link-item" href="../?path=/docs/data-display-avatar--default">
     <img src={Direction} alt="direction" />
     <span>
       <strong>Avatar</strong>

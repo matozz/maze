@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./radioGroup.css";
-import { Radio } from "../Radio";
 
 export const RadioGroup = ({
   orientation,

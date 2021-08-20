@@ -6,7 +6,6 @@
   overflow: hidden;
   box-sizing: border-box;
   margin: 0 auto;
-  /* border: 20px solid #d3dce6; */
   background: #d3dce6;
 }
 
@@ -38,7 +37,6 @@
 
 .maze-carousel img {
   width: 500px;
-  /* width:200px; */
   height: 100%;
   object-fit: cover;
 }

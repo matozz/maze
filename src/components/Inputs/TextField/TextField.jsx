@@ -20,6 +20,7 @@ export const TextField = forwardRef(
       required,
       rows,
       resize,
+      width,
       multiline,
       helperText,
       focused,
@@ -59,6 +60,7 @@ export const TextField = forwardRef(
             ...cssProperties,
             ...style,
             marginBottom: helperText ? "22px" : "0",
+            width: width,
           }}
         >
           {!multiline ? (
@@ -118,6 +120,11 @@ TextField.propTypes = {
   defaultValue: PropTypes.string,
   type: PropTypes.string,
   label: PropTypes.string.isRequired,
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.oneOf(["auto"]),
+  ]),
   required: PropTypes.bool,
   /**
    * The multiline prop transforms the text field into a `<textarea>` element
@@ -145,6 +152,7 @@ TextField.propTypes = {
 
 TextField.defaultProps = {
   variant: "filled",
+  width: "auto",
   size: "medium",
   disabled: false,
   color: "#1976d2",

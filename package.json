@@ -1,8 +1,8 @@
 {
-  "homepage": "http://matozz.github.io/maze-doc",
+  "homepage": "http://matozz.github.io/maze",
   "name": "maze-ui",
-  "version": "1.0.2",
-  "description": "A simple react component that build by @matoz",
+  "version": "1.0.3",
+  "description": "A simple react component",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "build-lib": "rollup -c",
     "deploy-storybook": "gh-pages -d storybook-static"
   },
-  "author": "Matoz",
+  "author": "Matoz <matoztech@gmail.com> (https://github.com/matozz)",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.14.8",

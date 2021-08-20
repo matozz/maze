@@ -30,6 +30,7 @@ Default.args = {
   label: "TextField",
   color: "#1976d2",
   type: "text",
+  width: "auto",
   multiline: false,
   required: false,
 };
