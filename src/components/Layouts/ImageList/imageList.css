@@ -1,0 +1,20 @@
+.maze-imagelist {
+  display: grid;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.maze-imageitem {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.1s ease;
+  /* transform-style: preserve-3d; */
+}
+
+.maze-imageitem > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
