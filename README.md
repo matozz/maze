@@ -33,6 +33,7 @@ yarn add maze-ui
   * [x] Text Field
 * [x] Layout
   * [x] Grid
+  * [x] Image List
 * [ ] Navigation
   * [ ] Drawer
   * [ ] Menu
@@ -47,3 +48,5 @@ yarn add maze-ui
   * [x] Avatar
   * [ ] Tooltip
   * [ ] Badge
+* [x] Others
+  * [x] Carousel
