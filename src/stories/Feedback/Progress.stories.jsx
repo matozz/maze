@@ -6,6 +6,14 @@ import { Button } from "../../components/Inputs/Button";
 export default {
   title: "Feedback/Progress",
   component: Progress,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Progress indicators commonly known as spinners, express an unspecified wait time or display the length of a process.",
+      },
+    },
+  },
   argTypes: {
     active: {
       description: "Control the popup open state.",

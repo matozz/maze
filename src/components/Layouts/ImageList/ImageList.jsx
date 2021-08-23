@@ -47,6 +47,9 @@ const ImageItem = ({ animated, rowHeight, children }) => {
   );
 };
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLDivElement, ImageListPropTypes>
+ */
 export const ImageList = ({
   animated,
   columns,
@@ -87,7 +90,7 @@ export const ImageList = ({
   );
 };
 
-ImageList.propTypes = {
+const ImageListPropTypes = {
   /**
    * The animation when hover on the image.
    */
@@ -121,6 +124,8 @@ ImageList.propTypes = {
    */
   style: PropTypes.object,
 };
+
+ImageList.propTypes = ImageListPropTypes;
 
 ImageList.defaultProps = {
   animated: true,

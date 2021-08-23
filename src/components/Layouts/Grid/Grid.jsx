@@ -2,6 +2,9 @@ import React, { forwardRef, useState } from "react";
 import PropTypes from "prop-types";
 import "./grid.css";
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLDivElement, GridPropTypes>
+ */
 export const Grid = ({
   columns,
   columnSpacing,
@@ -58,7 +61,7 @@ export const Grid = ({
   );
 };
 
-Grid.propTypes = {
+const GridPropTypes = {
   /**
    * The number of columns.
    */
@@ -107,6 +110,8 @@ Grid.propTypes = {
    */
   style: PropTypes.object,
 };
+
+Grid.propTypes = GridPropTypes;
 
 Grid.defaultProps = {
   columns: 12,

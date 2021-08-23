@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import "./textField.css";
 import { hexToRGB } from "../../../util/hexToRGB";
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLInputElement, TextFieldPropTypes>
+ */
 export const TextField = forwardRef(
   (
     {
@@ -111,7 +114,7 @@ export const TextField = forwardRef(
   }
 );
 
-TextField.propTypes = {
+const TextFieldPropTypes = {
   /**
    * What label color to use
    */
@@ -149,6 +152,8 @@ TextField.propTypes = {
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]),
 };
+
+TextField.propTypes = TextFieldPropTypes;
 
 TextField.defaultProps = {
   variant: "filled",

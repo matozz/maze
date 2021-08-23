@@ -5,6 +5,13 @@ import { Switch } from "../../components/Inputs/Switch";
 export default {
   title: "Inputs/Switch",
   component: Switch,
+  parameters: {
+    docs: {
+      description: {
+        component: "Switch is used for switching between two opposing states.",
+      },
+    },
+  },
   argTypes: {
     color: { control: "color" },
     size: {

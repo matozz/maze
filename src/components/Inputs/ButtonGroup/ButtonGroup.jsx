@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./buttonGroup.css";
-import { Button } from "../Button";
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLDivElement, ButtonGroupPropTypes>
+ */
 export const ButtonGroup = ({
   variant,
   orientation,
@@ -40,7 +42,7 @@ export const ButtonGroup = ({
   );
 };
 
-ButtonGroup.propTypes = {
+const ButtonGroupPropTypes = {
   /**
    * Button variants
    */
@@ -59,6 +61,8 @@ ButtonGroup.propTypes = {
   disabled: PropTypes.array,
   onClick: PropTypes.func,
 };
+
+ButtonGroup.propTypes = ButtonGroupPropTypes;
 
 ButtonGroup.defaultProps = {
   variant: "contained",

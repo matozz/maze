@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import "./checkBox.css";
 import { hexToRGB } from "../../../util/hexToRGB";
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLInputElement, CheckBoxPropTypes>
+ */
 export const CheckBox = forwardRef(
   (
     {
@@ -43,7 +46,7 @@ export const CheckBox = forwardRef(
   }
 );
 
-CheckBox.propTypes = {
+const CheckBoxPropTypes = {
   ref: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
@@ -60,6 +63,8 @@ CheckBox.propTypes = {
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
 };
+
+CheckBox.propTypes = CheckBoxPropTypes;
 
 CheckBox.defaultProps = {
   // checked: false,

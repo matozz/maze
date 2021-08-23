@@ -5,6 +5,14 @@ import "../../styles.css";
 export default {
   title: "Layouts/Image List",
   component: ImageList,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Image lists display a collection of images in an organized grid.",
+      },
+    },
+  },
   argTypes: {
     children: { control: "" },
   },

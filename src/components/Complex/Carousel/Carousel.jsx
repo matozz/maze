@@ -5,9 +5,8 @@ import ArrowLeftIcon from "./ArrowLeftIcon";
 import ArrowRightIcon from "./ArrowRightIcon";
 
 /**
- * Loop a series of images or texts in a limited space.
+ * @type React.ForwardRefRenderFunction<?, CarouselPropTypes>
  */
-
 export const Carousel = ({
   height,
   width,
@@ -165,7 +164,7 @@ export const Carousel = ({
   );
 };
 
-Carousel.propTypes = {
+const CarouselPropTypes = {
   /**
    * when arrows are shown
    */
@@ -203,9 +202,11 @@ Carousel.propTypes = {
   children: PropTypes.node,
 };
 
+Carousel.propTypes = CarouselPropTypes;
+
 Carousel.defaultProps = {
   height: 350,
-  width: "100%",
+  width: 500,
   initialIndex: 0,
   autoplay: true,
   interval: 3000,

@@ -1,1 +1,1 @@
-export * from "./Grid.jsx";
+export * from "./Grid";

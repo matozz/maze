@@ -7,6 +7,14 @@ export default {
   title: "Inputs/Radio Group",
   component: RadioGroup,
   subcomponents: { Radio },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Suitable for choosing from some mutually exclusive options.",
+      },
+    },
+  },
   argTypes: {
     size: {
       options: ["small", "medium", "large"],

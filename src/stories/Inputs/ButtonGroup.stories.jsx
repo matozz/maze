@@ -8,6 +8,13 @@ export default {
   title: "Inputs/Button Group",
   component: ButtonGroup,
   subcomponents: { Button },
+  parameters: {
+    docs: {
+      description: {
+        component: "Buttons group allows you to group buttons together.",
+      },
+    },
+  },
   argTypes: {
     variant: {
       options: ["text", "contained", "outlined"],

@@ -1,1 +1,1 @@
-export * from "./Carousel.jsx";
+export * from "./Carousel";

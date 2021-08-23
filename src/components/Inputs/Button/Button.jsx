@@ -4,9 +4,8 @@ import "./button.css";
 import { hexToRGB } from "../../../util/hexToRGB";
 
 /**
- * Buttons communicate actions that users can take. They are typically placed throughout your UI.
+ * @type React.ForwardRefRenderFunction<HTMLButtonElement, ButtonPropTypes>
  */
-
 export const Button = forwardRef(
   ({ variant, disabled, color, size, label, style, ...props }, ref) => {
     const [cssProperties, setCssProperties] = useState({});
@@ -36,7 +35,7 @@ export const Button = forwardRef(
   }
 );
 
-Button.propTypes = {
+const ButtonPropTypes = {
   ref: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
@@ -63,6 +62,7 @@ Button.propTypes = {
    */
   onClick: PropTypes.func,
 };
+Button.propTypes = ButtonPropTypes;
 
 Button.defaultProps = {
   color: "#1976d2",

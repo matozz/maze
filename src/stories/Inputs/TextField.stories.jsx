@@ -6,6 +6,13 @@ import { Grid } from "../../components/Layouts/Grid";
 export default {
   title: "Inputs/Text Field",
   component: TextField,
+  parameters: {
+    docs: {
+      description: {
+        component: "Input data using mouse or keyboard.",
+      },
+    },
+  },
   argTypes: {
     color: { control: "color" },
     size: {

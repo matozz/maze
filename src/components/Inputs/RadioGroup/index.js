@@ -1,1 +1,1 @@
-export * from "./RadioGroup.jsx";
+export * from "./RadioGroup";

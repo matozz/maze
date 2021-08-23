@@ -5,6 +5,13 @@ import { CheckBox } from "../../components/Inputs/CheckBox";
 export default {
   title: "Inputs/CheckBox",
   component: CheckBox,
+  parameters: {
+    docs: {
+      description: {
+        component: "Checkbox can be used to switch between two states.",
+      },
+    },
+  },
   argTypes: {
     color: { control: "color" },
     size: {

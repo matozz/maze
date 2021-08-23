@@ -5,6 +5,13 @@ import { Radio } from "../../components/Inputs/Radio";
 export default {
   title: "Inputs/Radio",
   component: Radio,
+  parameters: {
+    docs: {
+      description: {
+        component: "Single selection among multiple options.",
+      },
+    },
+  },
   argTypes: {
     color: { control: "color" },
     size: {

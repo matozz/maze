@@ -15,9 +15,8 @@ const colors = [
 ];
 
 /**
- * Avatars are found throughout material design with uses in everything from tables to dialog menus.
+ * @type React.ForwardRefRenderFunction<HTMLImageElement|HTMLDivElement, AvatarPropTypes>
  */
-
 export const Avatar = ({
   variant,
   size,
@@ -89,7 +88,7 @@ export const Avatar = ({
   );
 };
 
-Avatar.propTypes = {
+const AvatarPropTypes = {
   /**
    * Avatar variants
    */
@@ -112,6 +111,8 @@ Avatar.propTypes = {
    */
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
+
+Avatar.propTypes = AvatarPropTypes;
 
 Avatar.defaultProps = {
   variant: "circular",

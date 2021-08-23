@@ -11,6 +11,14 @@ import PhotoIcon from "../assets/avatar/PhotoIcon";
 export default {
   title: "Data Display/Avatar",
   component: Avatar,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Avatars are found throughout material design with uses in everything from tables to dialog menus.",
+      },
+    },
+  },
   argTypes: {
     variant: {
       options: ["square", "rounded", "circular"],

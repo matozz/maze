@@ -5,6 +5,13 @@ import { Carousel } from "../../components/Complex/Carousel";
 export default {
   title: "Complex/Carousel",
   component: Carousel,
+  parameters: {
+    docs: {
+      description: {
+        component: "Loop a series of images or texts in a limited space.",
+      },
+    },
+  },
   argTypes: {
     children: { control: "" },
   },
@@ -33,7 +40,7 @@ export const Default = Template.bind({});
 Default.args = {
   arrow: "hover",
   height: 350,
-  width: "100%",
+  width: 500,
   autoplay: true,
   initialIndex: 0,
   interval: 3000,

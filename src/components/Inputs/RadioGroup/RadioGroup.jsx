@@ -2,6 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./radioGroup.css";
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLDivElement, RadioGroupPropTypes>
+ */
 export const RadioGroup = ({
   orientation,
   onChange,
@@ -43,7 +46,7 @@ export const RadioGroup = ({
   );
 };
 
-RadioGroup.propTypes = {
+const RadioGroupPropTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   /**
@@ -63,6 +66,8 @@ RadioGroup.propTypes = {
   disabled: PropTypes.array,
   onChange: PropTypes.func,
 };
+
+RadioGroup.propTypes = RadioGroupPropTypes;
 
 RadioGroup.defaultProps = {
   name: "",

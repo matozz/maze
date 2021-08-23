@@ -29,7 +29,10 @@ export default [
         presets: ["@babel/preset-react"],
       }),
       external(),
-      resolve(),
+      resolve({
+        // not all files you want to resolve are .js files
+        extensions: [".mjs", ".js", ".jsx", ".json"], // Default: [ '.mjs', '.js', '.json', '.node' ]
+      }),
       commonjs({
         namedExports: {
           "react-js": ["isValidElementType"],

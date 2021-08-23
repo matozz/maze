@@ -6,6 +6,14 @@ import { Grid } from "../../components/Layouts/Grid";
 export default {
   title: "Inputs/Button",
   component: Button,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Buttons communicate actions that users can take. They are typically placed throughout your UI.",
+      },
+    },
+  },
   argTypes: {
     color: { control: "color" },
     variant: {

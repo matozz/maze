@@ -6,6 +6,13 @@ import "../../styles.css";
 export default {
   title: "Layouts/Grid",
   component: Grid,
+  parameters: {
+    docs: {
+      description: {
+        component: "Quickly and easily create layouts with the flexible grid.",
+      },
+    },
+  },
   argTypes: {
     children: { control: "" },
   },

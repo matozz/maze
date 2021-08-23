@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import "./switch.css";
 import { hexToRGB } from "../../../util/hexToRGB";
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLInputElement, SwitchPropTypes>
+ */
 export const Switch = forwardRef(
   (
     {
@@ -43,7 +46,7 @@ export const Switch = forwardRef(
   }
 );
 
-Switch.propTypes = {
+const SwitchPropTypes = {
   ref: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
@@ -60,6 +63,8 @@ Switch.propTypes = {
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
 };
+
+Switch.propTypes = SwitchPropTypes;
 
 Switch.defaultProps = {
   // checked: false,

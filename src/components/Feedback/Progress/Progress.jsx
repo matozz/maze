@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import "./progress.css";
 
-/**
- * Progresss are found throughout material design with uses in everything from tables to dialog menus.
- */
 const _popup = document.createElement("div");
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLProgressElement, ProgressPropTypes>
+ */
 export const Progress = ({
   active,
   handleMaskClick,
@@ -55,7 +55,7 @@ export const Progress = ({
   return ReactDOM.createPortal(<Container />, _popup);
 };
 
-Progress.propTypes = {
+const ProgressPropTypes = {
   /**
    * Control the popup open state.
    */
@@ -66,6 +66,8 @@ Progress.propTypes = {
   children: PropTypes.node,
   clickToClose: PropTypes.bool,
 };
+
+Progress.propTypes = ProgressPropTypes;
 
 Progress.defaultProps = {
   active: false,

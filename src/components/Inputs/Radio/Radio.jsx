@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import "./radio.css";
 import { hexToRGB } from "../../../util/hexToRGB";
 
+/**
+ * @type React.ForwardRefRenderFunction<HTMLInputElement, RadioPropTypes>
+ */
 export const Radio = forwardRef(
   (
     {
@@ -54,7 +57,7 @@ export const Radio = forwardRef(
   }
 );
 
-Radio.propTypes = {
+const RadioPropTypes = {
   ref: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
@@ -71,6 +74,8 @@ Radio.propTypes = {
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
 };
+
+Radio.propTypes = RadioPropTypes;
 
 Radio.defaultProps = {
   // checked: false,
