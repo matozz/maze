@@ -1,9 +1,3 @@
-import { addParameters } from "@storybook/client-api";
-
-addParameters({
-  viewMode: "docs",
-});
-
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -12,4 +6,6 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  viewMode: "docs",
+  previewTabs: { "storybook/docs": null, canvas: { hidden: true } },
 };
