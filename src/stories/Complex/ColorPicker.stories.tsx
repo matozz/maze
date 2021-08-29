@@ -31,14 +31,16 @@ const Template: Story<ColorPickerProps> = (args) => <ColorPicker {...args} />;
 export const Basic = Template.bind({});
 Basic.args = {
   colors: [
+    "#1976d2",
     "#F47373",
     "#D9E3F0",
     "#697689",
-    "#37D67A",
     "#555555",
     "#DCE775",
     "#FF8A65",
   ],
+  width: 214,
+  mode: "advanced",
 };
 
 export const Picker = () => {
@@ -72,12 +74,28 @@ export const Advanced = () => {
   };
 
   return (
-    <ColorPicker
-      width={214}
-      mode={"advanced"}
-      colors={colors}
-      onColorChange={handleColorChange}
-    />
+    <Grid spacing={4} alignItems={"flex-start"}>
+      <ColorPicker
+        width={214}
+        mode={"advanced"}
+        colors={colors}
+        onColorChange={handleColorChange}
+      />
+      <ColorPicker
+        width={214}
+        mode={"advanced"}
+        colors={[colors[3]]}
+        onColorChange={handleColorChange}
+        advancedOptions={{ palette: false }}
+      />
+      <ColorPicker
+        width={214}
+        mode={"advanced"}
+        colors={[colors[5]]}
+        onColorChange={handleColorChange}
+        advancedOptions={{ palette: false, input: false }}
+      />
+    </Grid>
   );
 };
 
@@ -92,7 +110,7 @@ export const Palette = () => {
         colors={colors}
         onColorChange={handleColorChange}
         mode={"palette"}
-        palette={{ size: "large", variant: "rounded" }}
+        paletteStyle={{ size: "large", variant: "rounded" }}
         width={200}
       />
       <ColorPicker
@@ -100,7 +118,7 @@ export const Palette = () => {
         onColorChange={handleColorChange}
         mode={"palette"}
         width={162}
-        palette={{
+        paletteStyle={{
           size: "large",
           variant: "circular",
         }}
@@ -110,7 +128,7 @@ export const Palette = () => {
         onColorChange={handleColorChange}
         mode={"palette"}
         width={188}
-        palette={{
+        paletteStyle={{
           size: "large",
           compact: true,
           variant: "square",

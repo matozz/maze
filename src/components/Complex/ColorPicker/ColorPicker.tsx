@@ -3,7 +3,7 @@ import styles from "./ColorPicker.module.scss";
 import { isValidHex, toHex } from "../../../util/helpers/color.js";
 import { ColorPalette, ColorPaletteProps } from "./ColorPalette";
 import PlusIcon from "./PlusIcon";
-import { ColorAdvanced } from "./ColorAdvanced";
+import { AdvancedOptions, ColorAdvanced } from "./ColorAdvanced";
 
 export interface ColorPickerProps {
   width: string | number;
@@ -11,7 +11,8 @@ export interface ColorPickerProps {
   hex?: string;
   colors?: Array<string>;
   mode: "palette" | "picker" | "advanced";
-  palette?: ColorPaletteProps;
+  paletteStyle?: ColorPaletteProps;
+  advancedOptions?: AdvancedOptions;
 }
 
 export const ColorPicker: FunctionComponent<
@@ -22,7 +23,8 @@ export const ColorPicker: FunctionComponent<
   hex,
   colors,
   mode,
-  palette,
+  paletteStyle,
+  advancedOptions,
 }: ColorPickerProps) => {
   const initColor = colors && colors.length > 0 && !hex ? colors[0] : "";
   const [hexValue, setHexValue] = useState(initColor);
@@ -62,9 +64,13 @@ export const ColorPicker: FunctionComponent<
       {mode === "advanced" ? (
         <div
           className={`${styles.card} maze-color-picker`}
-          style={{ width: width, padding: "10px 10px 0" }}
+          style={{ width: width, padding: "10px" }}
         >
-          <ColorAdvanced colors={colors} palette={palette} />
+          <ColorAdvanced
+            colors={colors}
+            paletteStyle={paletteStyle}
+            {...advancedOptions}
+          />
         </div>
       ) : (
         <div
@@ -79,14 +85,14 @@ export const ColorPicker: FunctionComponent<
 
           <div
             className={styles.body}
-            style={{ overflow: palette?.compact ? "hidden" : "initial" }}
+            style={{ overflow: paletteStyle?.compact ? "hidden" : "initial" }}
           >
             <ColorPalette
               variant={"rounded"}
               size={"medium"}
               colors={colorList}
               onColorSelect={handleColorSelect}
-              {...palette}
+              {...paletteStyle}
             />
             {mode === "picker" && (
               <>

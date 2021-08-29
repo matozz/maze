@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useRef } from "react";
+import React, { FunctionComponent, useRef, useState } from "react";
 import styles from "./Slider.module.scss";
-import * as hue from "../../../../util/helpers/hue.js";
-import * as alp from "../../../../util/helpers/alpha.js";
-import Checkboard from "./Checkboard";
+import * as hue from "../../../../../util/helpers/hue.js";
+import * as alp from "../../../../../util/helpers/alpha.js";
+import Checkboard from "../Checkboard/Checkboard";
 
 type HSL = {
   h: number;
@@ -36,22 +36,20 @@ const ColorSlider: FunctionComponent<
   onChange,
   ...props
 }: ColorSliderProps) => {
+  const [isMouseDown, setIsMouseDown] = useState(false);
+
   const silderRef = useRef<HTMLDivElement>(null);
   const handleChange = (
-    e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
+    e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+    mousedown?: boolean
   ) => {
+    setIsMouseDown(mousedown != false ? true : false);
     const change =
       mode === "hue"
         ? hue.calculateChange(e, direction, hsl, silderRef.current)
         : alp.calculateChange(e, direction, hsl, hsl.a, silderRef.current);
     change && typeof onChange === "function" && onChange(change, e);
   };
-  // const handleSelectColor = (e: React.SyntheticEvent<EventTarget>) => {
-  //   if (!(e.target instanceof HTMLDivElement)) {
-  //     return;
-  //   }
-  //   if (e.target.id === "block") onColorSelect(e.target.dataset.color);
-  // };
 
   return (
     <>
@@ -73,9 +71,10 @@ const ColorSlider: FunctionComponent<
           <div
             className={[styles.container].join(" ")}
             ref={silderRef}
-            onMouseDown={handleChange}
-            // onMous={handleChange}
-
+            onMouseDown={(e) => !isMouseDown && handleChange(e, true)}
+            onMouseUp={(e) => handleChange(e, false)}
+            onMouseLeave={(e) => isMouseDown && handleChange(e, false)}
+            onMouseMove={isMouseDown ? handleChange : undefined}
             onTouchMove={handleChange}
             onTouchStart={handleChange}
           >
