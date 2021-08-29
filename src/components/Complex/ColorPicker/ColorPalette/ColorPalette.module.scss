@@ -1,0 +1,59 @@
+$variants: (
+  "square": 0,
+  "rounded": 4px,
+  "circular": 100%,
+);
+
+$sizes: (
+  "small": 16px,
+  "medium": 22px,
+  "large": 28px,
+);
+
+.palette {
+  margin-right: -10px;
+
+  &-compact {
+    margin: 0;
+  }
+}
+
+.block {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.1s linear;
+
+  &:hover {
+    box-shadow: currentColor 0 0 4px;
+  }
+
+  &-shadow:hover {
+    position: relative;
+    z-index: 2;
+    outline: rgb(255, 255, 255) solid 2px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0 5px 2px;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &-compact {
+    margin: 0;
+  }
+
+  @each $name, $value in $variants {
+    &-#{$name} {
+      border-radius: $value;
+    }
+  }
+
+  @each $name, $value in $sizes {
+    &-#{$name} {
+      width: $value;
+      height: $value;
+    }
+  }
+}

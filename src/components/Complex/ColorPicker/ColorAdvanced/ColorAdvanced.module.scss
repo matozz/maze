@@ -1,0 +1,47 @@
+.saturation {
+  width: 100%;
+  padding-bottom: 75%;
+  position: relative;
+  overflow: hidden;
+}
+
+.controls {
+  display: flex;
+}
+
+.sliders {
+  padding: 4px 0;
+  flex: 1;
+}
+
+.color {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  margin-top: 4px;
+  margin-left: 8px;
+  border-radius: 3px;
+}
+
+.hue {
+  position: relative;
+  height: 14px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.alpha {
+  position: relative;
+  height: 14px;
+  margin-top: 4px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.activeColor {
+  position: absolute;
+  inset: 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px inset,
+    rgba(0, 0, 0, 0.25) 0px 0px 4px inset;
+  border-radius: 2px;
+}

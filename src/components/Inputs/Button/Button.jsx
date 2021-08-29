@@ -6,7 +6,7 @@ import { hexToRGB } from "../../../util/hexToRGB";
 /**
  * @type React.ForwardRefRenderFunction<HTMLButtonElement, ButtonPropTypes>
  */
-export const Button = forwardRef(
+const Button = forwardRef(
   ({ variant, disabled, color, size, label, style, ...props }, ref) => {
     const [cssProperties, setCssProperties] = useState({});
     const mode =
@@ -70,3 +70,5 @@ Button.defaultProps = {
   size: "medium",
   onClick: undefined,
 };
+
+export default Button;

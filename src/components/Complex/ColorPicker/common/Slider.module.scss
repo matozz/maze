@@ -1,0 +1,88 @@
+.wrapper {
+  position: absolute;
+  inset: 0px;
+}
+
+.container {
+  margin: 0 3px;
+  position: relative;
+  height: 100%;
+}
+
+.pointer {
+  position: absolute;
+  transition: all 0.2s ease-out;
+}
+
+.slider {
+  margin-top: 1px;
+  width: 4px;
+  border-radius: 1px;
+  height: 12px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  background: #fff;
+  transform: translateX(-2px);
+  cursor: pointer;
+}
+
+.hue {
+  &-horizontal {
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      #f00 0%,
+      #ff0 17%,
+      #0f0 33%,
+      #0ff 50%,
+      #00f 67%,
+      #f0f 83%,
+      #f00 100%
+    );
+    background: -webkit-linear-gradient(
+      to right,
+      #f00 0%,
+      #ff0 17%,
+      #0f0 33%,
+      #0ff 50%,
+      #00f 67%,
+      #f0f 83%,
+      #f00 100%
+    );
+  }
+
+  &-vertical {
+    height: 100%;
+    background: linear-gradient(
+      to top,
+      #f00 0%,
+      #ff0 17%,
+      #0f0 33%,
+      #0ff 50%,
+      #00f 67%,
+      #f0f 83%,
+      #f00 100%
+    );
+    background: -webkit-linear-gradient(
+      to top,
+      #f00 0%,
+      #ff0 17%,
+      #0f0 33%,
+      #0ff 50%,
+      #00f 67%,
+      #f0f 83%,
+      #f00 100%
+    );
+  }
+}
+
+.alpha {
+  &-horizontal {
+    position: absolute;
+    inset: 0;
+  }
+
+  &-vertical {
+    position: absolute;
+    inset: 0;
+  }
+}
