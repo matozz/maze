@@ -44,8 +44,8 @@ Basic.args = {
 };
 
 export const Picker = () => {
-  const handleColorChange = (color: any) => {
-    console.log(color.hex);
+  const handleColorChange = (color: object) => {
+    console.log(color);
   };
 
   const colors = [
@@ -69,8 +69,8 @@ export const Picker = () => {
 };
 
 export const Advanced = () => {
-  const handleColorChange = (color: any) => {
-    console.log(color.hex);
+  const handleColorChange = (color: object) => {
+    console.log(color);
   };
 
   return (

@@ -1,5 +1,10 @@
 import { toState } from "../../../../util/helpers/color.js";
-import React, { FunctionComponent, useState } from "react";
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { ColorPalette, ColorPaletteProps } from "../ColorPalette";
 import ColorSlider from "../common/Slider/Slider";
 import Checkboard from "../common/Checkboard/Checkboard";
@@ -8,6 +13,7 @@ import Saturation from "../common/Saturation/Saturation";
 import styles from "./ColorAdvanced.module.scss";
 import { HSL, HSV, RGB } from "../typed-color.js";
 import { isValidHex, toHex } from "../../../../util/helpers/color.js";
+import { debounce } from "../../../../util/func/lodash.js";
 
 export interface AdvancedOptions {
   palette?: boolean;
@@ -15,7 +21,7 @@ export interface AdvancedOptions {
   slider?: boolean;
 }
 export interface ColorAdvancedProps extends AdvancedOptions {
-  onColorSelect?: any;
+  onColorChange?: Function;
   colors?: Array<string>;
   paletteStyle?: ColorPaletteProps;
 }
@@ -24,13 +30,13 @@ export interface ColorFieldsProps {
   rgb: RGB;
   hsl: HSL;
   hex: string;
-  onColorChange: (change: object) => void;
+  onColorStateChange: (change: object) => void;
 }
 
 export const ColorAdvanced: FunctionComponent<
   ColorAdvancedProps & React.HTMLAttributes<HTMLDivElement>
 > = ({
-  onColorSelect,
+  onColorChange,
   colors,
   palette,
   paletteStyle,
@@ -43,7 +49,21 @@ export const ColorAdvanced: FunctionComponent<
     toState(initColor && { init: initColor }, "init")
   );
 
-  const onColorChange = (change: any) => {
+  useEffect(() => {
+    colorCb(colorState);
+  }, [colorState]);
+
+  const colorCb = useCallback(
+    debounce((colorState: object) => {
+      onColorChange &&
+        onColorChange({
+          ...colorState,
+        });
+    }, 500),
+    []
+  );
+
+  const onColorStateChange = (change: any) => {
     setColorState(
       toState({ [change.source]: change[change.source] }, change.source)
     );
@@ -55,7 +75,7 @@ export const ColorAdvanced: FunctionComponent<
 
   const ColorFields: FunctionComponent<
     ColorFieldsProps & React.HTMLAttributes<HTMLDivElement>
-  > = ({ rgb, hsl, hex, onColorChange }: ColorFieldsProps) => {
+  > = ({ rgb, hsl, hex, onColorStateChange }: ColorFieldsProps) => {
     const [inputValue, setInputValue] = useState({ hex: hex, rgb: rgb });
 
     const handleRGBChange = (
@@ -71,12 +91,12 @@ export const ColorAdvanced: FunctionComponent<
         },
       });
       if (source === "a" && value >= 0 && value <= 100)
-        onColorChange({
+        onColorStateChange({
           rgb: { ...rgb, a: value / 100 },
           source: "rgb",
         });
       else if (value >= 0 && value <= 255)
-        onColorChange({
+        onColorStateChange({
           rgb: { ...rgb, [source]: value },
           source: "rgb",
         });
@@ -85,7 +105,7 @@ export const ColorAdvanced: FunctionComponent<
     const handleHexInput = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue({ ...inputValue, hex: e.target.value });
       if (isValidHex(e.target.value)) {
-        onColorChange({ hex: toHex(e.target.value), source: "hex" });
+        onColorStateChange({ hex: toHex(e.target.value), source: "hex" });
       }
     };
 
@@ -173,7 +193,7 @@ export const ColorAdvanced: FunctionComponent<
           className={styles.Saturation}
           hsl={colorState.hsl}
           hsv={colorState.hsv}
-          onChange={onColorChange}
+          onChange={onColorStateChange}
         />
       </div>
       {slider && (
@@ -185,7 +205,7 @@ export const ColorAdvanced: FunctionComponent<
                 size={"small"}
                 hsl={colorState.hsl}
                 direction={"horizontal"}
-                onChange={onColorChange}
+                onChange={onColorStateChange}
               />
             </div>
             <div className={styles.alpha}>
@@ -194,7 +214,7 @@ export const ColorAdvanced: FunctionComponent<
                 size={"small"}
                 hsl={colorState.hsl}
                 direction={"horizontal"}
-                onChange={onColorChange}
+                onChange={onColorStateChange}
               />
             </div>
           </div>
@@ -214,7 +234,7 @@ export const ColorAdvanced: FunctionComponent<
           rgb={colorState.rgb}
           hsl={colorState.hsl}
           hex={colorState.hex}
-          onColorChange={onColorChange}
+          onColorStateChange={onColorStateChange}
         />
       )}
       {palette && (

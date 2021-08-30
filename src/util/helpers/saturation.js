@@ -30,7 +30,6 @@ export const calculateChange = (e, hsl, container) => {
       v: bright,
       a: hsl.a,
     },
-
     source: "hsv",
   };
 };

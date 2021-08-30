@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import styles from "./ColorPicker.module.scss";
-import { isValidHex, toHex } from "../../../util/helpers/color.js";
+import { isValidHex, toHex, toState } from "../../../util/helpers/color.js";
 import { ColorPalette, ColorPaletteProps } from "./ColorPalette";
 import PlusIcon from "./PlusIcon";
 import { AdvancedOptions, ColorAdvanced } from "./ColorAdvanced";
@@ -53,8 +53,7 @@ export const ColorPicker: FunctionComponent<
     () =>
       onColorChange &&
       onColorChange({
-        hex: hexShow,
-        source: "hex",
+        ...toState({ hex: hexShow }, "hex"),
       }),
     [hexShow]
   );
@@ -70,6 +69,7 @@ export const ColorPicker: FunctionComponent<
             colors={colors}
             paletteStyle={paletteStyle}
             {...advancedOptions}
+            onColorChange={onColorChange}
           />
         </div>
       ) : (
