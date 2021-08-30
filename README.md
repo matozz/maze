@@ -19,6 +19,9 @@ yarn add maze-ui
 ## 📦 Components & Utilities
 
 **Implemented/Planned:**
+* [x] Complex
+  * [x] Carousel
+  * [x] ColorPicker
 * [ ] Inputs
   * [x] Contained
   * [x] Outlined
@@ -48,5 +51,4 @@ yarn add maze-ui
   * [x] Avatar
   * [ ] Tooltip
   * [ ] Badge
-* [x] Others
-  * [x] Carousel
+
