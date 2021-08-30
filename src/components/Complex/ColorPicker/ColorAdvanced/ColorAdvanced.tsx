@@ -96,10 +96,9 @@ export const ColorAdvanced: FunctionComponent<
     return (
       <>
         <div className={[styles.fields, "flexbox-fix"].join(" ")}>
-          <div className={styles.single}>
+          <div className={styles.single} style={{ flex: 2 }}>
             <input
               className={styles.input}
-              style={{ width: 60 }}
               type="text"
               name="hex"
               value={inputValue.hex}
@@ -113,7 +112,6 @@ export const ColorAdvanced: FunctionComponent<
           <div className={styles.single}>
             <input
               className={styles.input}
-              style={{ width: 32 }}
               type="text"
               name="r"
               value={inputValue.rgb.r}
@@ -127,7 +125,6 @@ export const ColorAdvanced: FunctionComponent<
           <div className={styles.single}>
             <input
               className={styles.input}
-              style={{ width: 32 }}
               type="text"
               name="g"
               value={inputValue.rgb.g}
@@ -141,7 +138,6 @@ export const ColorAdvanced: FunctionComponent<
           <div className={styles.single}>
             <input
               className={styles.input}
-              style={{ width: 32 }}
               type="text"
               name="b"
               value={inputValue.rgb.b}
@@ -155,7 +151,6 @@ export const ColorAdvanced: FunctionComponent<
           <div className={styles.single}>
             <input
               className={styles.input}
-              style={{ width: 32 }}
               type="text"
               name="a"
               value={Math.round(inputValue.rgb.a * 100)}

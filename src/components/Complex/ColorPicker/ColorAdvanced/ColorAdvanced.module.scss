@@ -58,6 +58,7 @@
   justify-content: space-between;
   margin-top: 6px;
   padding-bottom: calc(14px + 4px);
+  gap: 4px;
 }
 
 .label {
@@ -71,10 +72,12 @@
 
 .single {
   position: relative;
+  flex: 1;
 }
 
 .input {
   font-size: 12px;
+  width: 100%;
   color: #666;
   border: 0px;
   outline: none;
