@@ -40,7 +40,7 @@ export const Default = Template.bind({});
 Default.args = {
   arrow: "hover",
   height: 350,
-  width: 500,
+  width: "auto",
   autoplay: true,
   initialIndex: 0,
   interval: 3000,

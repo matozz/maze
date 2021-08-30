@@ -206,7 +206,7 @@ Carousel.propTypes = CarouselPropTypes;
 
 Carousel.defaultProps = {
   height: 350,
-  width: 500,
+  width: "auto",
   initialIndex: 0,
   autoplay: true,
   interval: 3000,

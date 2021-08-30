@@ -59,7 +59,7 @@ export const ColorAdvanced: FunctionComponent<
         onColorChange({
           ...colorState,
         });
-    }, 500),
+    }, 300),
     []
   );
 

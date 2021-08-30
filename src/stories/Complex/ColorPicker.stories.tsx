@@ -100,8 +100,8 @@ export const Advanced = () => {
 };
 
 export const Palette = () => {
-  const handleColorChange = (color: any) => {
-    console.log(color.hex);
+  const handleColorChange = (color: object) => {
+    console.log(color);
   };
 
   return (
