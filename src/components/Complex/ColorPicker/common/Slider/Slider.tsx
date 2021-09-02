@@ -1,15 +1,10 @@
-import React, { FunctionComponent, useRef, useState } from "react";
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import styles from "./Slider.module.scss";
 import * as hue from "../../../../../util/helpers/hue.js";
 import * as alp from "../../../../../util/helpers/alpha.js";
 import Checkboard from "../Checkboard/Checkboard";
-
-type HSL = {
-  h: number;
-  s: number;
-  l: number;
-  a: number;
-};
+import { useDrag } from "../../../../../util/hooks/useDrag";
+import { HSL } from "../../typed-color";
 
 export interface ColorSliderProps {
   onColorSelect?: any;
@@ -18,10 +13,7 @@ export interface ColorSliderProps {
   size: "small" | "medium" | "large";
   hsl: HSL;
   direction: "vertical" | "horizontal";
-  onChange?: (
-    change: object | null,
-    e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
-  ) => void;
+  onChange?: (change: object | null) => void;
 }
 
 const ColorSlider: FunctionComponent<
@@ -36,20 +28,20 @@ const ColorSlider: FunctionComponent<
   onChange,
   ...props
 }: ColorSliderProps) => {
-  const [isMouseDown, setIsMouseDown] = useState(false);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
-  const silderRef = useRef<HTMLDivElement>(null);
-  const handleChange = (
-    e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
-    mousedown?: boolean
-  ) => {
-    setIsMouseDown(mousedown != false ? true : false);
-    const change =
-      mode === "hue"
-        ? hue.calculateChange(e, direction, hsl, silderRef.current)
-        : alp.calculateChange(e, direction, hsl, hsl.a, silderRef.current);
-    change && typeof onChange === "function" && onChange(change, e);
-  };
+  const { handleDragStart, change } = useDrag(
+    mode === "hue"
+      ? hue.calculateChange(direction, hsl, sliderRef.current)
+      : alp.calculateChange(direction, hsl, hsl.a, sliderRef.current)
+  );
+
+  useEffect(() => {
+    console.log(change);
+    if (Object.keys(change).length != 0) {
+      change && typeof onChange === "function" && onChange(change);
+    }
+  }, [change]);
 
   return (
     <>
@@ -70,18 +62,14 @@ const ColorSlider: FunctionComponent<
         >
           <div
             className={[styles.container].join(" ")}
-            ref={silderRef}
-            onMouseDown={(e) => !isMouseDown && handleChange(e, true)}
-            onMouseUp={(e) => handleChange(e, false)}
-            onMouseLeave={(e) => isMouseDown && handleChange(e, false)}
-            onMouseMove={isMouseDown ? handleChange : undefined}
-            onTouchMove={handleChange}
-            onTouchStart={handleChange}
+            ref={sliderRef}
+            onMouseDown={handleDragStart}
+            onTouchStart={handleDragStart}
           >
             {mode === "hue" ? (
               <div
                 className={styles.pointer}
-                style={{ left: `${(hsl.h * 100) / 360}%` }}
+                style={{ left: `${(hsl.h * 100) / 359.9}%` }}
               >
                 <div className={styles.slider} />
               </div>

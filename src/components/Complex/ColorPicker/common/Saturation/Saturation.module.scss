@@ -4,12 +4,13 @@
   border-radius: 4px;
   overflow: hidden;
   transition: background 0.1s ease-out;
+  cursor: pointer;
 }
 
 .pointer {
   position: absolute;
   cursor: pointer;
-  transition: all 0.1s ease-out;
+  // transition: all 50ms ease-out;
 }
 
 .circle {
@@ -18,7 +19,6 @@
   box-shadow: 0 0 0 2px #fff, inset 0 0 1px 1px rgba(0, 0, 0, 0.1),
     0 0 1px 2px rgba(161, 104, 104, 0.2);
   border-radius: 50%;
-  cursor: pointer;
   transform: translate(-2px, -2px);
 }
 

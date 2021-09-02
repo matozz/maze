@@ -29,6 +29,7 @@
   },
   "include": [
     "src",
-    "typed-css.d.ts"
+    "typed-css.d.ts",
+    "src/stories"
   ]
 }
