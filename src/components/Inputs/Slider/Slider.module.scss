@@ -10,7 +10,12 @@
   height: 4px;
   width: 160px;
   padding: 13px 0;
-  margin: 0 10px;
+
+  &-disabled {
+    pointer-events: none;
+    cursor: default;
+    color: #bdbdbd;
+  }
 }
 
 .rail {
@@ -98,4 +103,18 @@
     width: 100%;
     direction: ltr;
   }
+}
+
+.mark {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: currentColor;
+  top: 50%;
+  -webkit-transform: translate(-1px, -50%);
+  -moz-transform: translate(-1px, -50%);
+  -ms-transform: translate(-1px, -50%);
+  transform: translate(-1px, -50%);
+  opacity: 0.8;
 }

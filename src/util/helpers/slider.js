@@ -12,8 +12,9 @@ export const calculateChange = (container, step) => {
       left = containerWidth;
     }
 
-    const value = Math.floor((left / containerWidth) * 100);
+    const value =
+      Math.floor(Math.floor((left / containerWidth) * 100) / step) * step;
 
-    if (value % step === 0) return { value };
+    return { value };
   };
 };

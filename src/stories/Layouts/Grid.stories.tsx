@@ -1,6 +1,6 @@
 import React from "react";
-
-import { Grid } from "../../components/Layouts/Grid";
+import { Story, Meta } from "@storybook/react";
+import { Grid, GridProps } from "../../components/Layouts/Grid";
 import "../../styles.css";
 
 export default {
@@ -16,20 +16,20 @@ export default {
   argTypes: {
     children: { control: "" },
   },
-};
+} as Meta;
 
-const Item = ({ children, ...props }) => (
+const Item: Story = ({ children, ...props }) => (
   <div className="item" {...props}>
     {children}
   </div>
 );
-const Paper = ({ children }) => (
+const Paper: Story = ({ children }) => (
   <div className="item" style={{ width: 100, height: 120 }}>
     {children}
   </div>
 );
 
-export const Default = (args) => {
+export const Default: Story<GridProps> = (args) => {
   return (
     <Grid {...args}>
       <Grid lg={8}>
@@ -63,7 +63,7 @@ Default.args = {
   wrap: "wrap",
 };
 
-export const Spacing = (args) => {
+export const Spacing: Story<GridProps> = (args) => {
   return (
     <Grid {...args}>
       <Grid>
@@ -83,7 +83,7 @@ Spacing.args = {
   justifyContent: "center",
 };
 
-export const Columns = (args) => {
+export const Columns: Story<GridProps> = (args) => {
   return (
     <Grid {...args}>
       <Grid lg={16}>

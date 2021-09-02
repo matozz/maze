@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react";
 
 import { Grid } from "../../components/Layouts/Grid";
+import { Label } from "../../components/DataDisplay/Label";
 
 export default {
   title: "Inputs/Slider",
@@ -58,8 +59,34 @@ export const Controls = () => {
   const [value, setValue] = useState(0);
   return (
     <>
-      <h3>{value}</h3>
-      <Slider value={value} onChange={(value) => setValue(value)} />
+      <Grid direction="column" style={{ margin: 10 }}>
+        <Label>Value: {value}</Label>
+        <Slider value={value} onChange={(value) => setValue(value)} />
+      </Grid>
+    </>
+  );
+};
+
+export const Marks = () => {
+  const [value, setValue] = useState(0);
+  return (
+    <>
+      <Grid direction="column" style={{ margin: 10 }}>
+        <Label>Value: {value}</Label>
+        <Slider
+          value={value}
+          onChange={(value) => setValue(value)}
+          step={10}
+          marks
+        />
+        <Slider
+          value={60}
+          onChange={(value) => setValue(value)}
+          step={10}
+          marks
+          disabled
+        />
+      </Grid>
     </>
   );
 };

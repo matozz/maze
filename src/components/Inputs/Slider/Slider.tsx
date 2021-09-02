@@ -17,13 +17,19 @@ export interface SliderProps {
   value?: number;
   size?: "small" | "medium" | "large";
   orientation?: "vertical" | "horizontal";
+  marks?: boolean;
   onChange?: (value: number) => void;
 }
 
 export const Slider = ({
+  min = 0,
+  max = 100,
+  step = 1,
   width,
   color,
   value,
+  marks,
+  disabled,
   onChange,
   sliderStyle,
   thumbStyle,
@@ -32,9 +38,10 @@ export const Slider = ({
 }: SliderProps) => {
   const sliderRef = useRef(null);
   const { handleDragStart, change } = useDrag(
-    slider.calculateChange(sliderRef.current, 1)
+    slider.calculateChange(sliderRef.current, step)
   );
   const [sliderValue, setSliderValue] = useState(value);
+  const itemNumber = Array.from(Array(Math.floor((max - min) / step)));
 
   useEffect(() => {
     if (Object.keys(change).length != 0) {
@@ -46,7 +53,7 @@ export const Slider = ({
   return (
     <>
       <span
-        className={styles.root}
+        className={`${styles.root} ${disabled && styles["root-disabled"]}`}
         ref={sliderRef}
         onMouseDown={handleDragStart}
         onTouchStart={handleDragStart}
@@ -57,14 +64,31 @@ export const Slider = ({
           className={styles.track}
           style={{ width: `${sliderValue}%`, ...trackStyle }}
         ></span>
+        {marks &&
+          step &&
+          itemNumber.map((e, i) => {
+            return (
+              <div
+                key={i}
+                data-index={i}
+                className={styles.mark}
+                style={{
+                  left: `${step * i}%`,
+                  backgroundColor:
+                    value && value > step * i ? "white" : "currentcolor",
+                }}
+              />
+            );
+          })}
         <span
           className={styles.thumb}
           style={{ left: `${sliderValue}%`, ...thumbStyle }}
         >
           <input
             type="range"
-            min="0"
-            max="100"
+            min={min}
+            max={max}
+            step={step}
             value={sliderValue}
             onChange={() => {}}
           />
