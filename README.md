@@ -32,7 +32,7 @@ yarn add maze-ui
   * [x] CheckBox
   * [x] Switch
   * [ ] Select
-  * [ ] Slider
+  * [x] Slider
   * [x] Text Field
 * [x] Layout
   * [x] Grid
