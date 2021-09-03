@@ -13,7 +13,7 @@ import Saturation from "../common/Saturation/Saturation";
 import styles from "./ColorAdvanced.module.scss";
 import { HSL, HSV, RGB } from "../typed-color.js";
 import { isValidHex, toHex } from "../../../../util/helpers/color.js";
-import { debounce } from "../../../../util/func/lodash.js";
+import { debounce } from "../../../../util/function/lodash.js";
 
 export interface AdvancedOptions {
   palette?: boolean;
