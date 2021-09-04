@@ -49,6 +49,6 @@ yarn add maze-ui
   * [ ] List
   * [ ] Table
   * [x] Avatar
-  * [ ] Tooltip
+  * [x] Tooltip
   * [ ] Badge
 
