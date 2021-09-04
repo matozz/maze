@@ -2,8 +2,8 @@ import React, { FunctionComponent, useState, useEffect } from "react";
 import styles from "./ColorPicker.module.scss";
 import { isValidHex, toHex, toState } from "../../../util/helpers/color.js";
 import { ColorPalette, ColorPaletteProps } from "./ColorPalette";
-import PlusIcon from "./PlusIcon";
 import { AdvancedOptions, ColorAdvanced } from "./ColorAdvanced";
+import PlusIcon from "./PlusIcon";
 
 export interface ColorPickerProps {
   width: string | number;

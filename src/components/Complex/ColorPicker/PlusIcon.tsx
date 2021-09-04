@@ -1,4 +1,6 @@
-function PlusIcon() {
+import React from "react";
+
+function PlusIcon({}: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="14"
