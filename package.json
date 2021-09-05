@@ -12,6 +12,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:ci": "jest --coverage --silent --ci",
     "storybook": "start-storybook -p 6006 -s ./static",
     "storybook:build": "build-storybook",
     "lib:build": "rollup -c",

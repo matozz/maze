@@ -13,4 +13,12 @@ module.exports = {
       "identity-obj-proxy",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+  },
 };
