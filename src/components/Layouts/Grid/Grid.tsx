@@ -41,7 +41,7 @@ export interface GridProps {
   alignItems?: React.CSSProperties["alignItems"];
 }
 
-export const Grid = ({
+export const Grid: React.FunctionComponent<GridProps> = ({
   columns = 12,
   columnSpacing,
   direction = "row",
@@ -87,6 +87,7 @@ export const Grid = ({
                 count = child.props.lg;
                 return [
                   <hr
+                    key={index}
                     className={styles.divider}
                     style={{ display: wrap === "nowrap" ? "none" : "block" }}
                   />,
@@ -105,9 +106,9 @@ export const Grid = ({
 Grid.defaultProps = {
   columns: 12,
   direction: "row",
-  lg: false,
-  md: false,
-  sm: false,
+  // lg: false,
+  // md: false,
+  // sm: false,
   spacing: 0,
   // rowSpacing: 0,
   // columnSpacing: 0,

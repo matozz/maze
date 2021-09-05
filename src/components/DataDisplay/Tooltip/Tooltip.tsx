@@ -5,11 +5,29 @@ import styles from "./Tooltip.module.scss";
 
 export interface TooltipProps {
   children?: React.ReactNode;
+  /**
+   * the position of the tooltip
+   */
   position?: "top" | "bottom" | "left" | "right";
+  /**
+   * Tooltip title. Zero-length titles string are never displayed.
+   */
   title?: string | React.ReactNode;
+  /**
+   * If true, the component is shown.
+   */
   open?: boolean;
+  /**
+   * If true, adds an arrow to the tooltip.
+   */
   arrow?: boolean;
+  /**
+   * Styles applied to the container.
+   */
   containerStyle?: React.CSSProperties;
+  /**
+   * Styles applied to the arrow.
+   */
   arrowStyle?: React.CSSProperties;
 }
 
@@ -25,7 +43,7 @@ interface PortalProps {
   };
 }
 
-export const Tooltip = ({
+export const Tooltip: React.FunctionComponent<TooltipProps> = ({
   arrow,
   open,
   title,
@@ -58,7 +76,7 @@ export const Tooltip = ({
     }
   }, [isOpen]);
 
-  const handlePopupOpen = (e: React.MouseEvent) => {
+  const handlePopupOpen = () => {
     setIsOpen(true);
   };
 
@@ -102,6 +120,8 @@ export const Tooltip = ({
       return ReactDOM.createPortal(<Container />, document.body);
     }
   );
+
+  Portal.displayName = "Portal";
 
   return (
     <>

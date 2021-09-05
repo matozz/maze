@@ -1,8 +1,17 @@
 import { useEffect, useState } from "react";
 
-export const useDrag = (parser: Function) => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+interface returnProps {
+  handleDragStart: (e: React.MouseEvent | React.TouchEvent) => void;
+  change: any;
+}
+export const useDrag = (
+  parser: (
+    e: MouseEvent | TouchEvent | React.TouchEvent | React.MouseEvent
+  ) => unknown
+): returnProps => {
   const [isDrag, setIsDrag] = useState(false);
-  const [change, setChange] = useState<any>({});
+  const [change, setChange] = useState({});
 
   const handleDragMove = (
     e: MouseEvent | TouchEvent | React.TouchEvent | React.MouseEvent
@@ -35,7 +44,9 @@ export const useDrag = (parser: Function) => {
         document.removeEventListener("touchend", handleDragStop);
       };
     }
-    return () => {};
+    return () => {
+      null;
+    };
   }, [isDrag]);
 
   return { handleDragStart, change };

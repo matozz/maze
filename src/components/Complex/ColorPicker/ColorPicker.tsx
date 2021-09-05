@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ColorPicker.module.scss";
 import { isValidHex, toHex, toState } from "../../../util/helpers/color.js";
 import { ColorPalette, ColorPaletteProps } from "./ColorPalette";
@@ -7,17 +7,18 @@ import PlusIcon from "./PlusIcon";
 
 export interface ColorPickerProps {
   width: string | number;
-  onColorChange?: Function;
+  onColorChange?: (state: unknown) => never;
   hex?: string;
   colors?: Array<string>;
   mode: "palette" | "picker" | "advanced";
   paletteStyle?: ColorPaletteProps;
+  /**
+   * Only need when switch to advancedMode
+   */
   advancedOptions?: AdvancedOptions;
 }
 
-export const ColorPicker: FunctionComponent<
-  ColorPickerProps & React.HTMLAttributes<HTMLDivElement>
-> = ({
+export const ColorPicker: React.FunctionComponent<ColorPickerProps> = ({
   width,
   onColorChange,
   hex,
@@ -121,6 +122,6 @@ export const ColorPicker: FunctionComponent<
 };
 
 ColorPicker.defaultProps = {
-  width: "170px",
+  width: 170,
   mode: "picker",
 };

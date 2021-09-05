@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Slider.module.scss";
 import { useDrag } from "../../../util/hooks/useDrag";
@@ -16,7 +18,7 @@ export interface SliderProps {
   trackStyle?: React.CSSProperties;
   value?: number;
   size?: "small" | "medium" | "large";
-  orientation?: "vertical" | "horizontal";
+  // orientation?: "vertical" | "horizontal";
   marks?: boolean;
   onChange?: (value: number) => void;
 }
@@ -35,6 +37,7 @@ export const Slider = ({
   thumbStyle,
   trackStyle,
   railStyle,
+  size,
 }: SliderProps) => {
   const sliderRef = useRef(null);
   const { handleDragStart, change } = useDrag(
@@ -53,11 +56,14 @@ export const Slider = ({
   return (
     <>
       <span
-        className={`${styles.root} ${disabled && styles["root-disabled"]}`}
+        className={`${styles.root} ${disabled && styles["root-disabled"]} ${
+          styles[`root-${size}`]
+        }`}
         ref={sliderRef}
         onMouseDown={handleDragStart}
         onTouchStart={handleDragStart}
         style={{ width: width, color: color, ...sliderStyle }}
+        data-testid="test-slider"
       >
         <span className={styles.rail} style={railStyle}></span>
         <span

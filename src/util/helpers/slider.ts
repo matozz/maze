@@ -1,4 +1,4 @@
-export const calculateChange = (container, step) => {
+export const calculateChange = (container: HTMLDivElement, step: number) => {
   return (e) => {
     if (!container) return 0;
     const { width: containerWidth } = container.getBoundingClientRect();

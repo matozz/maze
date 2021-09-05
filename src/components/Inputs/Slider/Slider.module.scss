@@ -16,6 +16,24 @@
     cursor: default;
     color: #bdbdbd;
   }
+
+  &-small {
+    height: 2px;
+
+    & > .thumb {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  &-large {
+    height: 6px;
+
+    & > .thumb {
+      width: 24px;
+      height: 24px;
+    }
+  }
 }
 
 .rail {
