@@ -22,11 +22,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run lint
-    - run: npm test:ci
+    - name: Install Yarn
+      run: npm install -g yarn
+    - run: yarn ci
+    - run: yarn run lint
+    - run: yarn test:ci
+    - name: Uninstall Yarn
+      if: always()
+      run: npm uninstall -g yarn
