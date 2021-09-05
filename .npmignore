@@ -4,6 +4,7 @@ node_modules
 storybook-static
 src
 .storybook
+.husky
 rollup.config.js
 jest.config.js
 jest.setup.js
