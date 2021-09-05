@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 interface returnProps {
   handleDragStart: (e: React.MouseEvent | React.TouchEvent) => void;
