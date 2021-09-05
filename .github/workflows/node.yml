@@ -5,13 +5,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ${{matrix.os}}
 
     strategy:
@@ -21,13 +20,13 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Yarn
-      run: npm install -g yarn
-    - name: Install dependences 
-      run: yarn install
-    - run: yarn test
-    - run: yarn test:ci
-    - name: Uninstall Yarn
-      if: always()
-      run: npm uninstall -g yarn
+      - uses: actions/checkout@v2
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Install Dependences
+        run: yarn install
+      - run: yarn test
+      # - run: yarn test:ci
+      - name: Uninstall Yarn
+        if: always()
+        run: npm uninstall -g yarn
