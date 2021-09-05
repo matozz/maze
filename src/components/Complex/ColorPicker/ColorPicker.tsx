@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import React, { useState, useEffect } from "react";
 import styles from "./ColorPicker.module.scss";
 import { isValidHex, toHex, toState } from "../../../util/helpers/color.js";
@@ -7,7 +8,7 @@ import PlusIcon from "./PlusIcon";
 
 export interface ColorPickerProps {
   width: string | number;
-  onColorChange?: (state: unknown) => never;
+  onColorChange?: Function;
   hex?: string;
   colors?: Array<string>;
   mode: "palette" | "picker" | "advanced";

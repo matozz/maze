@@ -15,7 +15,9 @@
     "storybook": "start-storybook -p 6006 -s ./static",
     "storybook:build": "build-storybook",
     "lib:build": "rollup -c",
-    "storybook:deploy": "gh-pages -d storybook-static"
+    "storybook:deploy": "gh-pages -d storybook-static",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -55,11 +57,14 @@
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.25.1",
     "gh-pages": "^3.2.3",
+    "husky": ">=6",
     "identity-obj-proxy": "^3.0.0",
     "install": "^0.13.0",
     "jest": "^27.1.0",
+    "lint-staged": "^11.1.2",
     "node-sass": "^6.0.1",
     "postcss": "^8.3.6",
+    "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rollup": "^2.56.2",
@@ -83,5 +88,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "tinycolor2": "^1.4.2"
+  },
+  "lint-staged": {
+    "*.(tsx|ts|jsx|js)": "eslint --cache --fix",
+    "*": "prettier --write --ignore-unknown"
   }
 }

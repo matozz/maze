@@ -43,8 +43,8 @@ Basic.args = {
   mode: "advanced",
 };
 
-export const Picker = () => {
-  const handleColorChange = (color: object) => {
+export const Picker: Story<ColorPickerProps> = () => {
+  const handleColorChange = (color) => {
     console.log(color);
   };
 
@@ -68,8 +68,8 @@ export const Picker = () => {
   );
 };
 
-export const Advanced = () => {
-  const handleColorChange = (color: object) => {
+export const Advanced: Story<ColorPickerProps> = () => {
+  const handleColorChange = (color) => {
     console.log(color);
   };
 
@@ -99,8 +99,8 @@ export const Advanced = () => {
   );
 };
 
-export const Palette = () => {
-  const handleColorChange = (color: object) => {
+export const Palette: Story<ColorPickerProps> = () => {
+  const handleColorChange = (color) => {
     console.log(color);
   };
 
