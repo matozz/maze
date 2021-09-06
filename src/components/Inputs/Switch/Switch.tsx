@@ -1,5 +1,5 @@
 import React, { useState, useEffect, forwardRef } from "react";
-import "./Switch.scss";
+import "./Switch.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
 
 export interface SwitchProps {

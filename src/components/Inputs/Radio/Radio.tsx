@@ -1,5 +1,5 @@
 import React, { useState, useEffect, forwardRef } from "react";
-import "./Radio.scss";
+import "./Radio.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
 
 export interface RadioProps {

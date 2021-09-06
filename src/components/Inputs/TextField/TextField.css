@@ -5,14 +5,8 @@
     --maze-theme-rgb,
     var(--maze-primary-rgb, 25, 118, 210)
   );
-  font-family: var(
-    --maze-font-family,
-    "Roboto",
-    "Segoe UI",
-    BlinkMacSystemFont,
-    system-ui,
-    -apple-system
-  );
+  font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
+    -apple-system;
   font-size: 16px;
   line-height: 1.5;
   /* overflow: hidden; */

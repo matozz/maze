@@ -7,14 +7,8 @@
     var(--maze-primary-rgb, 25, 118, 210)
   );
   color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.87);
-  font-family: var(
-    --maze-font-family,
-    "Roboto",
-    "Segoe UI",
-    BlinkMacSystemFont,
-    system-ui,
-    -apple-system
-  );
+  font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
+    -apple-system;
   font-size: 16px;
   line-height: 1.5;
 }

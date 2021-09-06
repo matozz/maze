@@ -1,5 +1,5 @@
 import React, { useState, useEffect, forwardRef } from "react";
-import "./Button.scss";
+import "./Button.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
 
 export interface ButtonProps {

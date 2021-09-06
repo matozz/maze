@@ -1,5 +1,5 @@
 import React, { useState, useEffect, forwardRef } from "react";
-import "./TextField.scss";
+import "./TextField.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
 
 export interface TextFieldProps {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, forwardRef } from "react";
-import "./CheckBox.scss";
+import "./CheckBox.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
 
 export interface CheckBoxProps {

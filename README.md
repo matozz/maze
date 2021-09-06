@@ -10,6 +10,7 @@
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/matozz/maze"/>
     <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/matozz/maze"/>
     <img alt="npm" src="https://img.shields.io/npm/v/maze-ui"/>
+    <img alt="npm" src="https://img.shields.io/npm/dm/maze-ui"/>
 </div>
 
 ## 🎬 Get Started
