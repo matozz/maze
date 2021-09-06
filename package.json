@@ -1,7 +1,7 @@
 {
   "homepage": "https://matozz.github.io/maze",
   "name": "maze-ui",
-  "version": "1.0.6",
+  "version": "1.1.3",
   "description": "A simple material react component",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -62,7 +62,6 @@
     "gh-pages": "^3.2.3",
     "husky": ">=6",
     "identity-obj-proxy": "^3.0.0",
-    "install": "^0.13.0",
     "jest": "^27.1.0",
     "lint-staged": "^11.1.2",
     "node-sass": "^6.0.1",
@@ -88,6 +87,11 @@
   },
   "peerDependencies": {
     "prop-types": "^17.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tinycolor2": "^1.4.2"
+  },
+  "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "tinycolor2": "^1.4.2"
