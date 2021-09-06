@@ -4,11 +4,12 @@
 
 <p align="center">Maze-UI is a simple and customizable component library to build faster, beautiful, and more accessible React applications. Maze-UI components work in isolation. They are self-supporting, and will only inject the styles they need to display.</p>
 
-<div style="display:flex; justify-content:space-between">
+<div style="display:flex;flex-wrap:wrap; gap:10px;margin:20px 0">
     <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/matozz/maze"/>
     <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/matozz/maze/Node.js%20CI"/>
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/matozz/maze"/>
     <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/matozz/maze"/>
+    <img alt="npm" src="https://img.shields.io/npm/v/maze-ui"/>
 </div>
 
 ## 🎬 Get Started
