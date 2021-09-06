@@ -5,9 +5,12 @@ storybook-static
 src
 .storybook
 .husky
+.github
 rollup.config.js
 jest.config.js
 jest.setup.js
 postcss.config.js
 yarn.lock
 coverage
+.eslintcache
+.gitignore
