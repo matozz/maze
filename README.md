@@ -63,3 +63,13 @@ yarn add maze-ui
   - [x] Avatar
   - [x] Tooltip
   - [ ] Badge
+
+## 🎬 License
+
+This project is licensed under the terms of the [MIT License](https://github.com/Matozz/maze/blob/master/LICENSE).
+
+## ✉️ Contributing
+
+Feel free to help us make this project greater and being a part of the Maze-UI.
+
+Contact: matoztech@gmail.com

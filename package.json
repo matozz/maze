@@ -1,8 +1,8 @@
 {
-  "homepage": "http://matozz.github.io/maze",
+  "homepage": "https://matozz.github.io/maze",
   "name": "maze-ui",
-  "version": "1.0.3",
-  "description": "A simple react component",
+  "version": "1.0.6",
+  "description": "A simple material react component",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -28,6 +28,7 @@
     "React",
     "Component",
     "Library",
+    "Material",
     "Rollup",
     "Typescript",
     "Sass",
