@@ -5,6 +5,7 @@ module.exports = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
+    "@storybook/addon-postcss",
     // "@storybook/preset-scss",
   ],
   webpackFinal: async (config, { configType }) => {
@@ -24,11 +25,11 @@ module.exports = {
   },
   typescript: {
     reactDocgen: "react-docgen-typescript",
-    reactDocgenTypescriptOptions: {
-      compilerOptions: {
-        allowSyntheticDefaultImports: false,
-        esModuleInterop: false,
-      },
-    },
+    // reactDocgenTypescriptOptions: {
+    //   compilerOptions: {
+    //     allowSyntheticDefaultImports: false,
+    //     esModuleInterop: false,
+    //   },
+    // },
   },
 };

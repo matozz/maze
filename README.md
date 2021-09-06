@@ -4,14 +4,23 @@
 
 <p align="center">Maze-UI is a simple and customizable component library to build faster, beautiful, and more accessible React applications. Maze-UI components work in isolation. They are self-supporting, and will only inject the styles they need to display.</p>
 
+<div style="display:flex; justify-content:space-between">
+    <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/matozz/maze"/>
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/matozz/maze/Node.js%20CI"/>
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/matozz/maze"/>
+    <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/matozz/maze"/>
+</div>
 
 ## 🎬 Get Started
 
-**NPM** 
+**NPM**
+
 ```shell
 npm i maze-ui
 ```
-**Yarn** 
+
+**Yarn**
+
 ```shell
 yarn add maze-ui
 ```
@@ -19,36 +28,36 @@ yarn add maze-ui
 ## 📦 Components & Utilities
 
 **Implemented/Planned:**
-* [x] Complex
-  * [x] Carousel
-  * [x] ColorPicker
-* [ ] Inputs
-  * [x] Contained
-  * [x] Outlined
-  * [x] Text
-  * [x] Button Group
-  * [x] Radio
-  * [x] Radio Group
-  * [x] CheckBox
-  * [x] Switch
-  * [ ] Select
-  * [x] Slider
-  * [x] Text Field
-* [x] Layout
-  * [x] Grid
-  * [x] Image List
-* [ ] Navigation
-  * [ ] Drawer
-  * [ ] Menu
-  * [ ] Stepper
-* [ ] Feedback
-  * [ ] Alert
-  * [ ] Dialogs
-  * [x] Progress
-* [ ] Data
-  * [ ] List
-  * [ ] Table
-  * [x] Avatar
-  * [x] Tooltip
-  * [ ] Badge
 
+- [x] Complex
+  - [x] Carousel
+  - [x] ColorPicker
+- [ ] Inputs
+  - [x] Contained
+  - [x] Outlined
+  - [x] Text
+  - [x] Button Group
+  - [x] Radio
+  - [x] Radio Group
+  - [x] CheckBox
+  - [x] Switch
+  - [ ] Select
+  - [x] Slider
+  - [x] Text Field
+- [x] Layout
+  - [x] Grid
+  - [x] Image List
+- [ ] Navigation
+  - [ ] Drawer
+  - [ ] Menu
+  - [ ] Stepper
+- [ ] Feedback
+  - [ ] Alert
+  - [ ] Dialogs
+  - [x] Progress
+- [ ] Data
+  - [ ] List
+  - [ ] Table
+  - [x] Avatar
+  - [x] Tooltip
+  - [ ] Badge

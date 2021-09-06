@@ -12,12 +12,17 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
-  "exclude": [    
+  "exclude": [
     "build",
     "dist",
     "node_modules",
     "rollup.config.js",
-    "src/stories",
+    "src/stories"
   ],
-  "include": ["src/**/*","src/typed-svg.d.ts","src/typed-css.d.ts"],
+  "include": [
+    "src/**/*",
+    "src/typed-svg.d.ts",
+    "src/typed-css.d.ts",
+    "src/typed-img.d.ts"
+  ]
 }

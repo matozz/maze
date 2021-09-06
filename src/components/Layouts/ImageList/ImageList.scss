@@ -1,0 +1,7 @@
+.maze-imagelist {
+  display: grid;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
+}

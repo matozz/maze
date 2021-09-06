@@ -1,0 +1,46 @@
+.maze-avatar {
+  display: flex;
+  width: min-content;
+  background-color: #bdbdbd;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  overflow: hidden;
+  color: white;
+  font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
+    -apple-system;
+  font-size: 1.25rem;
+  line-height: 1;
+  pointer-events: none;
+  > img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.maze-avatar--error {
+  > img {
+    color: #fff;
+    width: 30px;
+    height: 30px;
+  }
+}
+.maze-avatar--small {
+  width: 24px;
+  height: 24px;
+  font-size: 0.75rem;
+}
+.maze-avatar--medium {
+  width: 40px;
+  height: 40px;
+}
+.maze-avatar--large {
+  width: 56px;
+  height: 56px;
+  font-size: 1.5rem;
+}
+.maze-avatar--square {
+  border-radius: 0;
+}
+.maze-avatar--rounded {
+  border-radius: 4px;
+}
