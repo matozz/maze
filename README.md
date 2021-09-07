@@ -56,15 +56,16 @@ yarn add maze-ui
 - [ ] Feedback
   - [ ] Alert
   - [ ] Dialogs
-  - [x] Progress
+  - [x] Loader
 - [ ] Data
   - [ ] List
   - [ ] Table
   - [x] Avatar
   - [x] Tooltip
+  - [x] Progress
   - [ ] Badge
 
-## 🎬 License
+## 📖 License
 
 This project is licensed under the terms of the [MIT License](https://github.com/Matozz/maze/blob/master/LICENSE).
 

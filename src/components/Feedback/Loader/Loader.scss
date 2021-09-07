@@ -1,4 +1,4 @@
-.maze-progress {
+.maze-loader {
   position: absolute;
   inset: 0;
   display: flex;
@@ -12,21 +12,21 @@
   visibility: visible;
 }
 
-.maze-progress--active {
+.maze-loader--active {
   opacity: 1;
 }
 
-.maze-progress--inactive {
+.maze-loader--inactive {
   visibility: hidden;
 }
 
-.maze-progress-mask {
+.maze-loader-mask {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
 }
 
-.maze-progress-circular {
+.maze-loader-circular {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -42,26 +42,26 @@
   overflow: hidden;
 }
 
-.maze-progress-circular::-webkit-progress-bar {
+.maze-loader-circular::-webkit-loader-bar {
   background-color: transparent;
 }
 
 /* Indeterminate */
-.maze-progress-circular:indeterminate {
+.maze-loader-circular:indeterminate {
   -webkit-mask-image: linear-gradient(transparent 50%, black 50%),
     linear-gradient(to right, transparent 50%, black 50%);
   mask-image: linear-gradient(transparent 50%, black 50%),
     linear-gradient(to right, transparent 50%, black 50%);
-  animation: maze-progress-circular 6s infinite cubic-bezier(0.3, 0.6, 1, 1);
+  animation: maze-loader-circular 6s infinite cubic-bezier(0.3, 0.6, 1, 1);
 }
 
 :-ms-lang(x),
-.maze-progress-circular:indeterminate {
+.maze-loader-circular:indeterminate {
   animation: none;
 }
 
-.maze-progress-circular:indeterminate::before,
-.maze-progress-circular:indeterminate::-webkit-progress-value {
+.maze-loader-circular:indeterminate::before,
+.maze-loader-circular:indeterminate::-webkit-loader-value {
   content: "";
   display: block;
   box-sizing: border-box;
@@ -72,10 +72,10 @@
   width: 100% !important;
   height: 100%;
   background-color: transparent;
-  animation: maze-progress-circular-pseudo 0.75s infinite linear alternate;
+  animation: maze-loader-circular-pseudo 0.75s infinite linear alternate;
 }
 
-.maze-progress-circular:indeterminate::-moz-progress-bar {
+.maze-loader-circular:indeterminate::-moz-loader-bar {
   box-sizing: border-box;
   border: solid 0.25em transparent;
   border-top-color: currentColor;
@@ -83,14 +83,14 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  animation: maze-progress-circular-pseudo 0.75s infinite linear alternate;
+  animation: maze-loader-circular-pseudo 0.75s infinite linear alternate;
 }
 
-.maze-progress-circular:indeterminate::-ms-fill {
+.maze-loader-circular:indeterminate::-ms-fill {
   animation-name: -ms-ring;
 }
 
-@keyframes maze-progress-circular {
+@keyframes maze-loader-circular {
   0% {
     transform: rotate(0deg);
   }
@@ -124,7 +124,7 @@
   }
 }
 
-@keyframes maze-progress-circular-pseudo {
+@keyframes maze-loader-circular-pseudo {
   0% {
     transform: rotate(-30deg);
   }

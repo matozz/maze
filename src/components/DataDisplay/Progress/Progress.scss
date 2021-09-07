@@ -1,0 +1,30 @@
+.maze-progress {
+  font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
+    -apple-system;
+  font-size: 16px;
+  position: relative;
+  &--circle {
+    transform: rotate(-90deg);
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: all 0.3s ease-out;
+  }
+  &--line {
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+  }
+  &--track {
+    transition: all 0.3s ease-out;
+  }
+  &--label {
+    margin-bottom: 6px;
+  }
+  &--text {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

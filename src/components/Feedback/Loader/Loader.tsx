@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
-import "./Progress.scss";
+import "./Loader.scss";
 
 const _popup = document.createElement("div");
 
-export interface ProgressProps {
+export interface LoaderProps {
   /**
    * Control the popup open state.
    */
@@ -17,17 +17,14 @@ export interface ProgressProps {
   handleMaskClose?: (status: string) => void;
 }
 
-/**
- * @type React.ForwardRefRenderFunction<HTMLProgressElement, ProgressPropTypes>
- */
-export const Progress: React.FunctionComponent<ProgressProps> = ({
+export const Loader: React.FunctionComponent<LoaderProps> = ({
   active,
   handleMaskClose,
   clickToClose,
   children,
   ...props
-}: ProgressProps) => {
-  _popup.classList.add("maze-progress");
+}: LoaderProps) => {
+  _popup.classList.add("maze-loader");
   useEffect(() => {
     document.body.appendChild(_popup);
   }, []);
@@ -36,16 +33,16 @@ export const Progress: React.FunctionComponent<ProgressProps> = ({
     if (!active) {
       handleCloseLoading();
     } else {
-      _popup.classList.remove("maze-progress--inactive");
-      _popup.classList.add("maze-progress--active");
+      _popup.classList.remove("maze-loader--inactive");
+      _popup.classList.add("maze-loader--active");
     }
   }, [active]);
 
   const handleCloseLoading = () => {
     handleMaskClose && handleMaskClose("closed");
-    _popup.classList.remove("maze-progress--active");
+    _popup.classList.remove("maze-loader--active");
     const timer = setTimeout(() => {
-      _popup.classList.add("maze-progress--inactive");
+      _popup.classList.add("maze-loader--inactive");
       clearTimeout(timer);
     }, 400);
   };
@@ -53,13 +50,13 @@ export const Progress: React.FunctionComponent<ProgressProps> = ({
   const Container = () => (
     <>
       <div
-        className={"maze-progress-mask"}
+        className={"maze-loader-mask"}
         onClick={clickToClose && handleCloseLoading}
       />
       {children ? (
         children
       ) : (
-        <progress className={"maze-progress-circular"} {...props} />
+        <progress className={"maze-loader-circular"} {...props} />
       )}
     </>
   );
@@ -67,7 +64,7 @@ export const Progress: React.FunctionComponent<ProgressProps> = ({
   return ReactDOM.createPortal(<Container />, _popup);
 };
 
-Progress.defaultProps = {
+Loader.defaultProps = {
   active: false,
   clickToClose: true,
 };

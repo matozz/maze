@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react";
-import { Progress, ProgressProps } from "../../components/Feedback/Progress";
+import { Loader, LoaderProps } from "../../components/Feedback/Loader";
 import { Button } from "../../components/Inputs/Button";
 
 export default {
-  title: "Feedback/Progress",
-  component: Progress,
+  title: "Feedback/Loader",
+  component: Loader,
   parameters: {
     docs: {
       description: {
         component:
-          "Progress indicators commonly known as spinners, express an unspecified wait time or display the length of a process.",
+          "Loader indicators commonly known as spinners, express an unspecified wait time or display the length of a process.",
       },
     },
   },
@@ -22,7 +22,7 @@ export default {
       defaultValue: false,
     },
     clickToClose: {
-      description: "Control progress can be closed by clicking the mask.",
+      description: "Control loader can be closed by clicking the mask.",
       control: " ",
       type: { name: "string", required: false },
       defaultValue: false,
@@ -31,11 +31,11 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ProgressProps> = () => {
+const Template: Story<LoaderProps> = () => {
   const [loading, setLoading] = useState(false);
   return (
     <>
-      <Progress
+      <Loader
         active={loading}
         handleMaskClose={(status) => status === "closed" && setLoading(false)}
       />

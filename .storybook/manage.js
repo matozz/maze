@@ -1,7 +1,7 @@
 import { addons } from "@storybook/addons";
 
-import light from "./light";
+import CustomStoryBookTheme from "./CustomStoryBookTheme";
 
 addons.setConfig({
-  theme: light,
+  theme: CustomStoryBookTheme,
 });
