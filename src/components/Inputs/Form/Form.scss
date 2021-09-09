@@ -1,0 +1,13 @@
+.maze-form {
+  display: flex;
+
+  &--horizontal {
+    flex-direction: column;
+    gap: 16px;
+    width: 240px;
+  }
+  &--inline {
+    // align-items: center;
+    gap: 16px;
+  }
+}

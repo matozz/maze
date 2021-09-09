@@ -1,19 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { toState } from "../../../../util/helpers/color.js";
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { ColorPalette, ColorPaletteProps } from "../ColorPalette";
 import ColorSlider from "../common/Slider/Slider";
 import Checkboard from "../common/Checkboard/Checkboard";
 import Saturation from "../common/Saturation/Saturation";
 
 import styles from "./ColorAdvanced.module.scss";
-import { HSL, HSV, RGB } from "../typed-color.js";
+import { HSL, RGB } from "../typed-color.js";
 import { isValidHex, toHex } from "../../../../util/helpers/color.js";
-import { debounce } from "../../../../util/function/lodash.js";
+import { useDebounce } from "../../../../util/hooks";
 
 export interface AdvancedOptions {
   palette?: boolean;
@@ -21,7 +17,7 @@ export interface AdvancedOptions {
   slider?: boolean;
 }
 export interface ColorAdvancedProps extends AdvancedOptions {
-  onColorChange?: Function;
+  onColorChange?: any;
   colors?: Array<string>;
   paletteStyle?: ColorPaletteProps;
 }
@@ -30,7 +26,7 @@ export interface ColorFieldsProps {
   rgb: RGB;
   hsl: HSL;
   hex: string;
-  onColorStateChange: (change: object) => void;
+  onColorStateChange: (change: any) => void;
 }
 
 export const ColorAdvanced: FunctionComponent<
@@ -53,15 +49,12 @@ export const ColorAdvanced: FunctionComponent<
     colorCb(colorState);
   }, [colorState]);
 
-  const colorCb = useCallback(
-    debounce((colorState: object) => {
-      onColorChange &&
-        onColorChange({
-          ...colorState,
-        });
-    }, 300),
-    []
-  );
+  const colorCb = useDebounce((colorState: any) => {
+    onColorChange &&
+      onColorChange({
+        ...colorState,
+      });
+  }, 300);
 
   const onColorStateChange = (change: any) => {
     setColorState(
@@ -75,7 +68,7 @@ export const ColorAdvanced: FunctionComponent<
 
   const ColorFields: FunctionComponent<
     ColorFieldsProps & React.HTMLAttributes<HTMLDivElement>
-  > = ({ rgb, hsl, hex, onColorStateChange }: ColorFieldsProps) => {
+  > = ({ rgb, hex, onColorStateChange }: ColorFieldsProps) => {
     const [inputValue, setInputValue] = useState({ hex: hex, rgb: rgb });
 
     const handleRGBChange = (

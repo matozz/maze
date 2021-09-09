@@ -2,6 +2,7 @@ import React, { useState, useEffect, forwardRef } from "react";
 import "./TextField.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
 
+type InputControlElement = HTMLInputElement | HTMLTextAreaElement;
 export interface TextFieldProps {
   /**
    * What label color to use
@@ -31,12 +32,12 @@ export interface TextFieldProps {
   size?: "small" | "medium" | "large";
   disabled?: boolean;
   error?: boolean;
-  onChange?: React.ChangeEventHandler<HTMLInputElement> &
-    React.ChangeEventHandler<HTMLTextAreaElement>;
+  onChange?: React.ChangeEventHandler<InputControlElement>;
   ref?: React.Ref<HTMLInputElement> & React.Ref<HTMLTextAreaElement>;
   helperText?: string;
   style?: React.CSSProperties;
   id?: string;
+  name?: string;
   value?: string | number;
 }
 
@@ -66,6 +67,7 @@ export const TextField = forwardRef<
       helperText,
       focused,
       error,
+      name,
       ...props
     }: TextFieldProps,
     ref
@@ -79,7 +81,7 @@ export const TextField = forwardRef<
       return () => {
         null;
       };
-    }, [color]);
+    }, [color, error]);
 
     const mode =
       variant === "filled"
@@ -110,6 +112,7 @@ export const TextField = forwardRef<
             <input
               placeholder=" "
               id={id}
+              name={name}
               required={required}
               autoComplete={autoComplete}
               disabled={disabled}
@@ -124,6 +127,7 @@ export const TextField = forwardRef<
             <textarea
               placeholder=" "
               id={id}
+              name={name}
               required={required}
               autoComplete={autoComplete}
               disabled={disabled}

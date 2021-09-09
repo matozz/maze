@@ -257,7 +257,7 @@
 /* Hover */
 .maze-textfield--outlined:hover > input,
 .maze-textfield--outlined:hover > textarea {
-  border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.87);
+  border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.47);
   border-top-color: transparent;
 }
 
@@ -270,7 +270,7 @@
 
 .maze-textfield--outlined:hover > input:not(:focus):placeholder-shown,
 .maze-textfield--outlined:hover > textarea:not(:focus):placeholder-shown {
-  border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.87);
+  border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.5);
 }
 
 /* Placeholder-shown */

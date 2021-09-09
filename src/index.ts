@@ -9,6 +9,7 @@ export * from "./components/Inputs/RadioGroup";
 export * from "./components/Inputs/Switch";
 export * from "./components/Inputs/Slider";
 export * from "./components/Inputs/TextField";
+export * from "./components/Inputs/Form";
 export * from "./components/Layouts/Grid";
 export * from "./components/Layouts/ImageList";
 export * from "./components/Complex/Carousel";

@@ -2,7 +2,8 @@ import React, { useState, useEffect, forwardRef } from "react";
 import "./Button.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
 
-export interface ButtonProps {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   ref?: React.Ref<HTMLButtonElement>;
   /**
    * Button variants
@@ -66,4 +67,5 @@ Button.defaultProps = {
   color: "#1976d2",
   variant: "contained",
   size: "medium",
+  type: "button",
 };
