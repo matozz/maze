@@ -42,6 +42,7 @@ yarn add maze-ui
   - [x] Radio
   - [x] Radio Group
   - [x] CheckBox
+  - [x] Form
   - [x] Switch
   - [ ] Select
   - [x] Slider
