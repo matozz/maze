@@ -1,0 +1,17 @@
+:global {
+  .maze-dialog-title + .maze-dialog-content {
+    padding-top: 0;
+  }
+}
+
+.title {
+  margin: 0px;
+  font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
+    -apple-system;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
+  padding: 16px 24px;
+  flex: 0 0 auto;
+}

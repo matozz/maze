@@ -1,7 +1,9 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { calculateOffset } from "../../../util/helpers/tooltip";
+import { CSSTransition } from "react-transition-group";
 import styles from "./Tooltip.module.scss";
+import animatedStyles from "./Animated.module.scss";
 
 export interface TooltipProps {
   children?: React.ReactNode;
@@ -91,33 +93,37 @@ export const Tooltip: React.FunctionComponent<TooltipProps> = ({
       { title, anchor, containerStyle, arrowStyle }: PortalProps,
       ref: React.Ref<HTMLDivElement>
     ) => {
-      const Container = () => (
-        <div
-          className={styles.popup}
-          style={{
-            transform: `translate(${anchor.x}px,${anchor.y}px`,
-            visibility: isVisible ? "visible" : "hidden",
-          }}
-          ref={ref}
-        >
-          <div
-            className={`${styles.tooltip} ${styles["tooltip-" + position]}`}
-            style={containerStyle}
-          >
-            {title}
-            {arrow && (
-              <span
-                className={`${styles.arrow} ${styles["arrow-" + position]}`}
-                style={{
-                  transform: `translate(${anchor.arrowX}px,${anchor.arrowY}px`,
-                  ...arrowStyle,
-                }}
-              ></span>
-            )}
-          </div>
-        </div>
+      return (
+        <>
+          {ReactDOM.createPortal(
+            <div
+              className={styles.popup}
+              style={{
+                transform: `translate(${anchor.x}px,${anchor.y}px`,
+                // visibility: isVisible ? "visible" : "hidden",
+              }}
+              ref={ref}
+            >
+              <div
+                className={`${styles.tooltip} ${styles["tooltip-" + position]}`}
+                style={containerStyle}
+              >
+                {title}
+                {arrow && (
+                  <span
+                    className={`${styles.arrow} ${styles["arrow-" + position]}`}
+                    style={{
+                      transform: `translate(${anchor.arrowX}px,${anchor.arrowY}px`,
+                      ...arrowStyle,
+                    }}
+                  ></span>
+                )}
+              </div>
+            </div>,
+            document.body
+          )}
+        </>
       );
-      return ReactDOM.createPortal(<Container />, document.body);
     }
   );
 
@@ -131,7 +137,13 @@ export const Tooltip: React.FunctionComponent<TooltipProps> = ({
           onMouseOver: handlePopupOpen,
           onMouseOut: handlePopupClose,
         })}
-      {isOpen && (
+
+      <CSSTransition
+        in={isOpen}
+        timeout={200}
+        classNames={animatedStyles}
+        unmountOnExit
+      >
         <Portal
           title={title}
           ref={portalRef}
@@ -139,7 +151,7 @@ export const Tooltip: React.FunctionComponent<TooltipProps> = ({
           containerStyle={containerStyle}
           arrowStyle={arrowStyle}
         />
-      )}
+      </CSSTransition>
     </>
   );
 };
