@@ -29,8 +29,8 @@ jobs:
         run: npm install -g yarn
       - name: Install Dependences
         run: yarn install
-      - run: yarn test
-      # - run: yarn test:ci
+      # - run: yarn test
+      - run: yarn test:ci
       - name: Uninstall Yarn
         if: always()
         run: npm uninstall -g yarn
