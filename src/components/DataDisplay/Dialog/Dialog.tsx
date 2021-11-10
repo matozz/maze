@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 import styles from "./Dialog.module.scss";
 import animatedStyles from "../../../animations/Fade.module.scss";
-import { useKeypress } from "../../../util/hooks/useKeyPress";
+import { useKeyPress } from "../../../util/hooks";
 
 export interface DialogProps {
   children?: React.ReactNode;
@@ -56,7 +56,7 @@ export const Dialog: React.FunctionComponent<DialogProps> = ({
   const portalRef = useRef<HTMLDivElement>(null);
 
   if (exitOnEsc) {
-    useKeypress("Escape", isOpen, () => {
+    useKeyPress("Escape", isOpen, () => {
       onClose();
       setIsOpen(false);
     });

@@ -2,12 +2,13 @@ import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import * as saturation from "../../../../../util/helpers/saturation.js";
 import styles from "./Saturation.module.scss";
 import { HSL, HSV } from "../../typed-color";
-import { useDrag } from "../../../../../util/hooks/useDrag";
+import { useDrag } from "../../../../../util/hooks";
 
 export interface SaturationProps {
   hsl: HSL;
   hsv: HSV;
   onChange: (
+    // eslint-disable-next-line @typescript-eslint/ban-types
     change: object | null
     // e: MouseEvent | TouchEvent | React.TouchEvent | React.MouseEvent
   ) => void;

@@ -1,9 +1,9 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import React, { FunctionComponent, useEffect, useRef } from "react";
 import styles from "./Slider.module.scss";
 import * as hue from "../../../../../util/helpers/hue.js";
 import * as alp from "../../../../../util/helpers/alpha.js";
 import Checkboard from "../Checkboard/Checkboard";
-import { useDrag } from "../../../../../util/hooks/useDrag";
+import { useDrag } from "../../../../../util/hooks";
 import { HSL } from "../../typed-color";
 
 export interface ColorSliderProps {
@@ -13,6 +13,7 @@ export interface ColorSliderProps {
   size: "small" | "medium" | "large";
   hsl: HSL;
   direction: "vertical" | "horizontal";
+  // eslint-disable-next-line @typescript-eslint/ban-types
   onChange?: (change: object | null) => void;
 }
 

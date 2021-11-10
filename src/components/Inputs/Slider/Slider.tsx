@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Slider.module.scss";
-import { useDrag } from "../../../util/hooks/useDrag";
+import { useDrag } from "../../../util/hooks";
 import * as slider from "../../../util/helpers/slider";
 
 export interface SliderProps {

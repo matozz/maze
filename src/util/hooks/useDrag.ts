@@ -4,11 +4,11 @@ interface returnProps {
   handleDragStart: (e: React.MouseEvent | React.TouchEvent) => void;
   change: any;
 }
-export const useDrag = (
+export default function useDrag(
   parser: (
     e: MouseEvent | TouchEvent | React.TouchEvent | React.MouseEvent
   ) => unknown
-): returnProps => {
+): returnProps {
   const [isDrag, setIsDrag] = useState(false);
   const [change, setChange] = useState({});
 
@@ -49,4 +49,4 @@ export const useDrag = (
   }, [isDrag]);
 
   return { handleDragStart, change };
-};
+}

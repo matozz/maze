@@ -5,11 +5,11 @@ import { useEffect } from "react";
  * @param {function} action - the action to perform on key press
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useKeypress = (
+export default function useKeypress(
   key: string,
   isOpen: boolean,
   action: () => void
-) => {
+) {
   useEffect(() => {
     if (!isOpen) return;
     function onKeyup(e: KeyboardEvent) {
@@ -18,4 +18,4 @@ export const useKeypress = (
     window.addEventListener("keyup", onKeyup);
     return () => window.removeEventListener("keyup", onKeyup);
   }, [isOpen]);
-};
+}

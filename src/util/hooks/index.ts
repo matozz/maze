@@ -1,2 +1,3 @@
-export * from "./useDrag";
-export * from "./useDebounce";
+export { default as useDrag } from "./useDrag";
+export { default as useDebounce } from "./useDebounce";
+export { default as useKeyPress } from "./useKeyPress";
