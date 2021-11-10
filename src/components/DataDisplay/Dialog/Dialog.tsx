@@ -57,7 +57,6 @@ export const Dialog: React.FunctionComponent<DialogProps> = ({
 
   if (exitOnEsc) {
     useKeypress("Escape", isOpen, () => {
-      console.log("1234");
       onClose();
       setIsOpen(false);
     });
