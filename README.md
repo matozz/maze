@@ -56,13 +56,13 @@ yarn add maze-ui
   - [ ] Stepper
 - [ ] Feedback
   - [ ] Alert
-  - [ ] Dialogs
   - [x] Loader
-- [ ] Data
+- [ ] Data Display
   - [ ] List
   - [ ] Table
   - [x] Avatar
   - [x] Tooltip
+  - [x] Dialogs
   - [x] Progress
   - [ ] Badge
 
