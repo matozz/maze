@@ -32,9 +32,9 @@ jobs:
       - name: Run Test
         run: yarn test:ci
       - name: Build latest Storybook Docs
-      - run: yarn storybook:build
+        run: yarn storybook:build
       - name: Deploy Docs to Github Page
-      - run: yarn storybook:deploy
+        run: yarn storybook:deploy
       - name: Uninstall Yarn
         if: always()
         run: npm uninstall -g yarn
