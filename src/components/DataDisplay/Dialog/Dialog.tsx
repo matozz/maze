@@ -2,7 +2,7 @@ import React, { forwardRef, useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 import styles from "./Dialog.module.scss";
-import animatedStyles from "./Animated.module.scss";
+import animatedStyles from "../../../animations/Fade.module.scss";
 
 export interface DialogProps {
   children?: React.ReactNode;
@@ -23,6 +23,10 @@ export interface DialogProps {
    */
   onBackdropClick?: () => void;
   /**
+   * Determine the min-width of the dialog.
+   */
+  width?: string;
+  /**
    * Determine the max-width of the dialog.
    */
   maxWidth?: string;
@@ -37,6 +41,7 @@ export const Dialog: React.FunctionComponent<DialogProps> = ({
   open,
   containerStyle,
   children,
+  width,
   maxWidth,
   onClose,
   onBackdropClick,
@@ -46,7 +51,7 @@ export const Dialog: React.FunctionComponent<DialogProps> = ({
 
   useEffect(() => {
     setIsOpen(open);
-    if (!open) {
+    if (isOpen && !open) {
       onClose();
     }
   }, [open]);
@@ -72,7 +77,11 @@ export const Dialog: React.FunctionComponent<DialogProps> = ({
             <div className={styles.mask} onClick={onBackdropClick}>
               <div
                 className={styles.modal}
-                style={{ ...containerStyle, maxWidth: maxWidth }}
+                style={{
+                  ...containerStyle,
+                  maxWidth: maxWidth,
+                  width: width,
+                }}
                 onClick={(e) => {
                   e.persist();
                   e.nativeEvent.stopImmediatePropagation();

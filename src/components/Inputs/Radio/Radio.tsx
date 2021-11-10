@@ -3,6 +3,7 @@ import "./Radio.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
 
 export interface RadioProps {
+  checked?: boolean;
   ref?: React.Ref<HTMLInputElement>;
   /**
    * What background color to use
@@ -21,7 +22,7 @@ export interface RadioProps {
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
     {
-      // checked,
+      checked,
       size,
 
       disabled,
@@ -53,7 +54,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           style={{ ...cssProperties, ...style }}
         >
           <input
-            //   checked={checked}
+            checked={checked}
             type="radio"
             name={name}
             disabled={disabled}

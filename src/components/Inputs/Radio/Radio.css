@@ -11,7 +11,6 @@
   cursor: pointer;
   position: relative;
   padding: 6px;
-  width: min-content;
 }
 .maze-radio:hover .inner {
   transform: scale(0.5);

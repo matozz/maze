@@ -37,7 +37,7 @@ export const Slider = ({
   thumbStyle,
   trackStyle,
   railStyle,
-  size,
+  size = "medium",
 }: SliderProps) => {
   const sliderRef = useRef(null);
   const { handleDragStart, change } = useDrag(
@@ -56,14 +56,13 @@ export const Slider = ({
   return (
     <>
       <span
-        className={`${styles.root} ${disabled && styles["root-disabled"]} ${
+        className={`${styles.root} ${disabled ? styles["root-disabled"] : ""} ${
           styles[`root-${size}`]
         }`}
         ref={sliderRef}
         onMouseDown={handleDragStart}
         onTouchStart={handleDragStart}
         style={{ width: width, color: color, ...sliderStyle }}
-        data-testid="test-slider"
       >
         <span className={styles.rail} style={railStyle}></span>
         <span

@@ -6,10 +6,23 @@ interface DialogContentProps {
    * The content of the component.
    */
   children?: React.ReactNode;
+  /**
+   * Display the top and bottom dividers.
+   */
+  dividers?: boolean;
 }
 
-export const DialogContent = ({ children }: DialogContentProps) => {
+export const DialogContent = ({
+  children,
+  dividers = false,
+}: DialogContentProps) => {
   return (
-    <div className={`maze-dialog-content ${styles.content}`}>{children}</div>
+    <div
+      className={`maze-dialog-content ${
+        dividers ? "maze-dialog-dividers" : ""
+      } ${styles.content}`}
+    >
+      {children}
+    </div>
   );
 };

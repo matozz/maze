@@ -1,5 +1,5 @@
 :global {
-  .maze-dialog-title + .maze-dialog-content {
+  .maze-dialog-title + .maze-dialog-content:not(.maze-dialog-dividers) {
     padding-top: 0;
   }
 }

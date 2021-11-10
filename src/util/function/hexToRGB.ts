@@ -1,5 +1,5 @@
 export const hexToRGB = (h: string): string => {
-  if (!h) return null;
+  // if (!h) return null;
   let r = 0,
     g = 0,
     b = 0;

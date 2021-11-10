@@ -36,12 +36,13 @@ const Template: Story<LoaderProps> = () => {
   return (
     <>
       <Loader
-        active={loading}
-        handleMaskClose={(status) => status === "closed" && setLoading(false)}
+        open={loading}
+        onClose={() => console.log("Loader Closed")}
+        onClickMask={() => setLoading(false)}
       />
       <Button
         label={loading ? "Hide Loading" : "Show Loading"}
-        onClick={() => setLoading(!loading)}
+        onClick={() => setLoading(true)}
       ></Button>
     </>
   );

@@ -1,70 +1,73 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import { CSSTransition } from "react-transition-group";
+import animatedStyles from "../../../animations/Fade.module.scss";
 import "./Loader.scss";
-
-const _popup = document.createElement("div");
 
 export interface LoaderProps {
   /**
    * Control the popup open state.
    */
-  active?: boolean;
+  open?: boolean;
+  /**
+   * onClose callback
+   */
+  onClose?: () => void;
   /**
    * The content of the component. Your own spinner
    */
   children?: React.ReactNode;
-  clickToClose?: boolean;
-  handleMaskClose?: (status: string) => void;
+  onClickMask?: () => void;
 }
 
 export const Loader: React.FunctionComponent<LoaderProps> = ({
-  active,
-  handleMaskClose,
-  clickToClose,
+  open,
+  onClickMask,
   children,
+  onClose,
   ...props
 }: LoaderProps) => {
-  _popup.classList.add("maze-loader");
-  useEffect(() => {
-    document.body.appendChild(_popup);
-  }, []);
+  const [isOpen, setIsOpen] = useState(open);
 
   useEffect(() => {
-    if (!active) {
-      handleCloseLoading();
-    } else {
-      _popup.classList.remove("maze-loader--inactive");
-      _popup.classList.add("maze-loader--active");
+    setIsOpen(open);
+    if (isOpen && !open) {
+      onClose();
     }
-  }, [active]);
-
-  const handleCloseLoading = () => {
-    handleMaskClose && handleMaskClose("closed");
-    _popup.classList.remove("maze-loader--active");
-    const timer = setTimeout(() => {
-      _popup.classList.add("maze-loader--inactive");
-      clearTimeout(timer);
-    }, 400);
-  };
+  }, [open]);
 
   const Container = () => (
     <>
-      <div
-        className={"maze-loader-mask"}
-        onClick={clickToClose && handleCloseLoading}
-      />
-      {children ? (
-        children
-      ) : (
-        <progress className={"maze-loader-circular"} {...props} />
-      )}
+      <div className={"maze-loader"} onClick={onClickMask}>
+        {children ? (
+          children
+        ) : (
+          <progress className={"maze-loader-circular"} {...props} />
+        )}
+      </div>
     </>
   );
 
-  return ReactDOM.createPortal(<Container />, _popup);
+  const Portal = () => {
+    return <>{ReactDOM.createPortal(<Container />, document.body)}</>;
+  };
+
+  Portal.displayName = "Portal";
+
+  return (
+    <>
+      <CSSTransition
+        in={isOpen}
+        timeout={200}
+        classNames={animatedStyles}
+        unmountOnExit
+      >
+        <Portal />
+      </CSSTransition>
+    </>
+  );
 };
 
 Loader.defaultProps = {
-  active: false,
-  clickToClose: true,
+  open: false,
 };

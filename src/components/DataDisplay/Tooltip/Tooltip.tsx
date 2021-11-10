@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { calculateOffset } from "../../../util/helpers/tooltip";
 import { CSSTransition } from "react-transition-group";
 import styles from "./Tooltip.module.scss";
-import animatedStyles from "./Animated.module.scss";
+import animatedStyles from "../../../animations/Fade.module.scss";
 
 export interface TooltipProps {
   children?: React.ReactNode;

@@ -1,12 +1,10 @@
 .maze-radio-group {
   display: flex;
-  width: min-content;
   gap: 10px;
 }
 
 .maze-radio-group--vertical {
   flex-direction: column;
-  width: min-content;
 }
 
 .maze-radio-group-lable {
