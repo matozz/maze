@@ -37,8 +37,12 @@ export const Default: Story<DialogProps> = () => {
       />
       <Dialog
         open={open}
-        onClose={() => console.log("Dialog Closed")}
+        onClose={() => {
+          console.log("Dialog Closed");
+          setOpen(false);
+        }}
         onBackdropClick={() => setOpen(false)}
+        exitOnEsc
       >
         <DialogTitle>{"Use Google's location service?"}</DialogTitle>
         <DialogContent>
@@ -115,6 +119,120 @@ export const ConfirmDialog: Story<DialogProps> = () => {
         </Dialog>
         <Label>Selection: {result}</Label>
       </Grid>
+    </>
+  );
+};
+
+export const ScrollDialog: Story<DialogProps> = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button
+        label="SCROLL DIALOG"
+        variant="outlined"
+        onClick={() => setOpen(true)}
+      />
+      <Dialog
+        open={open}
+        onClose={() => console.log("Dialog Closed")}
+        onBackdropClick={() => setOpen(false)}
+      >
+        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+        <DialogContent dividers>
+          <DialogContentText>
+            {[...new Array(50)]
+              .map(
+                () => `Cras mattis consectetur purus sit amet fermentum.
+Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
+              )
+              .join("\n")}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            label="DISAGREE"
+            variant="text"
+            onClick={() => setOpen(false)}
+          />
+          <Button label="AGREE" variant="text" onClick={() => setOpen(false)} />
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+};
+
+export const FullWidth: Story<DialogProps> = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button
+        label="OPEN FULL-WIDTH DIALOG"
+        variant="outlined"
+        onClick={() => setOpen(true)}
+      />
+      <Dialog
+        open={open}
+        onClose={() => console.log("Dialog Closed")}
+        onBackdropClick={() => setOpen(false)}
+        fullWidth
+      >
+        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            label="DISAGREE"
+            variant="text"
+            onClick={() => setOpen(false)}
+          />
+          <Button label="AGREE" variant="text" onClick={() => setOpen(false)} />
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+};
+
+export const FullScreen: Story<DialogProps> = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button
+        label="OPEN FULL-SCREEN DIALOG"
+        variant="outlined"
+        onClick={() => setOpen(true)}
+      />
+      <Dialog
+        open={open}
+        onClose={() => console.log("Dialog Closed")}
+        onBackdropClick={() => setOpen(false)}
+        fullScreen
+      >
+        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            label="DISAGREE"
+            variant="text"
+            onClick={() => setOpen(false)}
+          />
+          <Button label="AGREE" variant="text" onClick={() => setOpen(false)} />
+        </DialogActions>
+      </Dialog>
     </>
   );
 };

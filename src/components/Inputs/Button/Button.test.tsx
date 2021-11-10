@@ -3,13 +3,8 @@
  */
 
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-
+import { render, fireEvent } from "@testing-library/react";
 import { Button, ButtonProps } from "./Button";
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe("<Button />", () => {
   let props: ButtonProps;

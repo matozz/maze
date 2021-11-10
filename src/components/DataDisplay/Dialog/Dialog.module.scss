@@ -27,3 +27,12 @@
   max-width: 600px;
   z-index: 1000;
 }
+
+.fullScreen {
+  margin: 0px;
+  max-height: none;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+}

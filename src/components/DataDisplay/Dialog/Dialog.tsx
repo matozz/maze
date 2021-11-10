@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 import styles from "./Dialog.module.scss";
 import animatedStyles from "../../../animations/Fade.module.scss";
+import { useKeypress } from "../../../util/hooks/useKeyPress";
 
 export interface DialogProps {
   children?: React.ReactNode;
@@ -30,11 +31,13 @@ export interface DialogProps {
    * Determine the max-width of the dialog.
    */
   maxWidth?: string;
+  fullWidth?: boolean;
+  fullScreen?: boolean;
+  exitOnEsc?: boolean;
 }
 
 interface PortalProps {
   containerStyle?: React.CSSProperties;
-  maxWidth?: string;
 }
 
 export const Dialog: React.FunctionComponent<DialogProps> = ({
@@ -43,11 +46,22 @@ export const Dialog: React.FunctionComponent<DialogProps> = ({
   children,
   width,
   maxWidth,
+  fullWidth,
+  fullScreen,
+  exitOnEsc,
   onClose,
   onBackdropClick,
 }: DialogProps) => {
   const [isOpen, setIsOpen] = useState(open);
   const portalRef = useRef<HTMLDivElement>(null);
+
+  if (exitOnEsc) {
+    useKeypress("Escape", isOpen, () => {
+      console.log("1234");
+      onClose();
+      setIsOpen(false);
+    });
+  }
 
   useEffect(() => {
     setIsOpen(open);
@@ -67,19 +81,19 @@ export const Dialog: React.FunctionComponent<DialogProps> = ({
   // };
 
   const Portal = forwardRef(
-    (
-      { containerStyle, maxWidth }: PortalProps,
-      ref: React.Ref<HTMLDivElement>
-    ) => {
+    ({ containerStyle }: PortalProps, ref: React.Ref<HTMLDivElement>) => {
       return (
         <>
           {ReactDOM.createPortal(
             <div className={styles.mask} onClick={onBackdropClick}>
               <div
-                className={styles.modal}
+                className={[
+                  styles.modal,
+                  fullScreen ? styles.fullScreen : "",
+                ].join(" ")}
                 style={{
                   ...containerStyle,
-                  maxWidth: maxWidth,
+                  maxWidth: fullWidth ? "unset" : maxWidth,
                   width: width,
                 }}
                 onClick={(e) => {
@@ -87,6 +101,7 @@ export const Dialog: React.FunctionComponent<DialogProps> = ({
                   e.nativeEvent.stopImmediatePropagation();
                   e.stopPropagation();
                 }}
+                role="dialog"
               >
                 {children}
               </div>
@@ -106,7 +121,6 @@ export const Dialog: React.FunctionComponent<DialogProps> = ({
         in={isOpen}
         timeout={200}
         classNames={animatedStyles}
-        maxWidth={maxWidth}
         unmountOnExit
       >
         <Portal ref={portalRef} containerStyle={containerStyle} />
