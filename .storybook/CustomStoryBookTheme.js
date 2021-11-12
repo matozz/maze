@@ -5,6 +5,5 @@ export default create({
 
   brandTitle: "Maze-UI",
   brandUrl: "https://github.com/Matozz/maze",
-  brandImage:
-    "https://raw.githubusercontent.com/Matozz/maze/master/.storybook/brand.png",
+  brandImage: "/maze/brand.png",
 });

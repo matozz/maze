@@ -14,7 +14,7 @@
     "test:watch": "jest --watch",
     "test:ci": "jest --coverage --silent --ci",
     "storybook": "start-storybook -p 6006 -s ./static",
-    "storybook:build": "build-storybook",
+    "storybook:build": "build-storybook -s static",
     "lib:build": "rollup -c",
     "storybook:deploy": "gh-pages -d storybook-static",
     "prepare": "husky install",
