@@ -15,12 +15,14 @@ interface DialogContentProps {
 export const DialogContent = ({
   children,
   dividers = false,
+  ...props
 }: DialogContentProps) => {
   return (
     <div
       className={`maze-dialog-content ${
         dividers ? "maze-dialog-dividers" : ""
       } ${styles.content}`}
+      {...props}
     >
       {children}
     </div>

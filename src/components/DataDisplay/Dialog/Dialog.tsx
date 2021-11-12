@@ -1,9 +1,10 @@
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 import styles from "./Dialog.module.scss";
 import animatedStyles from "../../../animations/Fade.module.scss";
 import { useKeyPress } from "../../../util/hooks";
+import Draggable, { DraggableProps } from "react-draggable";
 
 export interface DialogProps {
   children?: React.ReactNode;
@@ -34,96 +35,108 @@ export interface DialogProps {
   fullWidth?: boolean;
   fullScreen?: boolean;
   exitOnEsc?: boolean;
+  draggable?: boolean;
+  dragOptions?: Partial<DraggableProps>;
+  ref?: React.Ref<HTMLDivElement>;
 }
 
 interface PortalProps {
   containerStyle?: React.CSSProperties;
 }
 
-export const Dialog: React.FunctionComponent<DialogProps> = ({
-  open,
-  containerStyle,
-  children,
-  width,
-  maxWidth,
-  fullWidth,
-  fullScreen,
-  exitOnEsc,
-  onClose,
-  onBackdropClick,
-}: DialogProps) => {
-  const [isOpen, setIsOpen] = useState(open);
-  const portalRef = useRef<HTMLDivElement>(null);
+export const Dialog: React.FunctionComponent<DialogProps> = forwardRef(
+  (
+    {
+      open,
+      containerStyle,
+      children,
+      width,
+      maxWidth,
+      fullWidth,
+      fullScreen,
+      exitOnEsc,
+      draggable,
+      dragOptions,
+      onClose,
+      onBackdropClick,
+    }: DialogProps,
+    ref: React.Ref<HTMLDivElement>
+  ) => {
+    const [isOpen, setIsOpen] = useState(open);
 
-  if (exitOnEsc) {
-    useKeyPress("Escape", isOpen, () => {
-      onClose();
-      setIsOpen(false);
-    });
-  }
-
-  useEffect(() => {
-    setIsOpen(open);
-    if (isOpen && !open) {
-      onClose();
+    if (exitOnEsc) {
+      useKeyPress("Escape", isOpen, () => {
+        onClose();
+        setIsOpen(false);
+      });
     }
-  }, [open]);
 
-  // const handlePopupOpen = () => {
-  //   setIsOpen(true);
-  // };
+    useEffect(() => {
+      setIsOpen(open);
+      if (isOpen && !open) {
+        onClose();
+      }
+    }, [open]);
 
-  // const handlePopupClose = () => {
-  //   if (open) {
-  //     setIsOpen(false);
-  //   }
-  // };
+    // const handlePopupOpen = () => {
+    //   setIsOpen(true);
+    // };
 
-  const Portal = forwardRef(
-    ({ containerStyle }: PortalProps, ref: React.Ref<HTMLDivElement>) => {
+    // const handlePopupClose = () => {
+    //   if (open) {
+    //     setIsOpen(false);
+    //   }
+    // };
+
+    const Portal = forwardRef((_, ref: React.Ref<HTMLDivElement>) => {
       return (
         <>
           {ReactDOM.createPortal(
             <div className={styles.mask} onClick={onBackdropClick}>
-              <div
-                className={[
-                  styles.modal,
-                  fullScreen ? styles.fullScreen : "",
-                ].join(" ")}
-                style={{
-                  ...containerStyle,
-                  maxWidth: fullWidth ? "unset" : maxWidth,
-                  width: width,
-                }}
-                onClick={(e) => {
-                  e.persist();
-                  e.nativeEvent.stopImmediatePropagation();
-                  e.stopPropagation();
-                }}
-                role="dialog"
-              >
-                {children}
-              </div>
+              <Draggable {...dragOptions} disabled={!draggable}>
+                <div
+                  ref={ref}
+                  className={[
+                    styles.modal,
+                    fullScreen ? styles.fullScreen : "",
+                  ].join(" ")}
+                  style={{
+                    ...containerStyle,
+                    maxWidth: fullWidth ? "unset" : maxWidth,
+                    width: width,
+                  }}
+                  onClick={(e) => {
+                    e.persist();
+                    e.nativeEvent.stopImmediatePropagation();
+                    e.stopPropagation();
+                  }}
+                  role="dialog"
+                >
+                  {children}
+                </div>
+              </Draggable>
             </div>,
             document.body
           )}
         </>
       );
-    }
-  );
+    });
 
-  Portal.displayName = "Portal";
+    Portal.displayName = "Portal";
 
-  return (
-    <>
-      <CSSTransition
-        in={isOpen}
-        timeout={200}
-        classNames={animatedStyles}
-        unmountOnExit
-      >
-        <Portal ref={portalRef} containerStyle={containerStyle} />
-      </CSSTransition>
-    </>
-  );
-};
+    return (
+      <>
+        <CSSTransition
+          in={isOpen}
+          timeout={200}
+          classNames={animatedStyles}
+          unmountOnExit
+        >
+          <Portal ref={ref} />
+        </CSSTransition>
+      </>
+    );
+  }
+);
+
+Dialog.displayName = "Dialog";

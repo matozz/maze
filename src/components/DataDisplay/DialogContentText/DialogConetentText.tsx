@@ -8,8 +8,13 @@ interface DialogContentTextProps {
   children?: React.ReactNode;
 }
 
-export const DialogContentText = ({ children }: DialogContentTextProps) => {
+export const DialogContentText = ({
+  children,
+  ...props
+}: DialogContentTextProps) => {
   return (
-    <p className={`maze-dialog-content-text ${styles.text}`}>{children}</p>
+    <p className={`maze-dialog-content-text ${styles.text}`} {...props}>
+      {children}
+    </p>
   );
 };

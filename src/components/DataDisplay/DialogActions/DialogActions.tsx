@@ -8,8 +8,10 @@ interface DialogActionsProps {
   children?: React.ReactNode;
 }
 
-export const DialogActions = ({ children }: DialogActionsProps) => {
+export const DialogActions = ({ children, ...props }: DialogActionsProps) => {
   return (
-    <div className={`maze-dialog-actions ${styles.actions}`}>{children}</div>
+    <div className={`maze-dialog-actions ${styles.actions}`} {...props}>
+      {children}
+    </div>
   );
 };
