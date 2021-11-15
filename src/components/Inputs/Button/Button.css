@@ -42,7 +42,7 @@
   vertical-align: middle;
   text-align: center;
   text-overflow: ellipsis;
-  color: rgb(var(--maze-main-theme));
+  color: rgb(var(--maze-main-theme)) !important;
   background-color: transparent;
 }
 
@@ -116,7 +116,7 @@
   vertical-align: middle;
   text-align: center;
   text-overflow: ellipsis;
-  color: white;
+  /* color: white; */
   background-color: rgb(var(--maze-main-theme));
 }
 
@@ -197,7 +197,7 @@
   vertical-align: middle;
   text-align: center;
   text-overflow: ellipsis;
-  color: rgb(var(--maze-main-theme));
+  color: rgb(var(--maze-main-theme)) !important;
   background-color: transparent;
 }
 

@@ -14,16 +14,6 @@ import { Label } from "../../components/DataDisplay/Label";
 export default {
   title: "Data Display/Dialog",
   component: Dialog,
-  // parameters: {
-  //   docs: {
-  //     description: {
-  //       component: "Quickly and easily create layouts with the flexible grid.",
-  //     },
-  //   },
-  // },
-  // argTypes: {
-  //   children: { control: "" },
-  // },
 } as Meta;
 
 export const Default: Story<DialogProps> = () => {
@@ -84,7 +74,6 @@ export const ConfirmDialog: Story<DialogProps> = () => {
         <Dialog
           open={open}
           onClose={() => console.log("Dialog Closed")}
-          onBackdropClick={() => setOpen(false)}
           width="350px"
         >
           <DialogTitle>{"Best DJ in the world"}</DialogTitle>

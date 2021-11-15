@@ -7,7 +7,7 @@
     -apple-system;
   display: flex;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   position: relative;
   padding: 6px;
@@ -42,8 +42,8 @@
   background-color: rgb(var(--maze-main-theme));
 }
 .maze-radio .outer {
-  height: 14px;
-  width: 14px;
+  height: 16px;
+  width: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +51,7 @@
   /* margin: 10px 9px 10px 10px; */
   border: 2px solid rgb(var(--maze-main-theme));
   border-radius: 50%;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 .maze-radio .inner {
   transition: all 0.25s ease-in-out;
@@ -94,19 +94,19 @@
 }
 
 .maze-radio--medium {
-  transform: scale(1.2);
+  transform: scale(1);
   transform-origin: 0;
   margin: -6px;
 }
 
 .maze-radio--small {
-  transform: scale(1);
+  transform: scale(0.8);
   margin: -6px;
   transform-origin: 0;
 }
 
 .maze-radio--large {
-  transform: scale(1.4);
+  transform: scale(1.2);
   margin: -6px;
   transform-origin: 0;
 }

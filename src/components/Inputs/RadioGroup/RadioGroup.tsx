@@ -42,7 +42,7 @@ export const RadioGroup: React.FunctionComponent<RadioGroupProps> = React.memo(
         ? "maze-radio-group--horizontal"
         : "maze-radio-group--vertical";
     return (
-      <>
+      <div>
         {label && <div className="maze-radio-group-lable">{label}</div>}
 
         <div
@@ -69,7 +69,7 @@ export const RadioGroup: React.FunctionComponent<RadioGroupProps> = React.memo(
             }
           })}
         </div>
-      </>
+      </div>
     );
   }
 );

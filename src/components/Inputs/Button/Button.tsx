@@ -1,6 +1,8 @@
 import React, { useState, useEffect, forwardRef } from "react";
 import "./Button.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
+import { createTheme, useTheme } from "../../../styles";
+import { useMergedThemeProps } from "../../../styles";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -30,11 +32,12 @@ export interface ButtonProps
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    { variant, disabled, color, size, label, style, ...props }: ButtonProps,
-    ref
-  ) => {
+  ({ ...oldProps }: ButtonProps, ref) => {
     const [cssProperties, setCssProperties] = useState({});
+
+    const { variant, disabled, color, size, label, style, theme, ...props } =
+      useMergedThemeProps({ name: "Button", oldProps: oldProps });
+
     const mode =
       variant === "text"
         ? "maze-button--text"
@@ -43,18 +46,25 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         : "maze-button--contained";
 
     useEffect(() => {
-      setCssProperties({ "--maze-main-theme": hexToRGB(color) });
+      setCssProperties({
+        "--maze-main-theme": hexToRGB(color),
+      });
       return () => {
         null;
       };
     }, [color]);
+
     return (
       <button
         type="button"
         className={["maze-button", `maze-button--${size}`, mode].join(" ")}
         {...props}
         disabled={disabled}
-        style={{ ...cssProperties, ...style }}
+        style={{
+          ...cssProperties,
+          ...style,
+          color: theme == "dark" ? "rgba(0, 0, 0, 0.87)" : "white",
+        }}
         ref={ref}
       >
         {label}

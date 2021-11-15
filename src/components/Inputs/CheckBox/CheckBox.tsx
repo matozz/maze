@@ -1,6 +1,7 @@
 import React, { useState, useEffect, forwardRef } from "react";
 import "./CheckBox.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
+import { Label } from "../../DataDisplay/Label";
 
 export interface CheckBoxProps {
   ref?: React.Ref<HTMLLabelElement>;
@@ -59,7 +60,18 @@ export const CheckBox = forwardRef<HTMLInputElement, CheckBoxProps>(
             name={name}
             value={value}
           />
-          <span>{label}</span>
+          <span>
+            <Label
+              style={{
+                marginLeft: 11,
+                marginTop: 0,
+                marginBottom: 0,
+                display: "inline",
+              }}
+            >
+              {label}
+            </Label>
+          </span>
         </label>
       </>
     );

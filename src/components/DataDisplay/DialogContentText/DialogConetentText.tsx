@@ -1,4 +1,5 @@
 import React from "react";
+import { useMergedThemeProps } from "../../../styles";
 import styles from "./DialogContentText.module.scss";
 
 interface DialogContentTextProps {
@@ -10,10 +11,18 @@ interface DialogContentTextProps {
 
 export const DialogContentText = ({
   children,
-  ...props
+  ...oldProps
 }: DialogContentTextProps) => {
+  const { color, theme, ...props } = useMergedThemeProps({
+    name: "DialogContentText",
+    oldProps: oldProps,
+  });
   return (
-    <p className={`maze-dialog-content-text ${styles.text}`} {...props}>
+    <p
+      className={`maze-dialog-content-text ${styles.text}`}
+      style={{ color: color }}
+      {...props}
+    >
       {children}
     </p>
   );

@@ -23,13 +23,13 @@
   margin: 0;
   border: none;
   border-top: solid 24px transparent;
-  border-bottom: solid 1px rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.4);
+  border-bottom: solid 1px rgba(var(--maze-onsurface-rgb), 0.4);
   border-radius: 4px 4px 0 0;
   padding: 0 12px 3px;
   width: 100%;
   height: inherit;
-  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.87);
-  background-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.04);
+  color: rgba(var(--maze-onsurface-rgb), 0.87);
+  background-color: rgba(var(--maze-onsurface-rgb), 0.04);
   box-shadow: none; /* Firefox */
   font-family: inherit;
   font-size: inherit;
@@ -49,7 +49,7 @@
   display: block;
   box-sizing: border-box;
   padding: 10px 12px 0;
-  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.6);
+  color: rgba(var(--maze-onsurface-rgb), 0.6);
   font-size: 75%;
   line-height: 18px;
   pointer-events: none;
@@ -75,8 +75,8 @@
 /* Hover */
 .maze-textfield--filled > input:hover,
 .maze-textfield--filled > textarea:hover {
-  border-bottom-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.87);
-  background-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.08);
+  border-bottom-color: rgba(var(--maze-onsurface-rgb), 0.87);
+  background-color: rgba(var(--maze-onsurface-rgb), 0.08);
 }
 
 /* Placeholder-shown */
@@ -110,15 +110,15 @@
 /* Disabled */
 .maze-textfield--filled > input:disabled,
 .maze-textfield--filled > textarea:disabled {
-  /* border-bottom-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.38); */
-  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.38);
-  background-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.12);
-  border-bottom: dotted 1px rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.4);
+  /* border-bottom-color: rgba(var(--maze-onsurface-rgb), 0.38); */
+  color: rgba(var(--maze-onsurface-rgb), 0.38);
+  background-color: rgba(var(--maze-onsurface-rgb), 0.12);
+  border-bottom: dotted 1px rgba(var(--maze-onsurface-rgb), 0.4);
 }
 
 .maze-textfield--filled > input:disabled + span,
 .maze-textfield--filled > textarea:disabled + span {
-  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.38);
+  color: rgba(var(--maze-onsurface-rgb), 0.38);
 }
 
 /* Size */
@@ -128,7 +128,7 @@
 .maze-textfield--small > input:not(:focus):placeholder-shown + span,
 .maze-textfield--small > textarea:not(:focus):placeholder-shown + span {
   font-size: inherit;
-  line-height: 44px;
+  line-height: 42px;
 }
 
 .maze-textfield--small > input,
@@ -139,7 +139,7 @@
 
 .maze-textfield--small > input + span,
 .maze-textfield--small > textarea + span {
-  padding: 6px 12px;
+  padding: 8px 12px;
 }
 
 .maze-textfield--large {
@@ -188,13 +188,13 @@
   box-sizing: border-box;
   margin: 0;
   border: solid 1px; /* Safari */
-  border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.2);
+  border-color: rgba(var(--maze-onsurface-rgb), 0.2);
   border-top-color: transparent;
   border-radius: 4px;
   padding: 13px 11px 13px;
   width: 100%;
   height: inherit;
-  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.87);
+  color: rgba(var(--maze-onsurface-rgb), 0.87);
   background-color: transparent;
   box-shadow: none; /* Firefox */
   font-family: inherit;
@@ -211,10 +211,10 @@
   top: 0;
   left: 0;
   display: flex;
-  border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.3);
+  border-color: rgba(var(--maze-onsurface-rgb), 0.3);
   width: 100%;
   max-height: 100%;
-  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.55);
+  color: rgba(var(--maze-onsurface-rgb), 0.55);
   font-size: 75%;
   line-height: 15px;
   cursor: text;
@@ -231,7 +231,7 @@
   box-sizing: border-box;
   margin-top: 6px;
   border-top: solid 1px;
-  border-top-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.2);
+  border-top-color: rgba(var(--maze-onsurface-rgb), 0.2);
   min-width: 10px;
   height: 8px;
   pointer-events: none;
@@ -257,7 +257,7 @@
 /* Hover */
 .maze-textfield--outlined:hover > input,
 .maze-textfield--outlined:hover > textarea {
-  border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.47);
+  border-color: rgba(var(--maze-onsurface-rgb), 0.47);
   border-top-color: transparent;
 }
 
@@ -265,18 +265,18 @@
 .maze-textfield--outlined:hover > textarea + span::before,
 .maze-textfield--outlined:hover > input + span::after,
 .maze-textfield--outlined:hover > textarea + span::after {
-  border-top-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.87);
+  border-top-color: rgba(var(--maze-onsurface-rgb), 0.47);
 }
 
 .maze-textfield--outlined:hover > input:not(:focus):placeholder-shown,
 .maze-textfield--outlined:hover > textarea:not(:focus):placeholder-shown {
-  border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.5);
+  border-color: rgba(var(--maze-onsurface-rgb), 0.5);
 }
 
 /* Placeholder-shown */
 .maze-textfield--outlined > input:not(:focus):placeholder-shown,
 .maze-textfield--outlined > textarea:not(:focus):placeholder-shown {
-  border-top-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.2);
+  border-top-color: rgba(var(--maze-onsurface-rgb), 0.2);
 }
 
 .maze-textfield--outlined > input:not(:focus):placeholder-shown + span,
@@ -326,9 +326,9 @@
 .maze-textfield--outlined > input:disabled + span,
 .maze-textfield--outlined > textarea:disabled,
 .maze-textfield--outlined > textarea:disabled + span {
-  border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.2) !important;
+  border-color: rgba(var(--maze-onsurface-rgb), 0.2) !important;
   border-top-color: transparent !important;
-  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.3);
+  color: rgba(var(--maze-onsurface-rgb), 0.3);
   pointer-events: none;
 }
 
@@ -336,14 +336,14 @@
 .maze-textfield--outlined > input:disabled + span::after,
 .maze-textfield--outlined > textarea:disabled + span::before,
 .maze-textfield--outlined > textarea:disabled + span::after {
-  border-top-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.2) !important;
+  border-top-color: rgba(var(--maze-onsurface-rgb), 0.2) !important;
 }
 
 .maze-textfield--outlined > input:disabled:placeholder-shown,
 .maze-textfield--outlined > input:disabled:placeholder-shown + span,
 .maze-textfield--outlined > textarea:disabled:placeholder-shown,
 .maze-textfield--outlined > textarea:disabled:placeholder-shown + span {
-  border-top-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.2) !important;
+  border-top-color: rgba(var(--maze-onsurface-rgb), 0.2) !important;
 }
 
 .maze-textfield--outlined > input:disabled:placeholder-shown + span::before,
@@ -443,7 +443,7 @@
   bottom: -22px;
   left: 12px;
   font-size: 0.75rem;
-  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.55);
+  color: rgba(var(--maze-onsurface-rgb), 0.55);
 }
 
 /* Error */

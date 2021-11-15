@@ -13,7 +13,7 @@ const colors = [
   "#00b7af",
 ];
 
-interface AvatarProps {
+export interface AvatarProps {
   /**
    * Avatar variants
    */
@@ -37,7 +37,7 @@ interface AvatarProps {
   children?: string | React.ReactNode;
 }
 
-export const Avatar: React.FunctionComponent<AvatarProps> = ({
+const Avatar: React.FunctionComponent<AvatarProps> = ({
   variant,
   size,
   src,
@@ -74,7 +74,7 @@ export const Avatar: React.FunctionComponent<AvatarProps> = ({
     setIsError(true);
   };
 
-  function choose(choices) {
+  function choose(choices: string[]) {
     const index = Math.floor(Math.random() * choices.length);
     return choices[index];
   }
@@ -113,3 +113,5 @@ Avatar.defaultProps = {
   size: "medium",
   colorful: false,
 };
+
+export default Avatar;

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, forwardRef } from "react";
 import "./Switch.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
+import { useMergedThemeProps } from "../../../styles";
+import { Label } from "../../DataDisplay/Label";
 
 export interface SwitchProps {
   ref?: React.Ref<HTMLLabelElement>;
@@ -22,6 +24,13 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   (
     {
       // checked,
+      ...oldProps
+    }: SwitchProps,
+    ref
+  ) => {
+    const [cssProperties, setCssProperties] = useState({});
+
+    const {
       size,
       disabled,
       name,
@@ -30,11 +39,10 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       onChange,
       color,
       style,
+      theme,
       ...props
-    }: SwitchProps,
-    ref
-  ) => {
-    const [cssProperties, setCssProperties] = useState({});
+    } = useMergedThemeProps({ name: "Switch", oldProps: oldProps });
+
     useEffect(() => {
       setCssProperties({ "--maze-main-theme": hexToRGB(color) });
       return () => {
@@ -58,8 +66,11 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             disabled={disabled}
             name={name}
             value={value}
+            onChange={onChange}
           />
-          <span>{label}</span>
+          <span>
+            <Label style={{ margin: 0 }}>{label}</Label>
+          </span>
         </label>
       </>
     );

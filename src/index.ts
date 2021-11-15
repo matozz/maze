@@ -21,3 +21,5 @@ export * from "./components/Layouts/ImageList";
 export * from "./components/Complex/Carousel";
 export * from "./components/Complex/ColorPicker";
 export * from "./components/Feedback/Loader";
+
+export * from "./styles";

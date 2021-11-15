@@ -5,6 +5,7 @@ import styles from "./Dialog.module.scss";
 import animatedStyles from "../../../animations/Fade.module.scss";
 import { useKeyPress } from "../../../util/hooks";
 import Draggable, { DraggableProps } from "react-draggable";
+import { useMergedThemeProps } from "../../../styles";
 
 export interface DialogProps {
   children?: React.ReactNode;
@@ -38,15 +39,16 @@ export interface DialogProps {
   draggable?: boolean;
   dragOptions?: Partial<DraggableProps>;
   ref?: React.Ref<HTMLDivElement>;
+  backgroundColor?: string;
 }
 
 interface PortalProps {
   containerStyle?: React.CSSProperties;
 }
 
-export const Dialog: React.FunctionComponent<DialogProps> = forwardRef(
-  (
-    {
+const Dialog: React.FunctionComponent<DialogProps> = forwardRef(
+  ({ ...oldProps }: DialogProps, ref: React.Ref<HTMLDivElement>) => {
+    const {
       open,
       containerStyle,
       children,
@@ -55,13 +57,17 @@ export const Dialog: React.FunctionComponent<DialogProps> = forwardRef(
       fullWidth,
       fullScreen,
       exitOnEsc,
+      backgroundColor,
       draggable,
       dragOptions,
       onClose,
       onBackdropClick,
-    }: DialogProps,
-    ref: React.Ref<HTMLDivElement>
-  ) => {
+      theme,
+      ...props
+    } = useMergedThemeProps({
+      name: "Dialog",
+      oldProps: oldProps,
+    });
     const [isOpen, setIsOpen] = useState(open);
 
     if (exitOnEsc) {
@@ -104,6 +110,7 @@ export const Dialog: React.FunctionComponent<DialogProps> = forwardRef(
                     ...containerStyle,
                     maxWidth: fullWidth ? "unset" : maxWidth,
                     width: width,
+                    backgroundColor,
                   }}
                   onClick={(e) => {
                     e.persist();
@@ -140,3 +147,5 @@ export const Dialog: React.FunctionComponent<DialogProps> = forwardRef(
 );
 
 Dialog.displayName = "Dialog";
+
+export default Dialog;

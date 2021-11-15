@@ -1,6 +1,8 @@
 import React, { useState, useEffect, forwardRef } from "react";
 import "./Radio.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
+import { Label } from "../../DataDisplay/Label";
+import { useMergedThemeProps } from "../../../styles";
 
 export interface RadioProps {
   checked?: boolean;
@@ -20,11 +22,12 @@ export interface RadioProps {
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  (
-    {
+  ({ ...oldProps }: RadioProps, ref) => {
+    const [cssProperties, setCssProperties] = useState({});
+
+    const {
       checked,
       size,
-
       disabled,
       name,
       label,
@@ -32,11 +35,10 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       onChange,
       color,
       style,
+      theme,
       ...props
-    }: RadioProps,
-    ref
-  ) => {
-    const [cssProperties, setCssProperties] = useState({});
+    } = useMergedThemeProps({ name: "Radio", oldProps: oldProps });
+
     useEffect(() => {
       setCssProperties({ "--maze-main-theme": hexToRGB(color) });
       return () => {
@@ -68,7 +70,9 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           <span className="outer">
             <span className="inner"></span>
           </span>
-          <span className="maze-radio-label">{label}</span>
+          <Label style={{ marginLeft: 11, marginTop: 0, marginBottom: 0 }}>
+            {label}
+          </Label>
         </label>
       </>
     );
