@@ -52,6 +52,7 @@
   border: 2px solid rgb(var(--maze-main-theme));
   border-radius: 50%;
   /* background-color: #fff; */
+  box-sizing: content-box;
 }
 .maze-radio .inner {
   transition: all 0.25s ease-in-out;

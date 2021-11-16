@@ -71,7 +71,11 @@ export const TextField = forwardRef<
     name,
     theme,
     ...props
-  } = useMergedThemeProps({ name: "TextField", oldProps: oldProps });
+  } = useMergedThemeProps({
+    name: "TextField",
+    oldProps: oldProps,
+    defaultProps: { color: "#1976d2" },
+  });
 
   const errorColor = "#d32f2f";
   useEffect(() => {

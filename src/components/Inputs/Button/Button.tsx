@@ -36,7 +36,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const [cssProperties, setCssProperties] = useState({});
 
     const { variant, disabled, color, size, label, style, theme, ...props } =
-      useMergedThemeProps({ name: "Button", oldProps: oldProps });
+      useMergedThemeProps({
+        name: "Button",
+        oldProps: oldProps,
+        defaultProps: { color: "#1976d2" },
+      });
 
     const mode =
       variant === "text"

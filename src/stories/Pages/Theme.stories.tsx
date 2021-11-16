@@ -111,7 +111,7 @@ const Template: Story = () => {
             onBackdropClick={() => setOpen(false)}
           >
             <DialogTitle>{"Use Google's location service?"}</DialogTitle>
-            <DialogContent>
+            <DialogContent dividers>
               <DialogContentText>
                 Let Google help apps determine location. This means sending
                 anonymous location data to Google, even when no apps are

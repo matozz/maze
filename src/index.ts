@@ -6,6 +6,7 @@ export * from "./components/DataDisplay/DialogTitle";
 export * from "./components/DataDisplay/DialogContent";
 export * from "./components/DataDisplay/DialogContentText";
 export * from "./components/DataDisplay/DialogActions";
+export * from "./components/DataDisplay/Label";
 export * from "./components/Inputs/Button";
 export * from "./components/Inputs/ButtonGroup";
 export * from "./components/Inputs/CheckBox";
