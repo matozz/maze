@@ -1,0 +1,357 @@
+---
+sidebar_position: 2
+---
+
+import { useState } from "react";
+import { Grid, TextField } from "maze-ui";
+import { Wrapper } from "/src/components/ComponentsWrapper";
+
+# Text Field
+
+Text fields allow users to enter text into a UI. They typically appear in forms and dialogs.
+
+## Basic TextField
+
+The `TextField` wrapper component is a complete form control including a label, input, and help text. It comes with three variants: filled (default), outlined, and standard.
+
+<Wrapper>
+  <Grid spacing={2} justifyContent="center">
+    <TextField variant="filled" label="Filled" />
+    <TextField variant="outlined" label="Outlined" />
+  </Grid>
+</Wrapper>
+
+```jsx
+<TextField variant="filled" label="Filled" />
+<TextField variant="outlined" label="Outlined" />
+```
+
+## Sizes
+
+Fancy smaller inputs? Use the `size` prop.
+
+<Wrapper>
+  <Grid spacing={2} justifyContent="center">
+    <Grid spacing={2}>
+      <TextField variant="filled" size="small" label="SMALL" />
+      <TextField variant="filled" size="medium" label="MEDIUM" />
+      <TextField variant="filled" size="large" label="LARGE" />
+    </Grid>
+    <Grid spacing={2}>
+      <TextField variant="outlined" size="small" label="SMALL" />
+      <TextField variant="outlined" size="medium" label="MEDIUM" />
+      <TextField variant="outlined" size="large" label="LARGE" />
+    </Grid>
+  </Grid>
+</Wrapper>
+
+```jsx
+<Grid spacing={2}>
+  <TextField variant="filled" size="small" label="SMALL" />
+  <TextField variant="filled" size="medium" label="MEDIUM" />
+  <TextField variant="filled" size="large" label="LARGE" />
+</Grid>
+<Grid spacing={2}>
+  <TextField variant="outlined" size="small" label="SMALL" />
+  <TextField variant="outlined" size="medium" label="MEDIUM" />
+  <TextField variant="outlined" size="large" label="LARGE" />
+</Grid>
+```
+
+## Input Behaviors
+
+<Wrapper>
+  <Grid spacing={2} justifyContent="center">
+    <Grid spacing={2}>
+      <TextField variant="filled" size="medium" label="Required" required />
+      <TextField
+        variant="filled"
+        label="Disabled"
+        defaultValue="Hello World"
+        disabled
+      />
+      <TextField
+        variant="filled"
+        label="Password"
+        type="password"
+        autoComplete="current-password"
+      />
+    </Grid>
+    <Grid spacing={2}>
+      <TextField variant="outlined" size="medium" label="Required" required />
+      <TextField
+        variant="outlined"
+        label="Disabled"
+        defaultValue="Hello World"
+        disabled
+      />
+      <TextField
+        variant="outlined"
+        label="Password"
+        type="password"
+        autoComplete="current-password"
+      />
+    </Grid>
+  </Grid>
+</Wrapper>
+
+```jsx
+<Grid spacing={2}>
+  <TextField variant="filled" size="medium" label="Required" required />
+  <TextField
+    variant="filled"
+    label="Disabled"
+    defaultValue="Hello World"
+    disabled
+  />
+  <TextField
+    variant="filled"
+    label="Password"
+    type="password"
+    autoComplete="current-password"
+  />
+</Grid>
+<Grid spacing={2}>
+  <TextField variant="outlined" size="medium" label="Required" required />
+  <TextField
+    variant="outlined"
+    label="Disabled"
+    defaultValue="Hello World"
+    disabled
+  />
+  <TextField
+    variant="outlined"
+    label="Password"
+    type="password"
+    autoComplete="current-password"
+    >
+</Grid>
+```
+
+## Multiline
+
+The `multiline` prop transforms the text field into a `<textarea>` element. Unless the rows prop is set, the height of the text field dynamically matches its content (using `TextareaAutosize`). You can use the `row` props to specify the rows.
+
+<Wrapper>
+  <Grid spacing={2} justifyContent="center">
+    <Grid spacing={2}>
+      <TextField variant="filled" label="Multiline" multiline rows={2} />
+      <TextField
+        variant="filled"
+        label="Resizable Multiline"
+        defaultValue="Hello World"
+        multiline
+        resize
+      />
+    </Grid>
+    <Grid spacing={2}>
+      <TextField variant="outlined" label="Multiline" multiline rows={2} />
+      <TextField
+        variant="outlined"
+        label="Resizable Multiline"
+        defaultValue="Hello World"
+        multiline
+        resize
+      />
+    </Grid>
+  </Grid>
+</Wrapper>
+
+```jsx
+<Grid spacing={2}>
+  <TextField variant="filled" label="Multiline" multiline rows={2} />
+  <TextField
+    variant="filled"
+    label="Resizable Multiline"
+    defaultValue="Hello World"
+    multiline
+    resize
+  />
+</Grid>;
+<Grid spacing={2}>
+  <TextField variant="outlined" label="Multiline" multiline rows={2} />
+  <TextField
+    variant="outlined"
+    label="Resizable Multiline"
+    defaultValue="Hello World"
+    multiline
+    resize
+  />
+</Grid>;
+```
+
+## Color
+
+The `color` prop changes the highlight color of the text field when focused.
+
+<Wrapper>
+  <Grid spacing={2} justifyContent="center">
+    <TextField
+      variant="filled"
+      label="Filled success"
+      defaultValue="Success"
+      color="#2e7d32"
+      focused
+    />
+    <TextField
+      variant="outlined"
+      label="Outlined waring"
+      defaultValue="Warning"
+      color="#ed6c02"
+      focused
+    />
+    <TextField
+      variant="outlined"
+      label="Outlined error"
+      defaultValue="Error"
+      color="#d32f2f"
+      focused
+    />
+  </Grid>
+</Wrapper>
+
+```jsx
+<Grid spacing={2}>
+  <TextField
+    variant="filled"
+    label="Filled success"
+    defaultValue="Success"
+    color="#2e7d32"
+    focused
+  />
+  <TextField
+    variant="outlined"
+    label="Outlined waring"
+    defaultValue="Warning"
+    color="#ed6c02"
+    focused
+  />
+  <TextField
+    variant="outlined"
+    label="Outlined error"
+    defaultValue="Error"
+    color="#d32f2f"
+    focused
+  />
+</Grid>
+```
+
+## Controlls
+
+The component can be controlled or uncontrolled.
+
+export const Controlls = () => {
+  const [value, setValue] = useState("Hello World");
+  return (
+    <Wrapper>
+      <Grid spacing={2} justifyContent="center">
+        <TextField
+          variant="outlined"
+          label="Controlled"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <TextField variant="outlined" label="Uncontrolled" defaultValue="foo" />
+      </Grid>
+    </Wrapper>
+  );
+};
+
+<Controlls />
+
+```jsx
+export const MyComponent = () => {
+  const [value, setValue] = useState("Hello World");
+  return (
+    <Grid spacing={2}>
+      <TextField
+        variant="outlined"
+        label="Controlled"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <TextField variant="outlined" label="Uncontrolled" defaultValue="foo" />
+    </Grid>
+  );
+};
+```
+
+## Helper text
+
+The helper text prop affects the height of the text field.
+
+<Wrapper>
+  <Grid spacing={2} justifyContent="center">
+    <TextField
+      variant="outlined"
+      label="Name"
+      helperText="Please enter your name"
+    />
+    <TextField variant="outlined" label="Name" helperText=" " />
+  </Grid>
+</Wrapper>
+
+```jsx
+<Grid spacing={2}>
+  <TextField
+    variant="outlined"
+    label="Name"
+    helperText="Please enter your name"
+  />
+  <TextField variant="outlined" label="Name" helperText=" " />
+</Grid>
+```
+
+:::tip Notes
+
+If two text fields are placed side by side, one with a helper text and one without, they will have different heights.
+
+This can be fixed by passing a space character to the `helperText` prop
+
+```jsx
+<TextField variant="outlined" label="Name" helperText=" " />
+```
+
+:::
+
+## Error
+
+<Wrapper>
+  <Grid spacing={2} justifyContent="center">
+    <TextField
+      error
+      variant="filled"
+      label="Error"
+      defaultValue="Hello World"
+      helperText="Incorrect entry."
+      focused
+    />
+    <TextField
+      error
+      variant="outlined"
+      label="Error"
+      defaultValue="Hello World"
+      helperText="Incorrect entry."
+      focused
+    />
+  </Grid>
+</Wrapper>
+
+```jsx
+<TextField
+  error
+  variant="filled"
+  label="Error"
+  defaultValue="Hello World"
+  helperText="Incorrect entry."
+  focused
+/>
+<TextField
+  error
+  variant="outlined"
+  label="Error"
+  defaultValue="Hello World"
+  helperText="Incorrect entry."
+  focused
+/>
+```

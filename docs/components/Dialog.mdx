@@ -1,0 +1,519 @@
+---
+sidebar_position: 3
+---
+
+import { useState, useCallback, useRef } from "react";
+import {
+  Grid,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Radio,
+  RadioGroup,
+  // Label,
+} from "maze-ui";
+import { Wrapper } from "/src/components/ComponentsWrapper";
+
+A Dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.
+
+Dialogs are purposefully interruptive, so they should be used sparingly.
+
+## Basic dialog
+
+Simple dialogs can provide additional details or actions.
+
+Touch mechanics:
+
+- Choosing an option immediately commits the option and closes the menu
+- Touching outside of the dialog, or pressing Back ( `ESC` ) keys, cancels the action and closes the dialog
+
+export const Default = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Wrapper>
+        <Button
+          label="OPEN BASIC DIALOG"
+          variant="outlined"
+          onClick={() => setOpen(true)}
+        />
+        <Dialog
+          open={open}
+          onClose={() => {
+            console.log("Dialog Closed");
+            setOpen(false);
+          }}
+          onBackdropClick={() => setOpen(false)}
+          exitOnEsc
+        >
+          <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Let Google help apps determine location. This means sending
+              anonymous location data to Google, even when no apps are running.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              label="DISAGREE"
+              variant="text"
+              onClick={() => setOpen(false)}
+            />
+            <Button
+              label="AGREE"
+              variant="text"
+              onClick={() => setOpen(false)}
+            />
+          </DialogActions>
+        </Dialog>
+      </Wrapper>
+    </>
+  );
+};
+
+<Default />
+
+```jsx
+import React, { useState } from "react";
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+} from "maze-ui";
+
+export const MyDialog = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button
+        label="OPEN DIALOG"
+        variant="outlined"
+        onClick={() => setOpen(true)}
+      />
+      <Dialog
+        open={open}
+        onClose={() => {
+          console.log("Dialog Closed");
+          setOpen(false);
+        }}
+        onBackdropClick={() => setOpen(false)}
+        exitOnEsc
+      >
+        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            label="DISAGREE"
+            variant="text"
+            onClick={() => setOpen(false)}
+          />
+          <Button label="AGREE" variant="text" onClick={() => setOpen(false)} />
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+};
+```
+
+## Confirm dialog
+
+Dialogs allow users to fill out form fields.
+
+export const ConfirmDialog = () => {
+  const [open, setOpen] = useState(false);
+  const [result, setResult] = useState("");
+  const resRef = useRef();
+  const handleSelect = useCallback((e) => {
+    resRef.current = e.target.value;
+  }, []);
+  return (
+    <>
+      <Wrapper>
+        <Grid spacing={2}>
+          <Button
+            label="DJ MAG VOTE 2022"
+            variant="outlined"
+            onClick={() => setOpen(true)}
+          />
+          <Dialog
+            open={open}
+            onClose={() => console.log("Dialog Closed")}
+            width="350px"
+          >
+            <DialogTitle>{"Best DJ in the world"}</DialogTitle>
+            <DialogContent dividers>
+              <RadioGroup
+                name="dj"
+                size="medium"
+                orientation="vertical"
+                spacing={15}
+                onChange={handleSelect}
+              >
+                <Radio value="Martin Garrix" label="Martin Garrix" />
+                <Radio value="Mike Williams" label="Mike Williams" />
+                <Radio value="Brooks" label="Brooks" />
+              </RadioGroup>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                label="CANCEL"
+                variant="text"
+                onClick={() => setOpen(false)}
+              />
+              <Button
+                label="SUBMIT"
+                variant="text"
+                onClick={() => {
+                  setResult(resRef.current);
+                  setOpen(false);
+                }}
+              />
+            </DialogActions>
+          </Dialog>
+          <Label>Selection: {result}</Label>
+        </Grid>
+      </Wrapper>
+    </>
+  );
+};
+
+<ConfirmDialog />
+
+```jsx
+import React, { useState, useCallback, useRef } from "react";
+import {
+  Grid,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Label,
+} from "maze-ui";
+
+export const MyDialog = () => {
+  const [open, setOpen] = useState(false);
+  const [result, setResult] = useState("");
+  const resRef = useRef();
+  const handleSelect = useCallback((e) => {
+    resRef.current = e.target.value;
+  }, []);
+
+  return (
+    <>
+      <Grid spacing={2}>
+        <Button
+          label="DJ MAG VOTE 2022"
+          variant="outlined"
+          onClick={() => setOpen(true)}
+        />
+        <Dialog
+          open={open}
+          onClose={() => console.log("Dialog Closed")}
+          width="350px"
+        >
+          <DialogTitle>{"Best DJ in the world"}</DialogTitle>
+          <DialogContent dividers>
+            <RadioGroup
+              name="dj"
+              size="medium"
+              orientation="vertical"
+              spacing={15}
+              onChange={handleSelect}
+            >
+              <Radio value="Martin Garrix" label="Martin Garrix" />
+              <Radio value="Mike Williams" label="Mike Williams" />
+              <Radio value="Brooks" label="Brooks" />
+            </RadioGroup>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              label="CANCEL"
+              variant="text"
+              onClick={() => setOpen(false)}
+            />
+            <Button
+              label="SUBMIT"
+              variant="text"
+              onClick={() => {
+                setResult(resRef.current);
+                setOpen(false);
+              }}
+            />
+          </DialogActions>
+        </Dialog>
+        <Label>Selection: {result}</Label>
+      </Grid>
+    </>
+  );
+};
+```
+
+## Scrolling long content
+
+When dialogs become too long for the user's viewport or device, they scroll.
+
+export const ScrollDialog = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Wrapper>
+        <Button
+          label="SCROLL DIALOG"
+          variant="outlined"
+          onClick={() => setOpen(true)}
+        />
+        <Dialog
+          open={open}
+          onClose={() => console.log("Dialog Closed")}
+          onBackdropClick={() => setOpen(false)}
+        >
+          <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+          <DialogContent dividers>
+            <DialogContentText>
+              {[...new Array(50)]
+                .map(
+                  () => `Cras mattis consectetur purus sit amet fermentum.
+Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
+                )
+                .join("\n")}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              label="DISAGREE"
+              variant="text"
+              onClick={() => setOpen(false)}
+            />
+            <Button
+              label="AGREE"
+              variant="text"
+              onClick={() => setOpen(false)}
+            />
+          </DialogActions>
+        </Dialog>
+      </Wrapper>
+    </>
+  );
+};
+
+<ScrollDialog />
+
+## Full-screen dialogs
+
+When the `fullScreen` prop is true, the dialog will show in full-screen.
+
+export const FullScreen = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Wrapper>
+        <Button
+          label="OPEN FULL-SCREEN DIALOG"
+          variant="outlined"
+          onClick={() => setOpen(true)}
+        />
+        <Dialog
+          open={open}
+          onClose={() => console.log("Dialog Closed")}
+          onBackdropClick={() => setOpen(false)}
+          fullScreen
+        >
+          <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Let Google help apps determine location. This means sending
+              anonymous location data to Google, even when no apps are running.
+              Let Google help apps determine location. This means sending
+              anonymous location data to Google, even when no apps are running.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              label="DISAGREE"
+              variant="text"
+              onClick={() => setOpen(false)}
+            />
+            <Button
+              label="AGREE"
+              variant="text"
+              onClick={() => setOpen(false)}
+            />
+          </DialogActions>
+        </Dialog>
+      </Wrapper>
+    </>
+  );
+};
+
+<FullScreen />
+
+## Full-width dialogs
+
+When the `fullWidth` prop is true, the dialog will adapt to the screen maximum width.
+
+export const FullWidth = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Wrapper>
+        <Button
+          label="OPEN FULL-WIDTH DIALOG"
+          variant="outlined"
+          onClick={() => setOpen(true)}
+        />
+        <Dialog
+          open={open}
+          onClose={() => console.log("Dialog Closed")}
+          onBackdropClick={() => setOpen(false)}
+          fullWidth
+        >
+          <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Let Google help apps determine location. This means sending
+              anonymous location data to Google, even when no apps are running.
+              Let Google help apps determine location. This means sending
+              anonymous location data to Google, even when no apps are running.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              label="DISAGREE"
+              variant="text"
+              onClick={() => setOpen(false)}
+            />
+            <Button
+              label="AGREE"
+              variant="text"
+              onClick={() => setOpen(false)}
+            />
+          </DialogActions>
+        </Dialog>
+      </Wrapper>
+    </>
+  );
+};
+
+<FullWidth />
+
+## Draggable Dialog
+
+You can create a draggable dialog by using **[react-draggable](https://github.com/mzabriskie/react-draggable)**.
+
+You can use `draggable` to enable drag behavior on whole dialog, then set the `dragOptions` and `dragFor` to specify the components that can be dragged.
+
+export const Draggable = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Wrapper>
+        <Button
+          label="OPEN DRAGGABLE DIALOG"
+          variant="outlined"
+          onClick={() => setOpen(true)}
+        />
+        <Dialog
+          open={open}
+          onClose={() => console.log("Dialog Closed")}
+          onBackdropClick={() => setOpen(false)}
+          draggable
+          dragOptions={{
+            handle: "#title",
+          }}
+        >
+          <DialogTitle dragFor="title">
+            {"Use Google's location service?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Let Google help apps determine location. This means sending
+              anonymous location data to Google, even when no apps are running.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              label="DISAGREE"
+              variant="text"
+              onClick={() => setOpen(false)}
+            />
+            <Button
+              label="AGREE"
+              variant="text"
+              onClick={() => setOpen(false)}
+            />
+          </DialogActions>
+        </Dialog>
+      </Wrapper>
+    </>
+  );
+};
+
+<Draggable />
+
+```jsx
+import React, { useState } from "react";
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+} from "maze-ui";
+
+export const Draggable = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button
+        label="OPEN DRAGGABLE DIALOG"
+        variant="outlined"
+        onClick={() => setOpen(true)}
+      />
+      <Dialog
+        open={open}
+        onClose={() => console.log("Dialog Closed")}
+        onBackdropClick={() => setOpen(false)}
+        draggable
+        dragOptions={{
+          handle: "#title",
+        }}
+      >
+        <DialogTitle dragFor="title">
+          {"Use Google's location service?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            label="DISAGREE"
+            variant="text"
+            onClick={() => setOpen(false)}
+          />
+          <Button label="AGREE" variant="text" onClick={() => setOpen(false)} />
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+};
+```
