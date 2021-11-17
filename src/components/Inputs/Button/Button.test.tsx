@@ -54,6 +54,14 @@ describe("<Button />", () => {
     expect(button).not.toHaveClass("maze-button--contained");
   });
 
+  it("can render contained button with elevation disabled", () => {
+    props.preventElevation = true;
+    const { getByRole } = renderComponent();
+    const button = getByRole("button");
+
+    expect(button).toHaveClass("maze-button--noelevation");
+  });
+
   it("can render button with colors", () => {
     props.color = "#ed6c02";
     const { getByRole } = renderComponent();
