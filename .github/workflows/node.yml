@@ -30,7 +30,7 @@ jobs:
       - name: Install Dependences
         run: yarn install
       - name: Run Test
-        run: yarn test:ci
+        run: yarn test
       - name: Uninstall Yarn
         if: always()
         run: npm uninstall -g yarn
