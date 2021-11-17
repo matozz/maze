@@ -33,8 +33,16 @@ html[data-theme="dark"] {
   --ifm-footer-background-color: #0b233c;
 }
 
+.navbar__logo {
+  margin-right: 0.8rem;
+}
+
 .hero--primary {
   color: white;
+}
+
+.navbar__items--right > :last-child {
+  margin-left: 0.8rem;
 }
 
 html[data-theme="dark"] .docusaurus-highlight-code-line {

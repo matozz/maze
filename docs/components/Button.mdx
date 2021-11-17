@@ -64,6 +64,24 @@ The `Button` comes with three variants: text, contained (default), and outlined.
 <Button variant="contained" label="DISABLED" disabled />
 ```
 
+You can remove the elevation with the `preventElevation` prop.
+
+<Wrapper>
+  <Grid spacing={2} justifyContent="center">
+    <Button variant="contained" label="CONTAINED" preventElevation />
+  </Grid>
+</Wrapper>
+
+```jsx
+<Button variant="contained" label="CONTAINED" preventElevation />
+```
+
+:::tip Notes
+
+If you want to customize the box-shallow of the button, don't use the `preventElevation` prop.
+
+:::
+
 ### Outlined button
 
 **[Outlined buttons](https://material.io/components/buttons#outlined-button)** are medium-emphasis buttons. They contain actions that are important but aren't the primary action in an app.

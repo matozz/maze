@@ -1,0 +1,63 @@
+---
+sidebar_position: 4
+---
+
+import { useState } from "react";
+import { Grid, Switch } from "maze-ui";
+import { Wrapper } from "/src/components/ComponentsWrapper";
+
+# Switch
+
+Switches are the preferred way to adjust settings on mobile. The option that the switch controls, as well as the state it's in, should be made clear from the corresponding inline label.
+
+## Basic switches
+
+<Wrapper>
+  <Grid spacing={2} justifyContent="center">
+    <Switch defaultChecked />
+    <Switch disabled defaultChecked />
+    <Switch />
+    <Switch disabled />
+  </Grid>
+</Wrapper>
+
+```jsx
+<Switch defaultChecked />
+<Switch disabled defaultChecked />
+<Switch />
+<Switch disabled />
+```
+
+## Label
+
+You can provide a label to the Switch using `label` prop.
+
+<Wrapper>
+  <Grid spacing={2} justifyContent="center">
+    <Switch label="Switch" defaultChecked />
+    <Switch label="Switch" defaultChecked disabled />
+  </Grid>
+</Wrapper>
+
+```jsx
+<Switch label="Switch" defaultChecked />
+<Switch label="Switch" />
+```
+
+## Size
+
+Use the `size` prop to change the size of the switch.
+
+<Wrapper>
+  <Grid spacing={2} justifyContent="center">
+    <Switch defaultChecked size="small" />
+    <Switch defaultChecked size="medium" />
+    <Switch defaultChecked size="large" />
+  </Grid>
+</Wrapper>
+
+```jsx
+<Switch defaultChecked size="small"/>
+<Switch defaultChecked size="medium"/>
+<Switch defaultChecked size="large"/>
+```

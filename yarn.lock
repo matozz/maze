@@ -5121,10 +5121,10 @@ markdown-escapes@^1.0.0:
   resolved "https://registry.yarnpkg.com/markdown-escapes/-/markdown-escapes-1.0.4.tgz#c95415ef451499d7602b91095f3c8e8975f78535"
   integrity sha512-8z4efJYk43E0upd0NbVXwgSTQs6cT3T06etieCMEg7dRbzCbxUCK/GHlX8mhHRDcp+OLlHkPKsvqQTCvsRl2cg==
 
-maze-ui@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/maze-ui/-/maze-ui-1.1.8.tgz#acd40d50dfd806bf262cc4cf0f56d12671fac173"
-  integrity sha512-sGTTkVGAyC570BrBVQdu5UoP5GESYXgfqPB/sMfmphu2m2anrYs8Uc+BmcYFdzxjHEcNEeUpsjqaA77rgtVTSg==
+maze-ui@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/maze-ui/-/maze-ui-1.2.0.tgz#8e1eac038936ecc3c5e92ea831786c6857a71925"
+  integrity sha512-bQ9pVDJqTHROhBDzYwE272KHNqxufzUwvoQ1tdXetp5WZm0zBTdai+LQEH395gBNM8knX5PQ0ALHQ3AFrOntFQ==
   dependencies:
     react "^17.0.2"
     react-dom "^17.0.2"

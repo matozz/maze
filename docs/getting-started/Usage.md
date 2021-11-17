@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Usage
 
-Maze components work in isolation. You can use any of the components as demonstrated in the documentation. Please refer to each component's **[demo page](../tutorial-extras/manage-docs-versions.md)** to see how they should be imported.
+Maze components work in isolation. You can use any of the components as demonstrated in the documentation. Please refer to each component's **[demo page](../components/Button.mdx)** to see how they should be imported.
 
 ## Quick start
 
@@ -24,7 +24,7 @@ ReactDOM.render(<App />, document.querySelector("#app"));
 
 ```jsx live
 <Wrapper live>
-  <TextField label="Filled" />
+  <TextField label="TextField" />
 </Wrapper>
 ```
 

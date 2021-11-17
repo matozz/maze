@@ -6,7 +6,7 @@
  */
 
 import React from "react";
-import { TextField } from "maze-ui";
+import * as Maze from "maze-ui";
 import { Wrapper } from "@site/src/components/ComponentsWrapper";
 
 const Highlight = ({ children, color }) => (
@@ -31,7 +31,7 @@ const ReactLiveScope = {
   React,
   ...React,
   Highlight,
-  TextField,
+  ...Maze,
   Wrapper,
 };
 

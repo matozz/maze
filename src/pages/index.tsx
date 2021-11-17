@@ -9,8 +9,8 @@ import useThemeContext from "@theme/hooks/useThemeContext";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
-  const { isDarkTheme, setLightTheme, setDarkTheme } = useThemeContext();
-  console.log(isDarkTheme);
+  // const { isDarkTheme, setLightTheme, setDarkTheme } = useThemeContext();
+
   return (
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
@@ -21,7 +21,7 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to="/docs/getting-started/Installation"
           >
-            Getting Started - 5min ⏱️
+            Getting Started
           </Link>
         </div>
       </div>
@@ -33,7 +33,7 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      // title={`${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
     >
       <HomepageHeader />
