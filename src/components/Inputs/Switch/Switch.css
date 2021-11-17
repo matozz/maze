@@ -128,12 +128,13 @@
 /* Disabled */
 .maze-switch > input:disabled {
   opacity: 0;
+  background-color: transparent;
 }
 
 .maze-switch > input:disabled + span {
   color: rgb(var(--maze-onsurface-rgb, 0, 0, 0));
   opacity: 0.5;
-  cursor: default;
+  cursor: not-allowed;
 }
 
 .maze-switch > input:disabled + span::before {
