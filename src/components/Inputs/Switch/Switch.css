@@ -54,7 +54,7 @@
 .maze-switch > span::before {
   content: "";
   display: inline-block;
-  margin: 5px 10px 5px 0;
+  margin: 5px 5px 5px 0;
   border-radius: 7px;
   width: 36px;
   height: 14px;
@@ -132,7 +132,7 @@
 
 .maze-switch > input:disabled + span {
   color: rgb(var(--maze-onsurface-rgb, 0, 0, 0));
-  opacity: 0.38;
+  opacity: 0.5;
   cursor: default;
 }
 

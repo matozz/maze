@@ -10,7 +10,7 @@ export interface SwitchProps {
    * What background color to use
    */
   color?: string;
-  // checked: PropTypes.bool,
+  defaultChecked?: boolean;
   name?: string;
   value?: string;
   label: string;
@@ -21,16 +21,11 @@ export interface SwitchProps {
 }
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
-  (
-    {
-      // checked,
-      ...oldProps
-    }: SwitchProps,
-    ref
-  ) => {
+  ({ ...oldProps }: SwitchProps, ref) => {
     const [cssProperties, setCssProperties] = useState({});
 
     const {
+      defaultChecked,
       size,
       disabled,
       name,
@@ -44,11 +39,16 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     } = useMergedThemeProps({ name: "Switch", oldProps: oldProps });
 
     useEffect(() => {
-      setCssProperties({ "--maze-main-theme": hexToRGB(color) });
+      setCssProperties({
+        "--maze-main-theme": hexToRGB(color),
+        "--maze-onsurface-rgb": theme === "dark" ? "255,255,255" : "0,0,0",
+        "--maze-onprimary-rgb":
+          theme === "dark" ? "224,224,224" : "255,255,255",
+      });
       return () => {
         null;
       };
-    }, [color]);
+    }, [color, theme]);
     return (
       <>
         <label
@@ -67,9 +67,10 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             name={name}
             value={value}
             onChange={onChange}
+            defaultChecked={defaultChecked}
           />
           <span>
-            <Label style={{ margin: 0 }}>{label}</Label>
+            <Label style={{ margin: 0, marginLeft: 5 }}>{label}</Label>
           </span>
         </label>
       </>

@@ -29,18 +29,28 @@ export interface ButtonProps
    */
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   style?: React.CSSProperties;
+  preventElevation?: boolean;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ ...oldProps }: ButtonProps, ref) => {
     const [cssProperties, setCssProperties] = useState({});
 
-    const { variant, disabled, color, size, label, style, theme, ...props } =
-      useMergedThemeProps({
-        name: "Button",
-        oldProps: oldProps,
-        defaultProps: { color: "#1976d2" },
-      });
+    const {
+      variant,
+      disabled,
+      color,
+      size,
+      label,
+      style,
+      preventElevation,
+      theme,
+      ...props
+    } = useMergedThemeProps({
+      name: "Button",
+      oldProps: oldProps,
+      defaultProps: { color: "#1976d2" },
+    });
 
     const mode =
       variant === "text"
@@ -61,7 +71,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         type="button"
-        className={["maze-button", `maze-button--${size}`, mode].join(" ")}
+        className={[
+          "maze-button",
+          `maze-button--${size}`,
+          preventElevation ? "maze-button--noelevation" : "",
+          mode,
+        ].join(" ")}
         {...props}
         disabled={disabled}
         style={{

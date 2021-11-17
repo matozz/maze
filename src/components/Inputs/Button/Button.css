@@ -98,8 +98,8 @@
 .maze-button--text:disabled {
   color: rgba(109, 109, 109, 0.8) !important;
   background-color: transparent;
-  cursor: initial;
-  pointer-events: none;
+  cursor: not-allowed;
+  /* pointer-events: none; */
 }
 
 .maze-button--text:disabled::before,
@@ -178,7 +178,7 @@
   color: rgba(109, 109, 109, 0.8) !important;
   background-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.12);
   box-shadow: none;
-  cursor: initial;
+  cursor: not-allowed;
   border-color: transparent;
 }
 
@@ -257,12 +257,16 @@
 .maze-button--outlined:disabled {
   color: rgba(109, 109, 109, 0.8) !important;
   background-color: transparent;
-  cursor: initial;
-  pointer-events: none;
+  cursor: not-allowed;
+  /* pointer-events: none; */
   border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.2);
 }
 
 .maze-button--outlined:disabled::before,
 .maze-button--outlined:disabled::after {
   opacity: 0;
+}
+
+.maze-button--noelevation {
+  box-shadow: none !important;
 }

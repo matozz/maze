@@ -13,6 +13,7 @@ import { DialogTitle } from "../../components/DataDisplay/DialogTitle";
 import { DialogContent } from "../../components/DataDisplay/DialogContent";
 import { DialogContentText } from "../../components/DataDisplay/DialogContentText";
 import { DialogActions } from "../../components/DataDisplay/DialogActions";
+import { Label } from "../..";
 
 export default {
   title: "Theme (Beta)",

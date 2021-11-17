@@ -18,6 +18,10 @@ export const Label: React.FunctionComponent<LabelProps> = ({
 
   if (props?.style) {
     props.style.color = theme === "dark" ? "#eaeef3" : "#20262d" ?? "#eaeef3";
+  } else {
+    props.style = {
+      color: theme === "dark" ? "#eaeef3" : "#20262d" ?? "#eaeef3",
+    };
   }
 
   return (
