@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import deepmerge from "../util/function/deepmerge";
 import { defaultTheme } from "./defaultTheme";

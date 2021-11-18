@@ -15,6 +15,10 @@ export interface ButtonProps
    * What background color to use
    */
   color?: string;
+  /**
+   * What text color to use
+   */
+  textColor?: string;
   disabled?: boolean;
   /**
    * How large should the button be?
@@ -23,7 +27,8 @@ export interface ButtonProps
   /**
    * Button contents
    */
-  label: string;
+  children?: React.ReactNode;
+  // label: string;
   /**
    * Optional click handler
    */
@@ -37,11 +42,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const [cssProperties, setCssProperties] = useState({});
 
     const {
+      children,
       variant,
       disabled,
       color,
+      textColor,
       size,
-      label,
+      // label,
       style,
       preventElevation,
       theme,
@@ -82,11 +89,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         style={{
           ...cssProperties,
           ...style,
-          color: theme == "dark" ? "rgba(0, 0, 0, 0.87)" : "white",
+          color: textColor
+            ? textColor
+            : theme == "dark"
+            ? "rgba(0, 0, 0, 0.87)"
+            : "white",
         }}
         ref={ref}
       >
-        {label}
+        {children}
       </button>
     );
   }

@@ -20,11 +20,9 @@ export const Default: Story<DialogProps> = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button
-        label="OPEN DIALOG"
-        variant="outlined"
-        onClick={() => setOpen(true)}
-      />
+      <Button variant="outlined" onClick={() => setOpen(true)}>
+        OPEN DIALOG
+      </Button>
       <Dialog
         open={open}
         onClose={() => {
@@ -42,12 +40,12 @@ export const Default: Story<DialogProps> = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            label="DISAGREE"
-            variant="text"
-            onClick={() => setOpen(false)}
-          />
-          <Button label="AGREE" variant="text" onClick={() => setOpen(false)} />
+          <Button variant="text" onClick={() => setOpen(false)}>
+            DISAGREE
+          </Button>
+          <Button variant="text" onClick={() => setOpen(false)}>
+            AGREE
+          </Button>
         </DialogActions>
       </Dialog>
     </>
@@ -66,11 +64,9 @@ export const ConfirmDialog: Story<DialogProps> = () => {
   return (
     <>
       <Grid spacing={2}>
-        <Button
-          label="DJ MAG VOTE 2022"
-          variant="outlined"
-          onClick={() => setOpen(true)}
-        />
+        <Button variant="outlined" onClick={() => setOpen(true)}>
+          DJ MAG VOTE 2022
+        </Button>
         <Dialog
           open={open}
           onClose={() => console.log("Dialog Closed")}
@@ -91,19 +87,18 @@ export const ConfirmDialog: Story<DialogProps> = () => {
             </RadioGroup>
           </DialogContent>
           <DialogActions>
+            <Button variant="text" onClick={() => setOpen(false)}>
+              CANCEL
+            </Button>
             <Button
-              label="CANCEL"
-              variant="text"
-              onClick={() => setOpen(false)}
-            />
-            <Button
-              label="SUBMIT"
               variant="text"
               onClick={() => {
                 setResult(resRef.current);
                 setOpen(false);
               }}
-            />
+            >
+              SUBMIT
+            </Button>
           </DialogActions>
         </Dialog>
         <Label>Selection: {result}</Label>
@@ -116,11 +111,9 @@ export const ScrollDialog: Story<DialogProps> = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button
-        label="SCROLL DIALOG"
-        variant="outlined"
-        onClick={() => setOpen(true)}
-      />
+      <Button variant="outlined" onClick={() => setOpen(true)}>
+        SCROLL DIALOG
+      </Button>
       <Dialog
         open={open}
         onClose={() => console.log("Dialog Closed")}
@@ -140,12 +133,12 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            label="DISAGREE"
-            variant="text"
-            onClick={() => setOpen(false)}
-          />
-          <Button label="AGREE" variant="text" onClick={() => setOpen(false)} />
+          <Button variant="text" onClick={() => setOpen(false)}>
+            DISAGREE
+          </Button>
+          <Button variant="text" onClick={() => setOpen(false)}>
+            AGREE
+          </Button>
         </DialogActions>
       </Dialog>
     </>
@@ -156,11 +149,9 @@ export const FullWidth: Story<DialogProps> = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button
-        label="OPEN FULL-WIDTH DIALOG"
-        variant="outlined"
-        onClick={() => setOpen(true)}
-      />
+      <Button variant="outlined" onClick={() => setOpen(true)}>
+        OPEN FULL-WIDTH DIALOG
+      </Button>
       <Dialog
         open={open}
         onClose={() => console.log("Dialog Closed")}
@@ -177,12 +168,12 @@ export const FullWidth: Story<DialogProps> = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            label="DISAGREE"
-            variant="text"
-            onClick={() => setOpen(false)}
-          />
-          <Button label="AGREE" variant="text" onClick={() => setOpen(false)} />
+          <Button variant="text" onClick={() => setOpen(false)}>
+            DISAGREE
+          </Button>
+          <Button variant="text" onClick={() => setOpen(false)}>
+            AGREE
+          </Button>
         </DialogActions>
       </Dialog>
     </>
@@ -193,11 +184,9 @@ export const FullScreen: Story<DialogProps> = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button
-        label="OPEN FULL-SCREEN DIALOG"
-        variant="outlined"
-        onClick={() => setOpen(true)}
-      />
+      <Button variant="outlined" onClick={() => setOpen(true)}>
+        OPEN FULL-SCREEN DIALOG
+      </Button>
       <Dialog
         open={open}
         onClose={() => console.log("Dialog Closed")}
@@ -214,12 +203,12 @@ export const FullScreen: Story<DialogProps> = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            label="DISAGREE"
-            variant="text"
-            onClick={() => setOpen(false)}
-          />
-          <Button label="AGREE" variant="text" onClick={() => setOpen(false)} />
+          <Button variant="text" onClick={() => setOpen(false)}>
+            DISAGREE
+          </Button>
+          <Button variant="text" onClick={() => setOpen(false)}>
+            AGREE
+          </Button>
         </DialogActions>
       </Dialog>
     </>
@@ -231,11 +220,9 @@ export const Draggable: Story<DialogProps> = () => {
 
   return (
     <>
-      <Button
-        label="OPEN DRAGGABLE DIALOG"
-        variant="outlined"
-        onClick={() => setOpen(true)}
-      />
+      <Button variant="outlined" onClick={() => setOpen(true)}>
+        OPEN DRAGGABLE DIALOG
+      </Button>
       <Dialog
         open={open}
         onClose={() => console.log("Dialog Closed")}
@@ -257,12 +244,12 @@ export const Draggable: Story<DialogProps> = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            label="DISAGREE"
-            variant="text"
-            onClick={() => setOpen(false)}
-          />
-          <Button label="AGREE" variant="text" onClick={() => setOpen(false)} />
+          <Button variant="text" onClick={() => setOpen(false)}>
+            DISAGREE
+          </Button>
+          <Button variant="text" onClick={() => setOpen(false)}>
+            AGREE
+          </Button>
         </DialogActions>
       </Dialog>
     </>

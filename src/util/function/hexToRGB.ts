@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export const hexToRGB = (h: string): string => {
   // if (!h) return null;
   let r = 0,

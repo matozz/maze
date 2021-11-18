@@ -5,17 +5,16 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { Button, ButtonProps } from "./Button";
+import { createTheme, ThemeProvider } from "../../../styles";
 
 describe("<Button />", () => {
   let props: ButtonProps;
 
   beforeEach(() => {
-    props = {
-      label: "Test Button",
-    };
+    props = {};
   });
 
-  const renderComponent = () => render(<Button {...props} />);
+  const renderComponent = () => render(<Button {...props}>Test Button</Button>);
 
   it("should render root, medium, and contained classes but no others", () => {
     const { getByRole } = renderComponent();
@@ -86,4 +85,29 @@ describe("<Button />", () => {
     expect(mockCallBack).toBeCalledTimes(0);
     expect(button).toHaveAttribute("disabled");
   });
+
+  it("can render a themed button", () => {
+    const { getByRole } = render(
+      <ThemeWrapper mode="dark">
+        <Button {...props}>Dark Button</Button>
+      </ThemeWrapper>
+    );
+
+    const button = getByRole("button");
+    expect(button).toHaveStyle({
+      "--maze-main-theme": "144, 202, 249",
+      color: "rgba(0, 0, 0, 0.87)",
+    });
+  });
 });
+
+const ThemeWrapper = ({ mode, children }) => {
+  const theme = createTheme({
+    mode: mode,
+    components: {
+      Button: { dark: { color: "#90caf9" }, light: {} },
+    },
+  });
+
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+};

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export const defaultTheme = {
   mode: "light",
   breakpoints: {

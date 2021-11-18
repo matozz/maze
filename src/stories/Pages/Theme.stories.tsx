@@ -56,12 +56,16 @@ const Template: Story = () => {
           ></Switch>
           <Grid spacing={3} direction="column">
             <Grid spacing={2}>
-              <Button variant="text" size="small" label="SMALL" />
+              <Button variant="text" size="small">
+                SMALL
+              </Button>
               <Button variant="text" size="medium" label="MEDIUM" />
               <Button variant="text" size="large" label="LARGE" />
             </Grid>
             <Grid spacing={2}>
-              <Button variant="contained" size="small" label="SMALL" />
+              <Button variant="contained" size="small">
+                SMALL
+              </Button>
               <Button variant="contained" size="medium" label="MEDIUM" />
               <Button variant="contained" size="large" label="LARGE" />
             </Grid>
