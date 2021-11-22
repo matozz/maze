@@ -32,10 +32,14 @@ export default function useDrag(
 
   useEffect(() => {
     if (isDrag) {
+      document.addEventListener("dragstart", function () {
+        return false;
+      });
       document.addEventListener("mousemove", handleDragMove);
       document.addEventListener("mouseup", handleDragStop);
       document.addEventListener("touchmove", handleDragMove);
       document.addEventListener("touchend", handleDragStop);
+
       return () => {
         document.removeEventListener("mousemove", handleDragMove);
         document.removeEventListener("mouseup", handleDragStop);
