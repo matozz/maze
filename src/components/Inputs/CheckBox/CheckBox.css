@@ -41,9 +41,16 @@
   display: inline-block;
   width: 100%;
   cursor: pointer;
+  color: transparent;
 }
 
 /* Box */
+.maze-checkbox--light.maze-checkbox > span::before {
+  border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.6);
+}
+.maze-checkbox--dark.maze-checkbox > span::before {
+  border-color: rgba(255, 255, 255, 0.7);
+}
 .maze-checkbox > span::before {
   content: "";
   display: inline-block;
@@ -73,19 +80,34 @@
   transform: translate(3px, 4px) rotate(-45deg);
 }
 
+.maze-checkbox-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  user-select: none;
+  margin: 3px 0 3px 1px;
+  display: inline-block;
+  fill: currentColor;
+  flex-shrink: 0;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+}
+
 /* Checked, Indeterminate */
 .maze-checkbox > input:checked,
 .maze-checkbox > input:indeterminate {
   background-color: rgb(var(--maze-main-theme));
 }
 
-.maze-checkbox > input:checked + span::before,
+.maze-checkbox > input:checked + span {
+  color: rgb(var(--maze-main-theme));
+}
+
 .maze-checkbox > input:indeterminate + span::before {
   border-color: rgb(var(--maze-main-theme));
   background-color: rgb(var(--maze-main-theme));
 }
 
-.maze-checkbox > input:checked + span::after,
 .maze-checkbox > input:indeterminate + span::after {
   border-color: rgb(var(--maze-onprimary-rgb, 255, 255, 255));
 }
@@ -97,7 +119,7 @@
 
 /* Hover, Focus */
 .maze-checkbox:hover > input {
-  opacity: 0.04;
+  opacity: 0.12;
 }
 
 .maze-checkbox > input:active {
@@ -105,7 +127,7 @@
 }
 
 .maze-checkbox:hover > input:active {
-  opacity: 0.16;
+  opacity: 0.3;
 }
 
 /* Active */
@@ -128,22 +150,24 @@
 
 .maze-checkbox > input:disabled {
   opacity: 0;
+  background: none;
+}
+
+.maze-checkbox > input:disabled:checked + span {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .maze-checkbox > input:disabled + span {
-  color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.38);
-  cursor: initial;
-  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
-.maze-checkbox > input:disabled + span::before {
-  border-color: currentColor;
+.maze-checkbox--dark.maze-checkbox > input:disabled:checked + span {
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.maze-checkbox > input:checked:disabled + span::before,
-.maze-checkbox > input:indeterminate:disabled + span::before {
-  border-color: transparent;
-  background-color: currentColor;
+.maze-checkbox > input:disabled:checked + span::before {
+  border: none;
 }
 
 /* Size */

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, forwardRef } from "react";
 import "./Button.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
-import { createTheme, useTheme } from "../../../styles";
 import { useMergedThemeProps } from "../../../styles";
 
 export interface ButtonProps
@@ -19,6 +18,10 @@ export interface ButtonProps
    * What text color to use
    */
   textColor?: string;
+  /**
+   * If it is a icon button
+   */
+  icon?: boolean;
   disabled?: boolean;
   /**
    * How large should the button be?
@@ -38,7 +41,7 @@ export interface ButtonProps
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ ...oldProps }: ButtonProps, ref) => {
+  ({ icon, preventElevation, ...oldProps }: ButtonProps, ref) => {
     const [cssProperties, setCssProperties] = useState({});
 
     const {
@@ -50,7 +53,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size,
       // label,
       style,
-      preventElevation,
       theme,
       ...props
     } = useMergedThemeProps({
@@ -81,7 +83,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={[
           "maze-button",
           `maze-button--${size}`,
+          `maze-button--${theme}`,
           preventElevation ? "maze-button--noelevation" : "",
+          icon ? "maze-button--icon" : "",
           mode,
         ].join(" ")}
         {...props}
@@ -89,11 +93,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         style={{
           ...cssProperties,
           ...style,
-          color: textColor
-            ? textColor
-            : theme == "dark"
-            ? "rgba(0, 0, 0, 0.87)"
-            : "white",
+          color: textColor,
         }}
         ref={ref}
       >

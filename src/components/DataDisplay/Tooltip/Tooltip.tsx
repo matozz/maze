@@ -14,7 +14,7 @@ export interface TooltipProps {
   /**
    * Tooltip title. Zero-length titles string are never displayed.
    */
-  title?: string | React.ReactNode;
+  title: string | React.ReactNode;
   /**
    * If true, the component is shown.
    */
@@ -31,6 +31,7 @@ export interface TooltipProps {
    * Styles applied to the arrow.
    */
   arrowStyle?: React.CSSProperties;
+  update?: string | number;
 }
 
 interface PortalProps {
@@ -49,17 +50,24 @@ export const Tooltip: React.FunctionComponent<TooltipProps> = ({
   arrow,
   open,
   title,
-  position,
+  update,
+  position = "bottom",
   containerStyle,
   arrowStyle,
   children,
 }: TooltipProps) => {
   const [anchor, setAnchor] = useState({ x: 0, y: 0, arrowX: 0, arrowY: 0 });
   const [isOpen, setIsOpen] = useState(open);
-  const [isVisible, setIsVisible] = useState(open);
+  const [resize, setResize] = useState(null);
+  const [exiting, setExiting] = useState(false);
   const portalRef = useRef<HTMLDivElement>(null);
   const childrenRef = useRef<HTMLDivElement | null>(null);
   const childElement = React.Children.only(children);
+
+  useEffect(() => {
+    if (exiting) return;
+    setIsOpen(open);
+  }, [open, exiting]);
 
   useEffect(() => {
     if (isOpen && childrenRef.current && portalRef.current) {
@@ -74,9 +82,17 @@ export const Tooltip: React.FunctionComponent<TooltipProps> = ({
         arrowX: offsetArrowX,
         arrowY: offsetArrowY,
       });
-      setIsVisible(true);
     }
-  }, [isOpen]);
+  }, [isOpen, update, resize]);
+
+  useEffect(() => {
+    const handleResize = () => setResize(Symbol("Resize"));
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handlePopupOpen = () => {
     setIsOpen(true);
@@ -84,7 +100,6 @@ export const Tooltip: React.FunctionComponent<TooltipProps> = ({
 
   const handlePopupClose = () => {
     if (open) return;
-    setIsVisible(false);
     setIsOpen(false);
   };
 
@@ -135,14 +150,17 @@ export const Tooltip: React.FunctionComponent<TooltipProps> = ({
         React.cloneElement(childElement, {
           ref: (el: HTMLDivElement) => (childrenRef.current = el),
           onMouseOver: handlePopupOpen,
-          onMouseOut: handlePopupClose,
+          onMouseLeave: handlePopupClose,
+          onTouchStart: handlePopupOpen,
         })}
 
       <CSSTransition
         in={isOpen}
-        timeout={200}
+        timeout={0}
         classNames={animatedStyles}
         unmountOnExit
+        onExit={() => setExiting(true)}
+        onExited={() => setExiting(false)}
       >
         <Portal
           title={title}

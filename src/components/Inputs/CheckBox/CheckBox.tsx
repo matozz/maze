@@ -2,6 +2,7 @@ import React, { useState, useEffect, forwardRef } from "react";
 import "./CheckBox.css";
 import { hexToRGB } from "../../../util/function/hexToRGB";
 import { Label } from "../../DataDisplay/Label";
+import { useMergedThemeProps } from "../../../styles";
 
 export interface CheckBoxProps {
   ref?: React.Ref<HTMLLabelElement>;
@@ -9,10 +10,10 @@ export interface CheckBoxProps {
    * What background color to use
    */
   color?: string;
-  // checked: PropTypes.bool,
+  defaultChecked?: boolean;
   name?: string;
   value?: string;
-  label: string;
+  label?: string;
   size?: "small" | "medium" | "large";
   disabled?: boolean;
   onChange?: React.MouseEventHandler<HTMLInputElement>;
@@ -20,9 +21,11 @@ export interface CheckBoxProps {
 }
 
 export const CheckBox = forwardRef<HTMLInputElement, CheckBoxProps>(
-  (
-    {
-      // checked,
+  ({ ...oldProps }: CheckBoxProps, ref) => {
+    const [cssProperties, setCssProperties] = useState({});
+
+    const {
+      defaultChecked,
       size,
       disabled,
       name,
@@ -31,11 +34,14 @@ export const CheckBox = forwardRef<HTMLInputElement, CheckBoxProps>(
       onChange,
       color,
       style,
+      theme,
       ...props
-    }: CheckBoxProps,
-    ref
-  ) => {
-    const [cssProperties, setCssProperties] = useState({});
+    } = useMergedThemeProps({
+      name: "CheckBox",
+      oldProps: oldProps,
+      defaultProps: { color: "#1976d2" },
+    });
+
     useEffect(() => {
       setCssProperties({ "--maze-main-theme": hexToRGB(color) });
       return () => {
@@ -47,7 +53,8 @@ export const CheckBox = forwardRef<HTMLInputElement, CheckBoxProps>(
         <label
           className={[
             "maze-checkbox",
-            disabled && "maze-checkbox-disabled",
+            disabled ? "maze-checkbox-disabled" : "",
+            `maze-checkbox--${theme}`,
             `maze-checkbox--${size}`,
           ].join(" ")}
           style={{ ...cssProperties, ...style }}
@@ -59,7 +66,9 @@ export const CheckBox = forwardRef<HTMLInputElement, CheckBoxProps>(
             disabled={disabled}
             name={name}
             value={value}
+            defaultChecked={defaultChecked}
           />
+
           <span>
             <Label
               style={{
@@ -71,6 +80,17 @@ export const CheckBox = forwardRef<HTMLInputElement, CheckBoxProps>(
             >
               {label}
             </Label>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              className="maze-checkbox-svg"
+              focusable="false"
+              aria-hidden="true"
+              data-testid="CheckBoxIcon"
+            >
+              <path d="M16 0H2C0.89 0 0 0.9 0 2V16C0 17.1 0.89 18 2 18H16C17.11 18 18 17.1 18 16V2C18 0.9 17.11 0 16 0ZM7 14L2 9L3.41 7.59L7 11.17L14.59 3.58L16 5L7 14Z" />
+            </svg>
           </span>
         </label>
       </>
@@ -79,7 +99,6 @@ export const CheckBox = forwardRef<HTMLInputElement, CheckBoxProps>(
 );
 
 CheckBox.defaultProps = {
-  // checked: false,
   size: "medium",
   disabled: false,
   color: "#1976d2",

@@ -6,13 +6,14 @@
   font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
     -apple-system;
   position: relative;
-  display: inline-block;
   margin: 0;
   font-weight: 500;
   /* letter-spacing: 0.4px; */
   border: 1px solid transparent;
   border-radius: 0.4em;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   line-height: 1;
   box-sizing: border-box;
   outline: none;
@@ -116,8 +117,12 @@
   vertical-align: middle;
   text-align: center;
   text-overflow: ellipsis;
-  /* color: white; */
+  color: white;
   background-color: rgb(var(--maze-main-theme));
+}
+
+.maze-button--dark.maze-button--contained {
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .maze-button--contained::-moz-focus-inner {
@@ -180,6 +185,11 @@
   box-shadow: none;
   cursor: not-allowed;
   border-color: transparent;
+}
+
+.maze-button--dark.maze-button--contained:disabled {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.3) !important;
 }
 
 .maze-button--contained:disabled::before,
@@ -262,6 +272,10 @@
   border-color: rgba(var(--maze-onsurface-rgb, 0, 0, 0), 0.2);
 }
 
+.maze-button--dark.maze-button--outlined:disabled {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
 .maze-button--outlined:disabled::before,
 .maze-button--outlined:disabled::after {
   opacity: 0;
@@ -269,4 +283,18 @@
 
 .maze-button--noelevation {
   box-shadow: none !important;
+}
+
+/* ------------- IconButton ---------------- */
+.maze-button--icon {
+  padding: 8px;
+  font-size: 1.5rem;
+  min-width: auto;
+  border-radius: 100%;
+  /* overflow: hidden; */
+}
+
+.maze-button--outlined.maze-button--icon::before,
+.maze-button--outlined.maze-button--icon::after {
+  border-radius: 100%;
 }

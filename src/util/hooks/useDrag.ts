@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 interface returnProps {
   handleDragStart: (e: React.MouseEvent | React.TouchEvent) => void;
   change: any;
+  isDrag: boolean;
 }
 export default function useDrag(
   parser: (
@@ -52,5 +53,5 @@ export default function useDrag(
     };
   }, [isDrag]);
 
-  return { handleDragStart, change };
+  return { handleDragStart, change, isDrag };
 }

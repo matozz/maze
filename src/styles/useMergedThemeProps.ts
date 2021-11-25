@@ -24,7 +24,7 @@ export default function useMergedThemeProps({
     newProps = oldProps;
   }
 
-  newProps["theme"] = theme?.mode;
+  newProps["theme"] = theme?.mode ?? "light";
 
   return newProps;
 }

@@ -1,4 +1,9 @@
-export const calculateChange = (container: HTMLDivElement, step: number) => {
+export const calculateChange = (
+  container: HTMLDivElement,
+  step: number,
+  min: number,
+  max: number
+) => {
   return (e) => {
     if (!container) return 0;
     const { width: containerWidth } = container.getBoundingClientRect();
@@ -13,8 +18,10 @@ export const calculateChange = (container: HTMLDivElement, step: number) => {
     }
 
     const value =
-      Math.floor(Math.floor((left / containerWidth) * 100) / step) * step;
+      Math.floor(Math.floor((left / containerWidth) * (max - min)) / step) *
+        step +
+      min;
 
-    return { value };
+    return { value: value - min };
   };
 };

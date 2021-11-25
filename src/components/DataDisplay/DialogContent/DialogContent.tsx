@@ -2,7 +2,7 @@ import React from "react";
 import { useMergedThemeProps } from "../../..";
 import styles from "./DialogContent.module.scss";
 
-interface DialogContentProps {
+interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The content of the component.
    */
@@ -11,6 +11,7 @@ interface DialogContentProps {
    * Display the top and bottom dividers.
    */
   dividers?: boolean;
+  style?: React.CSSProperties;
 }
 
 export const DialogContent = ({
@@ -18,7 +19,7 @@ export const DialogContent = ({
   dividers = false,
   ...oldProps
 }: DialogContentProps) => {
-  const { theme, ...props } = useMergedThemeProps({
+  const { theme, style, ...props } = useMergedThemeProps({
     name: "DialogContentText",
     oldProps: oldProps,
   });
@@ -33,6 +34,7 @@ export const DialogContent = ({
           theme === "dark"
             ? "rgba(255, 255, 255, 0.12)"
             : "rgba(0, 0, 0, 0.12)",
+        ...style,
       }}
     >
       {children}

@@ -39,6 +39,7 @@ export interface GridProps {
   style?: React.CSSProperties;
   justifyContent?: React.CSSProperties["justifyContent"];
   alignItems?: React.CSSProperties["alignItems"];
+  _doctype?: string;
 }
 
 export const Grid: React.FunctionComponent<GridProps> = ({
@@ -81,12 +82,15 @@ export const Grid: React.FunctionComponent<GridProps> = ({
       >
         {React.Children.map(children, (child: any, index) => {
           if (child) {
-            if (child.type === Grid) {
+            if (
+              child.props._doctype === "Grid" ||
+              child.props.mdxType === "Grid"
+            ) {
               count += child.props.lg;
               if (count > columns) {
                 count = child.props.lg;
                 return [
-                  <hr
+                  <div
                     key={index}
                     className={styles.divider}
                     style={{ display: wrap === "nowrap" ? "none" : "block" }}
@@ -113,4 +117,5 @@ Grid.defaultProps = {
   // rowSpacing: 0,
   // columnSpacing: 0,
   wrap: "wrap",
+  _doctype: "Grid",
 };

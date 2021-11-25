@@ -7,14 +7,14 @@
   touch-action: none;
   color: #1976d2;
   -webkit-tap-highlight-color: transparent;
-  height: 4px;
   width: 160px;
   padding: 13px 0;
+  margin-left: 16px;
 
   &-disabled {
     pointer-events: none;
     cursor: default;
-    color: #bdbdbd;
+    color: #bdbdbd !important;
   }
 
   &-small {
@@ -26,6 +26,10 @@
     }
   }
 
+  &-medium {
+    height: 4px;
+  }
+
   &-large {
     height: 6px;
 
@@ -33,6 +37,24 @@
       width: 24px;
       height: 24px;
     }
+  }
+
+  & .mark {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: currentColor;
+    top: 50%;
+    -webkit-transform: translate(-1px, -50%);
+    -moz-transform: translate(-1px, -50%);
+    -ms-transform: translate(-1px, -50%);
+    transform: translate(-1px, -50%);
+    opacity: 0.8;
+  }
+
+  &-dark .mark {
+    background-color: rgb(18, 18, 18);
   }
 }
 
@@ -85,7 +107,7 @@
   }
 
   &:active {
-    box-shadow: 0px 0px 0px 14px rgba(25, 118, 210, 0.16);
+    box-shadow: 0px 0px 0px 12px rgba(25, 118, 210, 0.16);
   }
 
   &::before {
@@ -121,18 +143,4 @@
     width: 100%;
     direction: ltr;
   }
-}
-
-.mark {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  border-radius: 1px;
-  background-color: currentColor;
-  top: 50%;
-  -webkit-transform: translate(-1px, -50%);
-  -moz-transform: translate(-1px, -50%);
-  -ms-transform: translate(-1px, -50%);
-  transform: translate(-1px, -50%);
-  opacity: 0.8;
 }

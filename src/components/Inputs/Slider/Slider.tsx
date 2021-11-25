@@ -4,6 +4,13 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./Slider.module.scss";
 import { useDrag } from "../../../util/hooks";
 import * as slider from "../../../util/helpers/slider";
+import { useMergedThemeProps } from "../../../styles";
+import { Tooltip } from "../../../components/DataDisplay/Tooltip";
+
+type Theme<T> = {
+  light?: T;
+  dark?: T;
+};
 
 export interface SliderProps {
   color?: string;
@@ -16,7 +23,11 @@ export interface SliderProps {
   thumbStyle?: React.CSSProperties;
   railStyle?: React.CSSProperties;
   trackStyle?: React.CSSProperties;
+  markStyle?: Theme<React.CSSProperties>;
+  labelPosition?: "top" | "bottom" | "left" | "right";
+  defaultValue?: number;
   value?: number;
+  label?: boolean | string;
   size?: "small" | "medium" | "large";
   // orientation?: "vertical" | "horizontal";
   marks?: boolean;
@@ -27,29 +38,57 @@ export const Slider = ({
   min = 0,
   max = 100,
   step = 1,
+  defaultValue,
   width,
-  color,
-  value,
-  marks,
-  disabled,
   onChange,
-  sliderStyle,
-  thumbStyle,
-  trackStyle,
-  railStyle,
   size = "medium",
+  ...oldProps
 }: SliderProps) => {
   const sliderRef = useRef(null);
-  const { handleDragStart, change } = useDrag(
-    slider.calculateChange(sliderRef.current, step)
+
+  const {
+    color,
+    value,
+    marks,
+    label,
+    disabled,
+    sliderStyle,
+    thumbStyle,
+    trackStyle,
+    railStyle,
+    labelPosition = "top",
+    markStyle = {
+      light: { backgroundColor: "white" },
+      dark: { backgroundColor: "rgb(18, 18, 18)" },
+    },
+    theme,
+    ...props
+  } = useMergedThemeProps({
+    name: "Slider",
+    oldProps: oldProps,
+    defaultProps: { color: "#1976d2" },
+  });
+
+  const { handleDragStart, change, isDrag } = useDrag(
+    slider.calculateChange(sliderRef.current, step, min, max)
   );
-  const [sliderValue, setSliderValue] = useState(value);
+  const [sliderValue, setSliderValue] = useState(
+    defaultValue < min || defaultValue > max ? 0 : defaultValue - min || value
+  );
   const itemNumber = Array.from(Array(Math.floor((max - min) / step)));
+
+  useEffect(() => {
+    if ((max - min) % step !== 0) {
+      console.error(
+        "Step must be greater than 0 and can be(Max - Min) integer!"
+      );
+    }
+  }, []);
 
   useEffect(() => {
     if (Object.keys(change).length != 0) {
       setSliderValue(change.value);
-      onChange && onChange(change.value);
+      onChange && onChange(change.value + min);
     }
   }, [change.value]);
 
@@ -58,7 +97,7 @@ export const Slider = ({
       <span
         className={`${styles.root} ${disabled ? styles["root-disabled"] : ""} ${
           styles[`root-${size}`]
-        }`}
+        } ${styles[`root-${theme}`]}`}
         ref={sliderRef}
         onMouseDown={handleDragStart}
         onTouchStart={handleDragStart}
@@ -67,7 +106,10 @@ export const Slider = ({
         <span className={styles.rail} style={railStyle}></span>
         <span
           className={styles.track}
-          style={{ width: `${sliderValue}%`, ...trackStyle }}
+          style={{
+            width: `${(sliderValue / (max - min)) * 100}%`,
+            ...trackStyle,
+          }}
         ></span>
         {marks &&
           step &&
@@ -78,26 +120,62 @@ export const Slider = ({
                 data-index={i}
                 className={styles.mark}
                 style={{
-                  left: `${step * i}%`,
+                  left: `${(100 / itemNumber.length) * i}%`,
                   backgroundColor:
-                    value && value > step * i ? "white" : "currentcolor",
+                    sliderValue && sliderValue > step * i
+                      ? i !== 0
+                        ? theme === "dark"
+                          ? markStyle.dark.backgroundColor
+                          : markStyle.light.backgroundColor
+                        : "transparent"
+                      : "currentcolor",
                 }}
               />
             );
           })}
-        <span
-          className={styles.thumb}
-          style={{ left: `${sliderValue}%`, ...thumbStyle }}
-        >
-          <input
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            value={sliderValue}
-            onChange={() => {}}
-          />
-        </span>
+        {label ? (
+          <Tooltip
+            title={typeof label === "boolean" ? sliderValue + min : label}
+            update={sliderValue}
+            position={labelPosition}
+            arrow
+            open={isDrag}
+          >
+            <span
+              className={styles.thumb}
+              style={{
+                left: `${(sliderValue / (max - min)) * 100}%`,
+                ...thumbStyle,
+              }}
+            >
+              <input
+                type="range"
+                min={min}
+                max={max}
+                step={step}
+                value={sliderValue}
+                onChange={() => {}}
+              />
+            </span>
+          </Tooltip>
+        ) : (
+          <span
+            className={styles.thumb}
+            style={{
+              left: `${(sliderValue / (max - min)) * 100}%`,
+              ...thumbStyle,
+            }}
+          >
+            <input
+              type="range"
+              min={min}
+              max={max}
+              step={step}
+              value={sliderValue}
+              onChange={() => {}}
+            />
+          </span>
+        )}
       </span>
     </>
   );

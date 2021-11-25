@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./DialogActions.module.scss";
 
-interface DialogActionsProps {
+interface DialogActionsProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The content of the component.
    */

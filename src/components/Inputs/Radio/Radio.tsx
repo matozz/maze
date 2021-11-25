@@ -37,7 +37,11 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       style,
       theme,
       ...props
-    } = useMergedThemeProps({ name: "Radio", oldProps: oldProps });
+    } = useMergedThemeProps({
+      name: "Radio",
+      oldProps: oldProps,
+      defaultProps: { color: "#1976d2" },
+    });
 
     useEffect(() => {
       setCssProperties({ "--maze-main-theme": hexToRGB(color) });
