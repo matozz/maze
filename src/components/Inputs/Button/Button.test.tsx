@@ -94,9 +94,9 @@ describe("<Button />", () => {
     );
 
     const button = getByRole("button");
+    // expect(button).toHaveClass("maze-button--dark");
     expect(button).toHaveStyle({
       "--maze-main-theme": "144, 202, 249",
-      color: "rgba(0, 0, 0, 0.87)",
     });
   });
 });
