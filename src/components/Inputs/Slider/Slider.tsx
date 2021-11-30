@@ -39,9 +39,10 @@ export const Slider = ({
   max = 100,
   step = 1,
   defaultValue,
-  width,
+  width = 160,
   onChange,
   size = "medium",
+  labelPosition = "top",
   ...oldProps
 }: SliderProps) => {
   const sliderRef = useRef(null);
@@ -56,7 +57,6 @@ export const Slider = ({
     thumbStyle,
     trackStyle,
     railStyle,
-    labelPosition = "top",
     markStyle = {
       light: { backgroundColor: "white" },
       dark: { backgroundColor: "rgb(18, 18, 18)" },
@@ -182,7 +182,6 @@ export const Slider = ({
 };
 
 Slider.defaultProps = {
-  width: 160,
   value: 0,
   onChange: () => {},
 };

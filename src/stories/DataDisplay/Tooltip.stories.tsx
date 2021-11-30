@@ -7,22 +7,12 @@ import { Grid } from "../../components/Layouts/Grid";
 export default {
   title: "Data Display/Tooltip",
   component: Tooltip,
-  // parameters: {
-  //   docs: {
-  //     description: {
-  //       component: "Quickly and easily create layouts with the flexible grid.",
-  //     },
-  //   },
-  // },
-  // argTypes: {
-  //   children: { control: "" },
-  // },
 } as Meta;
 
 export const Default: Story<TooltipProps> = (args) => {
   return (
     <Tooltip {...args} title="Text">
-      <Button label="Text" variant="text" />
+      <Button variant="text">Text</Button>
     </Tooltip>
   );
 };
@@ -34,18 +24,18 @@ export const Positions: Story<TooltipProps> = () => {
   return (
     <Grid alignItems={"center"} direction={"column"} spacing={4}>
       <Tooltip title="Top" position="top">
-        <Button label="Top" variant="text" />
+        <Button variant="text">Top</Button>
       </Tooltip>
       <Grid spacing={6}>
         <Tooltip title="Left" position="left">
-          <Button label="Left" variant="text" />
+          <Button variant="text">Left</Button>
         </Tooltip>
         <Tooltip title="Right" position="right">
-          <Button label="Right" variant="text" />
+          <Button variant="text">Right</Button>
         </Tooltip>
       </Grid>
       <Tooltip title="Bottom" position="bottom">
-        <Button label="Bottom" variant="text" />
+        <Button variant="text">Bottom</Button>
       </Tooltip>
     </Grid>
   );
@@ -55,18 +45,18 @@ export const Arrows: Story<TooltipProps> = () => {
   return (
     <Grid alignItems={"center"} direction={"column"} spacing={4}>
       <Tooltip title="Top" position="top" arrow>
-        <Button label="Top" variant="text" />
+        <Button variant="text">Top</Button>
       </Tooltip>
       <Grid spacing={6}>
         <Tooltip title="Left" position="left" arrow>
-          <Button label="Left" variant="text" />
+          <Button variant="text">Left</Button>
         </Tooltip>
         <Tooltip title="Right" position="right" arrow>
-          <Button label="Right" variant="text" />
+          <Button variant="text">Right</Button>
         </Tooltip>
       </Grid>
       <Tooltip title="Bottom" position="bottom" arrow>
-        <Button label="Bottom" variant="text" />
+        <Button variant="text">Bottom</Button>
       </Tooltip>
     </Grid>
   );
@@ -98,7 +88,7 @@ export const CustomContents: Story<TooltipProps> = (args) => {
       position="right"
       arrow
     >
-      <Button label="HTML" variant="text" />
+      <Button variant="text">HTML</Button>
     </Tooltip>
   );
 };

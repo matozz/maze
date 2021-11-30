@@ -5,7 +5,13 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { Button, ButtonProps } from "./Button";
-import { createTheme, ThemeProvider } from "../../../styles";
+import {
+  createTheme,
+  ThemeProvider,
+  useMergedThemeProps,
+} from "../../../styles";
+
+import * as hook from "../../../styles";
 
 describe("<Button />", () => {
   let props: ButtonProps;
@@ -86,7 +92,7 @@ describe("<Button />", () => {
     expect(button).toHaveAttribute("disabled");
   });
 
-  it("can render a themed button", () => {
+  it("can render a themed button with ThemeProvider", () => {
     const { getByRole } = render(
       <ThemeWrapper mode="dark">
         <Button {...props}>Dark Button</Button>
@@ -94,10 +100,20 @@ describe("<Button />", () => {
     );
 
     const button = getByRole("button");
-    // expect(button).toHaveClass("maze-button--dark");
+    expect(button).toHaveClass("maze-button--dark");
     expect(button).toHaveStyle({
       "--maze-main-theme": "144, 202, 249",
     });
+  });
+
+  it("can render a themed button with manually triggered dark mode", () => {
+    jest
+      .spyOn(hook, "useMergedThemeProps")
+      .mockReturnValue({ theme: "dark", color: "#1976d2" });
+
+    const { getByRole } = render(<Button>Dark Button</Button>);
+    const button = getByRole("button");
+    expect(button).toHaveClass("maze-button--dark");
   });
 });
 

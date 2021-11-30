@@ -35,7 +35,9 @@ export default {
 const Template: Story<SliderProps> = (args) => <Slider {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  label: true,
+};
 
 export const ColorSlider = Template.bind({});
 ColorSlider.args = {
@@ -56,12 +58,16 @@ ColorSlider.args = {
 };
 
 export const Controls = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(30);
   return (
     <>
       <Grid direction="column" style={{ margin: 10 }}>
         <Label>Value: {value}</Label>
-        <Slider value={value} onChange={(value) => setValue(value)} />
+        <Slider
+          value={value}
+          onChange={(value) => setValue(value)}
+          defaultValue={value}
+        />
       </Grid>
     </>
   );

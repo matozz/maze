@@ -13,7 +13,7 @@ import { DialogTitle } from "../../components/DataDisplay/DialogTitle";
 import { DialogContent } from "../../components/DataDisplay/DialogContent";
 import { DialogContentText } from "../../components/DataDisplay/DialogContentText";
 import { DialogActions } from "../../components/DataDisplay/DialogActions";
-import { Label } from "../..";
+import { CheckBox, Label, Slider } from "../..";
 
 export default {
   title: "Theme (Beta)",
@@ -28,7 +28,14 @@ const Template: Story = () => {
   const theme = createTheme({
     mode: mode,
     components: {
-      ...["Button", "Switch", "Radio", "TextField"].reduce((comps, comp) => {
+      ...[
+        "Button",
+        "Switch",
+        "Radio",
+        "TextField",
+        "CheckBox",
+        "Slider",
+      ].reduce((comps, comp) => {
         comps[comp] = { dark: { color: primaryDark }, light: {} };
         return comps;
       }, {}),
@@ -37,6 +44,12 @@ const Template: Story = () => {
       DialogContentText: { dark: { color: "rgba(255, 255, 255, 0.7)" } },
     },
   });
+
+  const Item: Story = ({ children, ...props }) => (
+    <div className="item" {...props}>
+      {children}
+    </div>
+  );
 
   return (
     <>
@@ -54,90 +67,52 @@ const Template: Story = () => {
             label={mode.toUpperCase()}
             onChange={(e) => setMode(e.target.checked ? "dark" : "light")}
           ></Switch>
-          <Grid spacing={3} direction="column">
-            <Grid spacing={2}>
-              <Button variant="text" size="small">
-                SMALL
-              </Button>
-              <Button variant="text" size="medium" label="MEDIUM" />
-              <Button variant="text" size="large" label="LARGE" />
-            </Grid>
-            <Grid spacing={2}>
-              <Button variant="contained" size="small">
-                SMALL
-              </Button>
-              <Button variant="contained" size="medium" label="MEDIUM" />
-              <Button variant="contained" size="large" label="LARGE" />
-            </Grid>
-            <Grid spacing={2}>
-              <Button variant="outlined" size="small" label="SMALL" />
-              <Button variant="outlined" size="medium" label="MEDIUM" />
-              <Button variant="outlined" size="large" label="LARGE" />
-            </Grid>
-          </Grid>
-          <RadioGroup name="gender">
-            <Radio value="female" label="Female" />
-            <Radio value="male" label="Male" />
-            <Radio value="other" label="Other" />
-          </RadioGroup>
-          <Form
-            initialValues={{
-              name: "Matoz",
-            }}
-          >
-            <Form.Control name="name">
-              <TextField
-                label={"Name"}
-                variant="outlined"
-                size="small"
-                required
-              />
-            </Form.Control>
-            <Form.Control name="password">
-              <TextField
-                label={"Password"}
-                type="password"
-                variant="outlined"
-                size="small"
-              />
-            </Form.Control>
-            <Form.Control>
-              <Button label={"Submit"} type="submit" />
-            </Form.Control>
-          </Form>
-          <Button
-            label="OPEN DIALOG"
-            variant="outlined"
-            onClick={() => setOpen(true)}
-          />
-          <Dialog
-            open={open}
-            onClose={() => console.log("Dialog Closed")}
-            onBackdropClick={() => setOpen(false)}
-          >
-            <DialogTitle>{"Use Google's location service?"}</DialogTitle>
-            <DialogContent dividers>
-              <DialogContentText>
-                Let Google help apps determine location. This means sending
-                anonymous location data to Google, even when no apps are
-                running. Let Google help apps determine location. This means
-                sending anonymous location data to Google, even when no apps are
-                running.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button
-                label="DISAGREE"
-                variant="text"
-                onClick={() => setOpen(false)}
-              />
-              <Button
-                label="AGREE"
-                variant="text"
-                onClick={() => setOpen(false)}
-              />
-            </DialogActions>
-          </Dialog>
+          <>
+            <Button variant="outlined" onClick={() => setOpen(true)}>
+              OPEN DIALOG
+            </Button>
+            <Dialog
+              open={open}
+              onClose={() => {
+                console.log("Dialog Closed");
+                setOpen(false);
+              }}
+              onBackdropClick={() => setOpen(false)}
+              exitOnEsc
+              containerStyle={{
+                alignSelf: "flex-start",
+                marginTop: 80,
+                minWidth: 550,
+              }}
+            >
+              <DialogTitle style={{ padding: 12, paddingTop: 18 }}>
+                <TextField
+                  label="Search"
+                  variant="outlined"
+                  placeholder="Search Docs"
+                  width="100%"
+                  unstyled
+                  suffixElement={
+                    <Button variant="outlined" style={{ padding: 8 }}>
+                      Clear
+                    </Button>
+                  }
+                ></TextField>
+              </DialogTitle>
+              <DialogContent
+                style={{
+                  padding: 12,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: 20,
+                  marginBottom: 40,
+                }}
+              >
+                No Search Results
+              </DialogContent>
+            </Dialog>
+          </>
         </Grid>
       </ThemeProvider>
     </>

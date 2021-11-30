@@ -41,21 +41,21 @@ export interface ButtonProps
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ icon, preventElevation, ...oldProps }: ButtonProps, ref) => {
-    const [cssProperties, setCssProperties] = useState({});
-
-    const {
+  (
+    {
+      icon,
+      preventElevation,
       children,
       variant,
       disabled,
-      color,
-      textColor,
       size,
-      // label,
-      style,
-      theme,
-      ...props
-    } = useMergedThemeProps({
+      ...oldProps
+    }: ButtonProps,
+    ref
+  ) => {
+    const [cssProperties, setCssProperties] = useState({});
+
+    const { color, textColor, style, theme, ...props } = useMergedThemeProps({
       name: "Button",
       oldProps: oldProps,
       defaultProps: { color: "#1976d2" },

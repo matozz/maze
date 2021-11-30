@@ -3,6 +3,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { Button, ButtonProps } from "../../components/Inputs/Button";
 import { Grid } from "../../components/Layouts/Grid";
+import { MdDelete } from "react-icons/md";
 
 export default {
   title: "Inputs/Button",
@@ -31,79 +32,120 @@ export default {
   },
 } as Meta;
 
-const Template = (args) => <Button {...args} />;
+const Template = (args) => <Button {...args}>Button</Button>;
 
 export const Default: Story<ButtonProps> = Template.bind({});
 Default.args = {
-  label: "Button",
   disabled: false,
   color: "#1976d2",
 };
 
 export const Basic: Story<ButtonProps> = (args) => (
   <Grid spacing={2}>
-    <Button variant="text" label="TEXT" />
-    <Button variant="contained" label="CONTAINED" />
-    <Button variant="outlined" label="OUTLINED" />
+    <Button variant="text">TEXT</Button>
+    <Button variant="contained">CONTAINED</Button>
+    <Button variant="outlined">OUTLINED</Button>
   </Grid>
 );
 
 export const Text: Story<ButtonProps> = (args) => (
   <Grid spacing={2}>
-    <Button variant="text" label="TEXT" />
-    <Button variant="text" label="DISABLED" disabled />
+    <Button variant="text">TEXT</Button>
+    <Button variant="text" disabled>
+      DISABLED
+    </Button>
   </Grid>
 );
 
 export const Contained: Story<ButtonProps> = (args) => (
   <Grid spacing={2}>
-    <Button variant="contained" label="CONTAINED" />
-    <Button variant="contained" label="DISABLED" disabled />
+    <Button variant="contained">CONTAINED</Button>
+    <Button variant="contained" disabled>
+      DISABLED
+    </Button>
   </Grid>
 );
 
 export const Outlined: Story<ButtonProps> = (args) => (
   <Grid spacing={2}>
-    <Button variant="outlined" label="OUTLINED" />
-    <Button variant="outlined" label="DISABLED" disabled />
+    <Button variant="outlined">OUTLINED</Button>
+    <Button variant="outlined" disabled>
+      DISABLED
+    </Button>
   </Grid>
 );
 
 export const Events: Story<ButtonProps> = (args) => (
   <Button
     variant="contained"
-    label="Alert"
     onClick={() => {
       alert("clicked");
     }}
     color="#d32f2f"
-  />
+  >
+    Alert
+  </Button>
 );
 
 export const Sizes: Story<ButtonProps> = () => (
   <Grid spacing={3} direction="column">
     <Grid spacing={2}>
-      <Button variant="text" size="small" label="SMALL" />
-      <Button variant="text" size="medium" label="MEDIUM" />
-      <Button variant="text" size="large" label="LARGE" />
+      <Button variant="text" size="small">
+        SMALL
+      </Button>
+      <Button variant="text" size="medium">
+        MEDIUM
+      </Button>
+      <Button variant="text" size="large">
+        LARGE
+      </Button>
     </Grid>
     <Grid spacing={2}>
-      <Button variant="contained" size="small" label="SMALL" />
-      <Button variant="contained" size="medium" label="MEDIUM" />
-      <Button variant="contained" size="large" label="LARGE" />
+      <Button variant="contained" size="small">
+        SMALL
+      </Button>
+      <Button variant="contained" size="medium">
+        MEDIUM
+      </Button>
+      <Button variant="contained" size="large">
+        LARGE
+      </Button>
     </Grid>
     <Grid spacing={2}>
-      <Button variant="outlined" size="small" label="SMALL" />
-      <Button variant="outlined" size="medium" label="MEDIUM" />
-      <Button variant="outlined" size="large" label="LARGE" />
+      <Button variant="outlined" size="small">
+        SMALL
+      </Button>
+      <Button variant="outlined" size="medium">
+        MEDIUM
+      </Button>
+      <Button variant="outlined" size="large">
+        LARGE
+      </Button>
     </Grid>
   </Grid>
 );
 
 export const Colors: Story<ButtonProps> = (args) => (
   <Grid spacing={2}>
-    <Button variant="contained" label="Success" color="#2e7d32" />
-    <Button variant="contained" label="Warning" color="#ed6c02" />
-    <Button variant="contained" label="Alert" color="#d32f2f" />
+    <Button variant="contained" color="#2e7d32">
+      Success
+    </Button>
+    <Button variant="contained" color="#ed6c02">
+      Warning
+    </Button>
+    <Button variant="contained" color="#d32f2f">
+      Alert
+    </Button>
+  </Grid>
+);
+
+export const IconButton: Story<ButtonProps> = (args) => (
+  <Grid spacing={2}>
+    <Button variant="contained" icon preventElevation>
+      <MdDelete />
+    </Button>
+    <Button variant="text" icon>
+      <MdDelete />
+    </Button>
   </Grid>
 );

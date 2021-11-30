@@ -32,7 +32,7 @@ export const Basic: Story<FormProps> = () => {
         />
       </Form.Control>
       <Form.Control>
-        <Button label={"Submit"} type="submit" />
+        <Button type="submit">Submit</Button>
       </Form.Control>
     </Form>
   );
@@ -72,7 +72,7 @@ export const InitialValues: Story<FormProps> = () => {
           />
         </Form.Control>
         <Form.Control>
-          <Button label={"Submit"} type="submit" />
+          <Button type="submit">Submit</Button>
         </Form.Control>
       </Form>
     </>
@@ -107,7 +107,7 @@ export const Validation: Story<FormProps> = () => {
           />
         </Form.Control>
         <Form.Control>
-          <Button label={"Submit"} type="submit" />
+          <Button type="submit">Submit</Button>
         </Form.Control>
       </Form>
     </>
@@ -175,26 +175,22 @@ export const Controls: Story<FormProps> = () => {
             />
           </Form.Control>
           <Form.Control>
-            <Button label={"Submit"} type="submit" />
+            <Button type="submit">Submit</Button>
           </Form.Control>
-          <Button label={"Reset"} onClick={onReset} />
-          <Button label={"Clear"} onClick={onClear} />
+          <Button onClick={onReset}>Reset</Button>
+          <Button onClick={onClear}>Clear</Button>
         </Form>
         <Grid direction="column" spacing={6} style={{ marginTop: 6 }}>
           <Grid spacing={2} alignItems="center">
-            <Button
-              label={"Get Value"}
-              onClick={onGetValue}
-              variant="outlined"
-            />
+            <Button onClick={onGetValue} variant="outlined">
+              Get Value
+            </Button>
             <Label> {`Get value from field "name": ${fieldValue}`}</Label>
           </Grid>
           <Grid spacing={2} alignItems="center">
-            <Button
-              label={"Set Value"}
-              onClick={onSetValue}
-              variant="outlined"
-            />
+            <Button onClick={onSetValue} variant="outlined">
+              Set Value
+            </Button>
             <Label> {`Set "Matoz" to field "name"`}</Label>
           </Grid>
         </Grid>
