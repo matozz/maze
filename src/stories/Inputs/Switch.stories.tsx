@@ -30,7 +30,6 @@ const Template = (args) => {
 export const Default: Story<SwitchProps> = Template.bind({});
 Default.args = {
   size: "medium",
-  // checked: false,
   disabled: false,
   label: "Switch",
   color: "#1976d2",

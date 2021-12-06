@@ -9,6 +9,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:storybook/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -19,6 +20,8 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint"],
-  rules: { "react/prop-types": ["off"] },
+  rules: {
+    "react/prop-types": ["off"],
+  },
   ignorePatterns: ["rollup.config.js,.storybook"],
 };
